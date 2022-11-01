@@ -1,0 +1,16 @@
+{
+  "name": "millimeterwave-miniprogram",
+  "version": "1.0.0",
+  "description": "基于毫米波与AI的生命体征监测与跌倒预警系统-微信小程序",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.10.5",
+    "miniprogram-api-promise": "^1.0.4"
+  }
+}
