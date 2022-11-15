@@ -1,34 +1,37 @@
 {
-  "pages":[
-    "pages/personalData/personalData",
-    "pages/home/home",
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
-  "tabBar": {
-    "position": "bottom",
-    "borderStyle": "white",
-    "color": "#afafaf",
-    "selectedColor": "#f45d5d",
-    "list": [{
-      "pagePath": "pages/personalData/personalData",
-      "text": "健康",
-      "iconPath": "/icon/health1.png",
-      "selectedIconPath": "icon/health2.png"
-    },{
-      "pagePath": "pages/home/home",
-      "text": "我的",
-      "iconPath": "/icon/my1.png",
-      "selectedIconPath": "/icon/my2.png"
-    }]
-  },
-  "window":{
-    "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#f45d5d",
-    "navigationBarTitleText": "MillimeterWave",
-    "navigationBarTextStyle":"black",
-    "backgroundColor": "#ffffff",
-    "enablePullDownRefresh": true
-  },
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/index/index",
+        "pages/personalData/personalData",
+        "pages/home/home",
+        "pages/logs/logs"
+    ],
+    "tabBar": {
+        "position": "bottom",
+        "borderStyle": "white",
+        "color": "#afafaf",
+        "selectedColor": "#f45d5d",
+        "list": [
+            {
+                "pagePath": "pages/personalData/personalData",
+                "text": "健康",
+                "iconPath": "/icon/health1.png",
+                "selectedIconPath": "icon/health2.png"
+            },
+            {
+                "pagePath": "pages/home/home",
+                "text": "我的",
+                "iconPath": "/icon/my1.png",
+                "selectedIconPath": "/icon/my2.png"
+            }
+        ]
+    },
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#ededed",
+        "navigationBarTitleText": "MillimeterWave",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff",
+        "enablePullDownRefresh": true
+    },
+    "sitemapLocation": "sitemap.json"
 }

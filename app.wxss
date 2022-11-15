@@ -1,4 +1,12 @@
 /**app.wxss**/
+page {
+  	/*主题色*/
+  --lightPink: #fee3e3;
+  --red: #f45d5d;
+  --lightGray: #efefef;
+  --gray: #e5e5e5;
+  --darkGray: #afafaf;
+}
 .container {
   height: 100%;
   display: flex;
@@ -7,4 +15,4 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}

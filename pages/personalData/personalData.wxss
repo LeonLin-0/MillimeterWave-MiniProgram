@@ -1,1 +1,147 @@
 /* pages/personalData/personalData.wxss */
+page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 105%;
+	font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-weight: normal;
+}
+/* 个人信息 */
+.personalInfo {
+	display: flex;
+	position: relative;
+	align-items: center;
+	height: 150rpx;
+	width: 650rpx;
+	margin-top: 50rpx;
+	background-color: #fff;
+	border-radius: 30rpx;
+	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+}
+.userImg {
+	height: 110rpx;
+	width: 110rpx;
+	margin-left: 50rpx;
+}
+.personalMsg {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	height: 100%;
+	width: 60%;
+}
+.userName, .userAge {
+	height: 40rpx;
+	width: auto;
+	margin-left: 40rpx;
+	line-height: 40rpx;
+	font-size: 34rpx;
+	color: #000;
+	font-weight: 450;
+}
+.toMyPage {
+	display: inline-block;
+	position: absolute;
+	right: 50rpx;
+	height: 40rpx;
+	width: 40rpx;
+}
+.fillMsg {
+	width: 180rpx;
+	margin-left: 40rpx;
+	font-size: 24rpx;
+}
+
+/* 疾病*/
+.diseaseContainer {
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	width: 650rpx;
+	margin-top: 50rpx;
+	background: -webkit-linear-gradient(-45deg, #f37b7b, #efefef);
+	border-radius: 30rpx;
+	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+}
+.diseaseHistory {
+	display: inline-block;
+	height: 40rpx;
+	width: auto;
+	margin: 20rpx 30rpx;
+	font-size: 32rpx;
+	line-height: 40rpx;
+	font-weight: 400;
+}
+.diseaseList {
+	height: auto;
+	width: 90%;
+	margin: 0rpx 30rpx 10rpx;
+	box-sizing: border-box;
+	font-weight: 400;
+	font-size: 30rpx;
+}
+.disease {
+	display: inline-block;
+	height: 32rpx;
+	width: auto;
+	margin-right: 10rpx;
+	margin-bottom: 10rpx;
+	padding: 8rpx 14rpx;
+	line-height: 32rpx;
+	background: rgba(250, 250, 250, 0.5);
+	backdrop-filter: blur(30rpx) ;
+	border-radius: 20rpx;
+}
+
+/* 展示模块 */
+.dataContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 400rpx;
+	width: 650rpx;
+	background: var(--lightGray);
+	border-radius: 30rpx;
+	margin-top: 50rpx;
+	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+}
+.dataInfo {
+	display: block;
+	position: relative;
+	height: 50rpx;
+	width: 90%;
+	margin: 20rpx 0rpx;
+}
+.title {
+	display: inline-block;
+	height: 50rpx;
+	width: 70rpx;
+	font-size: 32rpx;
+	line-height: 50rpx;
+	margin-right: 10rpx;
+}
+.number {
+	display: inline-block;
+	height: 50rpx;
+	width: auto;
+	line-height: 50rpx;
+	font-weight: bold;
+}
+.dataIcon {
+	display: inline-block;
+	position: absolute;
+	top: 5rpx;
+	right: 0rpx;
+	height: 40rpx;
+	width: 40rpx;
+	margin: 5rpx 0rpx;
+	right: 0;
+}
+.dataCanvas {
+	height: 310rpx;
+	width: 100%;
+	background: #fff;
+	border-radius: 30rpx;
+}
+

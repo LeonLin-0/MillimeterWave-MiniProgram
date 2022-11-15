@@ -1,2 +1,62 @@
-<!--pages/personalData/personalData.wxml-->
-<text>健康数据展示页</text>
+<!-- 个人信息 -->
+<view class="personalInfo">
+	<!-- 还未登录 -->
+	<block wx:if="{{userUnlogin}}">
+		<view class="userName" bindtap="toLogin">暂未登录，请点击登录</view>
+	</block>
+	<!-- 已经登录 -->
+	<block wx:else>
+		<van-image class="userImg"
+			src="{{ userInfo.avatarUrl }}"
+			fit="cover"
+			height="110rpx"
+			width="110rpx"
+			radius="30rpx"
+		></van-image>
+		<view class="personalMsg">
+			<text class="userName">{{ userInfo.nickName }}</text>
+			<!-- 未填写年龄 -->
+			<block wx:if="{{userAge == 0 ? true : false}}">
+				<view class="fillMsg" bindtap="fillAgeData">点击完善数据</view>
+			</block>
+			<!-- 已填写年龄 -->
+			<block wx:else>
+				<text class="userAge">{{ userAge +"岁"}}</text>
+			</block>
+		</view>
+		<van-icon name="arrow" size="40rpx" class="toMyPage" bindtap="toMyPage"/>		
+	</block>
+</view>
+
+<!-- 过往疾病史 -->
+<view class="diseaseContainer">
+	<view class="diseaseHistory">过往疾病史</view>
+	<block wx:if="{{diseases.length == 0 ? true:false}}">
+		<view class="diseaseList" bindtap="fillDiseaseData">暂无数据，点击完善</view>
+	</block>
+	<block wx:else>
+		<view class="diseaseList">
+			<text class="disease" wx:for="{{diseases}}" wx:key="index">{{item}}</text>
+		</view>		
+	</block>
+</view>
+
+<!-- 心率模块 -->
+<view class="dataContainer heartRate">
+	<view class="dataInfo">
+		<text class="title">心率</text>
+    <text class="number">{{heartRateNum}}</text>
+    <image class="dataIcon" src="/icon/heartRate.png"></image>
+	</view>
+  <canvas class="dataCanvas" type="2d"></canvas>
+</view>
+
+<!-- 呼吸模块 -->
+<view class="dataContainer breath">
+	<view class="dataInfo">
+		<text class="title">呼吸</text>
+    <text class="number">{{breathNum}}</text>
+    <image class="dataIcon" src="/icon/lung.png"></image>
+	</view>
+  <canvas class="dataCanvas" type="2d"></canvas>
+</view>
