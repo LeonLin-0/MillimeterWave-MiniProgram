@@ -9,12 +9,56 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    wifiList: []
   },
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
       url: '../logs/logs'
+    })
+  },
+  // wifi测试
+  showWifiList() {
+    // 初始化wifi模块
+    wx.startWifi({
+      success: (res) => {
+        console.log(res);
+        // 获取wifi列表
+        wx.getWifiList({
+          success: (res) => {
+            console.log(res);
+            wx.onGetWifiList((res) => {
+              console.log(res.wifiList);
+              this.setData({
+                wifiList: res.wifiList
+              })
+            })
+          },
+          fail: res => {
+            if (res.errCode == 12006) { 
+              wx.showToast({
+                icon: "error",
+                title: '请打开手机定位功能',
+              })
+            }
+            else if (res.errCode == 12005) {
+              wx.showToast({
+                icon: "error",
+                title: '请打开手机WiFi',
+              })
+            }
+          }
+        })
+      },
+      fail: res => {
+        // 根据返回的errorcode进行错误类型判断
+        if(res.errCode == 12005) {
+          wx.showToast({
+            title: '您未打开WiFi，请先打开WiFi',
+          })
+        }
+      }
     })
   },
   onLoad() {

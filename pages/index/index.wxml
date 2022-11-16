@@ -21,3 +21,9 @@
     <text class="user-motto">{{motto}}</text>
   </view>
 </view>
+<button type="primary" bindtap="showWifiList">显示wifi信息</button>
+<view class="showWifi">
+  <block wx:for="{{wifiList}}" wx:key="index">
+    <view class="wifiText">{{item.SSID}}</view>
+  </block>
+</view>

@@ -2,12 +2,15 @@
 <view class="personalInfo">
 	<!-- 还未登录 -->
 	<block wx:if="{{userUnlogin}}">
-		<view class="userName" bindtap="toLogin">暂未登录，请点击登录</view>
+		<button 
+			class="loginBtn"			
+			bindtap="onShowPopUp"			
+		>暂未登录，请点击登录</button>		
 	</block>
 	<!-- 已经登录 -->
 	<block wx:else>
 		<van-image class="userImg"
-			src="{{ userInfo.avatarUrl }}"
+			src="{{ userInfo.avatarURL }}"
 			fit="cover"
 			height="110rpx"
 			width="110rpx"
@@ -15,14 +18,7 @@
 		></van-image>
 		<view class="personalMsg">
 			<text class="userName">{{ userInfo.nickName }}</text>
-			<!-- 未填写年龄 -->
-			<block wx:if="{{userAge == 0 ? true : false}}">
-				<view class="fillMsg" bindtap="fillAgeData">点击完善数据</view>
-			</block>
-			<!-- 已填写年龄 -->
-			<block wx:else>
-				<text class="userAge">{{ userAge +"岁"}}</text>
-			</block>
+			<text class="userAge">{{ userInfo.userAge +"岁"}}</text>
 		</view>
 		<van-icon name="arrow" size="40rpx" class="toMyPage" bindtap="toMyPage"/>		
 	</block>
@@ -60,3 +56,39 @@
 	</view>
   <canvas class="dataCanvas" type="2d"></canvas>
 </view>
+
+<!-- 填写个人数据弹出层 -->
+<van-popup
+	show="{{showPopUp}}"
+	bind:close="onClosePopUp"
+	position="top"
+	closeable
+	custom-style="height: 40%;"
+	round
+	class="popup"
+>
+	<button 
+		class="loginBtn getAvatarBtn"			
+		open-type="chooseAvatar"
+		bind:chooseavatar="onChooseAvatar">	
+		<image src="{{userInfo.avatarURL}}" class="getImg"></image>
+	</button>
+	<input
+		type="nickname"
+		class="inputNickName"
+		bindinput="getNickName"
+		placeholder="请输入您的名字"/>
+	<text class="ageTip">请选择您的年龄</text>
+	<slider
+		class="getAge"
+		min="0"
+		max="120"
+		step="1"
+		value="20"
+		activeColor="#f45d5d"
+		backgroundColor="#ededed"
+		show-value="true"
+		bindchange="getUserAge"
+	></slider>
+	<button class="submitBtn" type="primary" size="mini" bindtap="submitAllData">确认</button>
+</van-popup>

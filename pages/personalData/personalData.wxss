@@ -4,9 +4,10 @@ page {
 	flex-direction: column;
 	align-items: center;
 	height: 105%;
-	font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'Microsoft YaHei';
 	font-weight: normal;
 }
+
 /* 个人信息 */
 .personalInfo {
 	display: flex;
@@ -47,10 +48,63 @@ page {
 	height: 40rpx;
 	width: 40rpx;
 }
-.fillMsg {
-	width: 180rpx;
-	margin-left: 40rpx;
-	font-size: 24rpx;
+/* 清除原生按钮样式 */
+.loginBtn {
+	background: none;
+}
+.loginBtn::after {
+	border: none;
+}
+
+/* 填写数据弹出层 */
+.popup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.getAvatarBtn {
+	margin-top: 60rpx;
+	height: 110rpx;
+	width: 160rpx;
+	padding: none;
+}
+.getImg {
+	height: 110rpx;
+	width: 110rpx;
+	margin: none;
+	padding-left: none;
+	border-radius: 24rpx;
+}
+.inputNickName {
+	height: 70rpx;
+	width: 80%;
+	margin: 20rpx auto 30rpx;
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+	padding-left: 10rpx;
+	font-size: 32rpx;
+	line-height: 70rpx;
+}
+.ageTip {
+	display: block;
+	height: 26rpx;
+	width: 200rpx;
+	margin-left: 10%;
+	font-size: 26rpx;
+	line-height: 26rpx;
+	color: var(--darkGray);
+}
+.getAge {
+	display: block;
+	height: 80rpx;
+	width: 80%;
+	line-height: 80rpx;
+	margin: 10rpx auto 20rpx;
+}
+.submitBtn {
+	margin-right: 10%;
+	float: right;
 }
 
 /* 疾病*/
@@ -144,4 +198,3 @@ page {
 	background: #fff;
 	border-radius: 30rpx;
 }
-

@@ -1,8 +1,8 @@
 {
     "pages": [
-        "pages/index/index",
         "pages/personalData/personalData",
         "pages/home/home",
+        "pages/index/index",
         "pages/logs/logs"
     ],
     "tabBar": {
@@ -33,5 +33,11 @@
         "backgroundColor": "#ffffff",
         "enablePullDownRefresh": true
     },
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents",
+    "permission": {
+        "scope.userLocation": {
+            "desc": "使用当前位置，请打开定位，以获得Wifi权限"
+        }
+    }
 }
