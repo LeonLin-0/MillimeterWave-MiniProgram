@@ -1,11 +1,17 @@
 /* pages/personalData/personalData.wxss */
+/* 页面 */
 page {
+	--notice-bar-height: 68rpx;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	height: 105%;
 	font-family: 'Microsoft YaHei';
 	font-weight: normal;
+}
+/* 提示栏 */
+.noticeBar {
+	width: 100%;
 }
 
 /* 个人信息 */

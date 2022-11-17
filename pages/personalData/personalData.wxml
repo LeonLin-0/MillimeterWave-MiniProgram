@@ -1,3 +1,13 @@
+<!-- 通知栏 -->
+<van-notice-bar
+	class="noticeBar"
+	left-icon="volume-o"
+	mode="closeable"
+	background="#f28181"
+	color="#fff"
+	text="请确保手机和设备在同一局域网内~"
+/>
+
 <!-- 个人信息 -->
 <view class="personalInfo">
 	<!-- 还未登录 -->
