@@ -48,23 +48,23 @@
 </view>
 
 <!-- 心率模块 -->
-<view class="dataContainer heartRate">
+<view class="dataContainer heartRate" bindtap="drawHeartRateCanvas">
 	<view class="dataInfo">
 		<text class="title">心率</text>
     <text class="number">{{heartRateNum}}</text>
     <image class="dataIcon" src="/icon/heartRate.png"></image>
 	</view>
-  <canvas class="dataCanvas" type="2d"></canvas>
+  <canvas class="dataCanvas" id="heartCanvas" type="2d"></canvas>
 </view>
 
 <!-- 呼吸模块 -->
-<view class="dataContainer breath">
+<view class="dataContainer breath"  bindtap="drawBreathCanvas">
 	<view class="dataInfo">
 		<text class="title">呼吸</text>
     <text class="number">{{breathNum}}</text>
     <image class="dataIcon" src="/icon/lung.png"></image>
 	</view>
-  <canvas class="dataCanvas" type="2d"></canvas>
+  <canvas class="dataCanvas" id="breathCanvas" type="2d"></canvas>
 </view>
 
 <!-- 填写个人数据弹出层 -->
@@ -94,7 +94,7 @@
 		min="0"
 		max="120"
 		step="1"
-		value="20"
+		value="0"
 		activeColor="#f45d5d"
 		backgroundColor="#ededed"
 		show-value="true"

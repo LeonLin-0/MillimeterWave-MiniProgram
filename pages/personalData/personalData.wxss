@@ -29,7 +29,7 @@ page {
 .userImg {
 	height: 110rpx;
 	width: 110rpx;
-	margin-left: 50rpx;
+	margin: 20rpx 50rpx;
 }
 .personalMsg {
 	display: flex;
@@ -41,7 +41,7 @@ page {
 .userName, .userAge {
 	height: 40rpx;
 	width: auto;
-	margin-left: 40rpx;
+	margin-right: 50rpx;
 	line-height: 40rpx;
 	font-size: 34rpx;
 	color: #000;
@@ -159,7 +159,7 @@ page {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 400rpx;
+	height: 380rpx;
 	width: 650rpx;
 	background: var(--lightGray);
 	border-radius: 30rpx;
@@ -171,7 +171,7 @@ page {
 	position: relative;
 	height: 50rpx;
 	width: 90%;
-	margin: 20rpx 0rpx;
+	margin: 20rpx auto;
 }
 .title {
 	display: inline-block;
@@ -199,7 +199,9 @@ page {
 	right: 0;
 }
 .dataCanvas {
-	height: 310rpx;
+	display: block;
+	position: relative;
+	height: 100%;
 	width: 100%;
 	background: #fff;
 	border-radius: 30rpx;
