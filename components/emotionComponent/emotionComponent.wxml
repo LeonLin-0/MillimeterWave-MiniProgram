@@ -1,0 +1,6 @@
+<!--conponents/emotionComponent/emotionComponent.wxml-->
+<view class="emotionContainer {{ emotion.emotionBackground }}" bindtap="changeEmotion">
+	<text class="emotionTitle">情绪感知</text>
+	<text class="emotionText">{{emotion.emotionText}}</text>
+	<image class="emotionIcon" src="{{emotion.emotionIcon}}"></image>
+</view>

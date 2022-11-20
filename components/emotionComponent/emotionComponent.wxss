@@ -1,0 +1,55 @@
+/* conponents/emotionComponent/emotionComponent.wxss */
+/* 情绪感知 */
+.emotionContainer {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	height: 300rpx;
+	width: 300rpx;
+	border-radius: 30rpx;
+	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+	backdrop-filter: blur(10px);
+}
+.-emotion-unknown {
+	background: linear-gradient(180deg, #6e6e6e, #efefef);
+}
+.-emotion-happy {
+	background: linear-gradient(180deg, #f97878, #efefef);
+}
+.-emotion-calm {
+	background: linear-gradient(180deg, #63a87d, #efefef);
+}
+.-emotion-stressful {
+	background: linear-gradient(180deg, #b32727, #efefef);
+}
+.emotionTitle {
+	display: inline-block;
+	height: 40rpx;
+	width: auto;
+	margin: 20rpx 20rpx;
+	font-size: 32rpx;
+	line-height: 40rpx;
+	font-weight: 600;
+}
+.emotionText {
+	display: block;
+	position: relative;
+	height: 70rpx;
+	width: auto;
+	margin: 20rpx 0rpx 0rpx 20rpx;
+	font-size: 60rpx;
+	line-height: 70rpx;
+	font-weight: 700;
+	color: #000;
+}
+.emotionIcon {
+	display: block;
+	position: absolute;
+	bottom: 20rpx;
+	right: 20rpx;
+	height: 120rpx;
+	width: 120rpx;
+	font-size: 120rpx;
+	line-height: 120rpx;
+	text-align: left;
+}

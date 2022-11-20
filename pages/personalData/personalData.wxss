@@ -5,7 +5,7 @@ page {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 105%;
+	height: 100%;
 	font-family: 'Microsoft YaHei';
 	font-weight: normal;
 }
@@ -21,7 +21,7 @@ page {
 	align-items: center;
 	height: 150rpx;
 	width: 650rpx;
-	margin-top: 50rpx;
+	margin-top: 13px;
 	background-color: #fff;
 	border-radius: 30rpx;
 	box-shadow: 0 0 30rpx rgb(190, 190, 190);
@@ -113,14 +113,25 @@ page {
 	float: right;
 }
 
+/* 中间信息模块 */
+.middleContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	height: auto;
+	width: 650rpx;
+	margin: 50rpx auto;
+}
+
 /* 疾病*/
 .diseaseContainer {
 	display: flex;
 	flex-direction: column;
 	height: auto;
-	width: 650rpx;
-	margin-top: 50rpx;
-	background: -webkit-linear-gradient(-45deg, #f37b7b, #efefef);
+	width: 300rpx;
+	margin-right: 50rpx;
+	backdrop-filter: blur(10px);
+	background: linear-gradient(160deg, #fba32fe0, #f56f2ce3);
 	border-radius: 30rpx;
 	box-shadow: 0 0 30rpx rgb(190, 190, 190);
 }
@@ -128,18 +139,19 @@ page {
 	display: inline-block;
 	height: 40rpx;
 	width: auto;
-	margin: 20rpx 30rpx;
+	margin: 20rpx 20rpx;
 	font-size: 32rpx;
 	line-height: 40rpx;
-	font-weight: 400;
+	font-weight: 600;
 }
 .diseaseList {
-	height: auto;
+	height: 220rpx;
 	width: 90%;
-	margin: 0rpx 30rpx 10rpx;
+	margin: 0rpx 0rpx 10rpx 20rpx;
 	box-sizing: border-box;
 	font-weight: 400;
 	font-size: 30rpx;
+	overflow-y: scroll;
 }
 .disease {
 	display: inline-block;
@@ -154,7 +166,7 @@ page {
 	border-radius: 20rpx;
 }
 
-/* 展示模块 */
+/* 波形图显示模块 */
 .dataContainer {
 	display: flex;
 	flex-direction: column;
@@ -163,7 +175,7 @@ page {
 	width: 650rpx;
 	background: var(--lightGray);
 	border-radius: 30rpx;
-	margin-top: 50rpx;
+	margin-bottom: 50rpx;
 	box-shadow: 0 0 30rpx rgb(190, 190, 190);
 }
 .dataInfo {
@@ -201,7 +213,7 @@ page {
 .dataCanvas {
 	display: block;
 	position: relative;
-	height: 100%;
+	height: 290rpx;
 	width: 100%;
 	background: #fff;
 	border-radius: 30rpx;

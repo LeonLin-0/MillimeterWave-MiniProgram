@@ -34,17 +34,23 @@
 	</block>
 </view>
 
-<!-- 过往疾病史 -->
-<view class="diseaseContainer">
-	<view class="diseaseHistory">过往疾病史</view>
-	<block wx:if="{{diseases.length == 0 ? true:false}}">
-		<view class="diseaseList" bindtap="fillDiseaseData">暂无数据，点击完善</view>
-	</block>
-	<block wx:else>
-		<view class="diseaseList">
-			<text class="disease" wx:for="{{diseases}}" wx:key="index">{{item}}</text>
-		</view>		
-	</block>
+<!-- 中间信息模块 -->
+<view class="middleContainer">
+	<!-- 疾病史 -->
+	<view class="diseaseContainer">
+		<view class="diseaseHistory">疾病史</view>
+		<block wx:if="{{diseases.length == 0 ? true:false}}">
+			<view class="diseaseList" bindtap="fillDiseaseData">暂无数据，点击完善</view>
+		</block>
+		<block wx:else>
+			<view class="diseaseList">
+				<text class="disease" wx:for="{{diseases}}" wx:key="index">{{item}}</text>
+			</view>		
+		</block>
+	</view>
+	
+	<!-- 情绪感知 -->
+	<emotionComponent emotionText="{{emotionText}}"></emotionComponent>
 </view>
 
 <!-- 心率模块 -->
