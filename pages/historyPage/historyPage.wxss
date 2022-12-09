@@ -1,0 +1,43 @@
+/* pages/historyPage/historyPage.wxss */
+page {
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  margin-top: 200rpx;
+}
+.historyContainer {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 150rpx;
+  width: 85%;
+  margin: 0rpx auto 50rpx;
+  background: linear-gradient(90deg, var(--deepBlue), #1487d4ea);
+  box-shadow: 5rpx 5rpx 20rpx rgba(0,0,0,0.35), 5rpx 5rpx 20rpx rgba(255,255,255,0.35) inset;
+  border-radius: 26rpx;
+  text-align: left;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(255,255,255,0.9);
+}
+.timeContainer {
+  margin-left: 30rpx;
+}
+.time {
+  padding-left: 20rpx;
+}
+.toDetail {
+  padding-right: 10rpx;
+}

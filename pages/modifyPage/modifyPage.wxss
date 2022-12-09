@@ -1,0 +1,149 @@
+/* pages/modifyPage/modifyPage.wxss */
+page {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* 内容 */
+.body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: auto;
+	margin-top: 200rpx;
+}
+
+/* 头像 */
+.modifyAvatar, .modify {
+	display: block;
+	position: relative;
+	height: auto;
+	width: 100%;
+	margin-bottom: 18rpx;
+	background: #fff;
+	box-shadow: 0 0 16rpx #e6e6e6;
+}
+.title {
+	display: inline-block;
+	position: relative;
+	height: 120rpx;
+  width: auto;
+	padding-left: 50rpx;
+	line-height: 130rpx;
+	font-size: 38rpx;
+	font-weight: normal;
+	color: #3b3b3b;
+}
+/* 清除原生按钮样式 */
+.loginBtn {
+	background: none;
+}
+.loginBtn::after {
+	border: none;
+}
+.getAvatarBtn {
+	display: inline;
+	height: 100rpx;
+	width: 100rpx;
+	padding: 0;
+	margin: 15rpx 50rpx 15rpx 0rpx;
+	float: right;
+	border-radius: 20rpx;
+}
+.avatar {
+	display: inline;
+	height: 100%;
+	width: 100%;
+}
+
+/* 姓名 */
+.inputNickName {
+	display: inline;
+	position: relative;
+	height: 70rpx;
+	width: 40%;
+	margin: 30rpx 50rpx 30rpx 0rpx;
+	padding: 0 20rpx;
+	border: 1rpx solid #efefef;
+	border-radius: 16rpx;
+	text-align: center;
+	font-size: 38rpx;
+	line-height: 70rpx;
+	float: right;
+}
+
+/* 身高 */
+.userHeight {
+	display: inline;
+	position: relative;
+	height: 70rpx;
+	width: 20%;
+	margin: 25rpx 50rpx 25rpx 0rpx;
+	border: 1px solid #efefef;
+	border-radius: 16rpx;
+	line-height: 70rpx;
+	text-align: center;
+	font-size: 40rpx;
+	font-weight: bold;
+	float: right;
+}
+
+/* 疾病 */
+.modifyDisease .title {
+  height: 120rpx;
+}
+.diseaseContainer {
+	display: grid; /* grid布局 */
+	grid-template-columns: 1fr 1fr; /* 两列各占一半 */
+	column-gap: 50rpx; /* 俩列间隙50rpx */
+	row-gap: 20rpx; /* 每行间隙20rpx */
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	width: 80%;
+	margin:  0 auto;
+	padding-bottom: 30rpx;
+	font-size: 34rpx;
+	font-weight: normal;
+}
+.diseaseBox {
+	display: block;
+	height: 70rpx;
+	width: auto;
+	line-height: 70rpx;
+}
+
+/* 更多疾病输入部分 */
+.littleTitle {
+  height: 30rpx;
+  width: auto;
+  padding-left: 50rpx;
+  line-height: 30rpx;
+  font-size: 26rpx;
+  color: rgba(0,0,0,0.5);
+}
+.moreDisease {
+  height: 70rpx;
+  width: 75%;
+  margin: 20rpx auto 50rpx;
+  padding: 5rpx 20rpx;
+  border: 1px solid var(--darkGray);
+  border-radius: 20rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+/* 确认按钮 */
+button {
+	color: #fff;
+	background: rgba(40,97,183,0.95);
+}
+.submitBtn {
+  height: auto;
+  width: 30%;
+  margin: 40rpx 0rpx 50rpx 450rpx;
+}

@@ -28,9 +28,37 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "修改信息页面",
+          "pathName": "pages/modifyPage/modifyPage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "历史记录页面",
+          "pathName": "pages/historyPage/historyPage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "Login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "睡眠报告",
+          "pathName": "pages/historyDetail/historyDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
   },
-  "libVersion": "2.25.4"
+  "libVersion": "2.28.0"
 }

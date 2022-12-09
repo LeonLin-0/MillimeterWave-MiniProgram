@@ -1,43 +1,49 @@
 {
-    "pages": [
-        "pages/personalData/personalData",
-        "pages/home/home",
-        "pages/index/index",
-        "pages/logs/logs"
-    ],
-    "tabBar": {
-        "position": "bottom",
-        "borderStyle": "white",
-        "color": "#afafaf",
-        "selectedColor": "#f45d5d",
-        "list": [
-            {
-                "pagePath": "pages/personalData/personalData",
-                "text": "健康",
-                "iconPath": "/icon/health1.png",
-                "selectedIconPath": "icon/health2.png"
-            },
-            {
-                "pagePath": "pages/home/home",
-                "text": "我的",
-                "iconPath": "/icon/my1.png",
-                "selectedIconPath": "/icon/my2.png"
-            }
-        ]
-    },
-    "window": {
-        "backgroundTextStyle": "dark",
-        "navigationBarBackgroundColor": "#ededed",
-        "navigationBarTitleText": "MillimeterWave",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff",
-        "enablePullDownRefresh": true
-    },
-    "sitemapLocation": "sitemap.json",
-    "lazyCodeLoading": "requiredComponents",
-    "permission": {
-        "scope.userLocation": {
-            "desc": "使用当前位置，请打开定位，以获得Wifi权限"
-        }
+  "pages": [
+    "pages/login/login",
+    "pages/personalData/personalData",
+    "pages/home/home",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/modifyPage/modifyPage",
+    "pages/historyPage/historyPage",
+    "pages/historyDetail/historyDetail",
+    "pages/aboutUsPage/aboutUsPage"
+  ],
+  "tabBar": {
+    "position": "bottom",
+    "borderStyle": "white",
+    "color": "#afafaf",
+    "selectedColor": "#f45d5d",
+    "list": [
+      {
+        "pagePath": "pages/personalData/personalData",
+        "text": "健康",
+        "iconPath": "/icon/health1.png",
+        "selectedIconPath": "icon/health2.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "/icon/my1.png",
+        "selectedIconPath": "/icon/my2.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ededed",
+    "navigationBarTitleText": "MillimeterWave",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "enablePullDownRefresh": true
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "使用当前位置，请打开定位，以获得Wifi权限"
     }
+  }
 }

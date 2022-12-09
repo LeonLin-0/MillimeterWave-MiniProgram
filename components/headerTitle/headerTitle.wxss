@@ -1,0 +1,25 @@
+/* components/headerTitle/headerTitle.wxss */
+/* 标题 */
+.headerTitle {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 90rpx;
+  width: 100%;
+  z-index: 999;
+	padding-top: 80rpx;
+	padding-left: 50rpx;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0)0%, rgba(255,255,255,0.9)100%);
+  backdrop-filter: blur(10px);
+	line-height: 70rpx;
+	font-size: 36rpx;
+	font-weight: bold;
+	text-shadow: 0 0 1.5px rgba(0,0,0,0.1);
+	color: #2861b7;
+}
+.leftIcon {
+	display: block;
+	float: left;
+	margin-right: 28rpx;
+}

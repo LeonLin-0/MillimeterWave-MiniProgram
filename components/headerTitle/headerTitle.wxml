@@ -1,0 +1,5 @@
+<!--components/headerTitle/headerTitle.wxml-->
+<view class="headerTitle">
+	<van-icon name="arrow-left" class="leftIcon" bindtap="goBack"></van-icon>
+	{{title}}
+</view>

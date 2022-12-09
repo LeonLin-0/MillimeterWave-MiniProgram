@@ -1,85 +1,13 @@
-<!-- 通知栏 -->
-<van-notice-bar
-	class="noticeBar"
-	left-icon="volume-o"
-	mode="closeable"
-	background="#f28181"
-	color="#fff"
-	text="请确保手机和设备在同一局域网内~"
-/>
-
-<!-- 个人信息 -->
-<view class="personalInfo">
-	<!-- 还未登录 -->
-	<block wx:if="{{userUnlogin}}">
-		<button 
-			class="loginBtn"			
-			bindtap="onShowPopUp"			
-		>暂未登录，请点击登录</button>		
-	</block>
-	<!-- 已经登录 -->
-	<block wx:else>
-		<van-image class="userImg"
-			src="{{ userInfo.avatarURL }}"
-			fit="cover"
-			height="110rpx"
-			width="110rpx"
-			radius="30rpx"
-		></van-image>
-		<view class="personalMsg">
-			<text class="userName">{{ userInfo.nickName }}</text>
-			<text class="userAge">{{ userInfo.userAge +"岁"}}</text>
-		</view>
-		<van-icon name="arrow" size="40rpx" class="toMyPage" bindtap="toMyPage"/>		
-	</block>
-</view>
-
-<!-- 中间信息模块 -->
-<view class="middleContainer">
-	<!-- 疾病史 -->
-	<view class="diseaseContainer">
-		<view class="diseaseHistory">疾病史</view>
-		<block wx:if="{{diseases.length == 0 ? true:false}}">
-			<view class="diseaseList" bindtap="fillDiseaseData">暂无数据，点击完善</view>
-		</block>
-		<block wx:else>
-			<view class="diseaseList">
-				<text class="disease" wx:for="{{diseases}}" wx:key="index">{{item}}</text>
-			</view>		
-		</block>
-	</view>
-	
-	<!-- 情绪感知 -->
-	<emotionComponent emotionText="{{emotionText}}"></emotionComponent>
-</view>
-
-<!-- 心率模块 -->
-<view class="dataContainer heartRate" bindtap="drawHeartRateCanvas">
-	<view class="dataInfo">
-		<text class="title">心率</text>
-    <text class="number">{{heartRateNum}}</text>
-    <image class="dataIcon" src="/icon/heartRate.png"></image>
-	</view>
-  <canvas class="dataCanvas" id="heartCanvas" type="2d"></canvas>
-</view>
-
-<!-- 呼吸模块 -->
-<view class="dataContainer breath"  bindtap="drawBreathCanvas">
-	<view class="dataInfo">
-		<text class="title">呼吸</text>
-    <text class="number">{{breathNum}}</text>
-    <image class="dataIcon" src="/icon/lung.png"></image>
-	</view>
-  <canvas class="dataCanvas" id="breathCanvas" type="2d"></canvas>
-</view>
+<!-- 顶部标题 -->
+<view class="headTitle">MillimeterWave</view>
 
 <!-- 填写个人数据弹出层 -->
-<van-popup
+<!-- <van-popup
 	show="{{showPopUp}}"
 	bind:close="onClosePopUp"
 	position="top"
 	closeable
-	custom-style="height: 40%;"
+	custom-style="height: 44%;"
 	round
 	class="popup"
 >
@@ -93,6 +21,7 @@
 		type="nickname"
 		class="inputNickName"
 		bindinput="getNickName"
+		value=""
 		placeholder="请输入您的名字"/>
 	<text class="ageTip">请选择您的年龄</text>
 	<slider
@@ -101,10 +30,99 @@
 		max="120"
 		step="1"
 		value="0"
-		activeColor="#f45d5d"
-		backgroundColor="#ededed"
+		activeColor="#0058cc"
 		show-value="true"
 		bindchange="getUserAge"
 	></slider>
 	<button class="submitBtn" type="primary" size="mini" bindtap="submitAllData">确认</button>
-</van-popup>
+</van-popup> -->
+
+<!-- 头部 -->
+<view class="header">
+	<!-- 通知栏 -->
+	<van-notice-bar
+		class="noticeBar"
+		left-icon="volume-o"
+		mode="closeable"
+		background="linear-gradient(90deg, #0058cc, #2d82f7)"
+		color="#fff"
+		text="请确保手机和设备在同一局域网内~"
+	/>
+	<view class="personalInfo">
+		<!-- 需要完善信息 -->
+		<block wx:if="{{needFillData}}">
+			<button 
+				class="loginBtn"			
+				bindtap="toFillInfoPage"			
+			>请您点击我以完善个人信息</button>		
+		</block>
+		<!-- 已经登录 -->
+		<block wx:else>
+			<van-image class="userImg"
+				src="{{ userInfo.avatarURL }}"
+				fit="cover"
+				height="110rpx"
+				width="110rpx"
+				radius="30rpx"
+			></van-image>
+			<view class="personalMsg">
+				<text class="userName">{{ userInfo.nickName }}</text>
+				<text class="userAge">{{ userInfo.userAge +"岁"}}</text>
+			</view>
+			<van-icon name="arrow" size="40rpx" class="toMyPage" bindtap="toMyPage"/>		
+		</block>
+	</view>
+</view>
+
+
+<!-- 中间信息模块 -->
+<view class="middleContainer">
+	<!-- 疾病史 -->
+	<view class="diseaseContainer">
+		<view class="diseaseHistory">疾病史</view>
+		<block wx:if="{{userInfo.userDisease.length === 0 ? true : false}}">
+			<view class="diseaseList" bindtap="fillDiseaseData">暂无数据，点击完善</view>
+		</block>
+		<block wx:else>
+			<view class="diseaseList">
+				<text class="disease" wx:for="{{userInfo.userDisease}}" wx:key="index">{{item}}</text>
+			</view>		
+		</block>
+	</view>
+	
+	<!-- 情绪感知 -->
+	<emotionComponent emotionText="{{emotionText}}"></emotionComponent>
+</view>
+
+<!-- 连接按钮 -->
+<view class="chartText" type="default" wx:if="{{!showChart}}" bindtap="connectAndStarttpGetData">点击发起连接获取数据</view>
+
+<!-- 心率模块 -->
+<!-- <view class="dataContainer heartRate" bindtap="getDataAndDrawHeartCancas"> -->
+<view class="dataContainer heartRate">
+	<view class="dataInfo">
+		<text class="title">心率</text>
+    <text class="number">{{heartRateNum}}</text>
+		<span>bpm</span>
+    <image class="dataIcon" src="/icon/heartRate.png"></image>
+	</view>
+	<view class="echarts">
+		<ec-canvas  wx:if="{{showChart}}" id="echarts" ec="{{ec1}}"></ec-canvas>
+	</view>
+  <!-- <canvas class="dataCanvas" id="heartCanvas" type="2d"></canvas> -->
+</view>
+
+<!-- 呼吸模块 -->
+<!-- <view class="dataContainer breath"  bindtap="drawBreathCanvas"> -->
+<view class="dataContainer breath">
+	<view class="dataInfo">
+		<text class="title">呼吸率</text>
+    <text class="number">{{breathNum}}</text>
+		<span>bpm</span>
+    <image class="dataIcon" src="/icon/lung.png"></image>
+	</view>
+	<view class="echarts">
+		<ec-canvas  wx:if="{{showChart}}" id="echarts" ec="{{ec2}}"></ec-canvas>
+	</view>
+	<!-- <canvas class="dataCanvas" id="breathCanvas" type="2d"></canvas> -->
+</view>

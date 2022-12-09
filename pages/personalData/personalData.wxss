@@ -5,9 +5,35 @@ page {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 100%;
+	height: 120%;
 	font-family: 'Microsoft YaHei';
 	font-weight: normal;
+}
+
+/* 顶部标题 */
+.headTitle {
+	position: fixed;
+	display: flex;
+	flex-direction: column-reverse;
+	height: 160rpx;
+	width: 100%;
+	padding-left: 100rpx;
+	/* background: rgba(219,219,219,0.35); */
+	z-index: 1;
+	backdrop-filter: blur(10rpx);
+	line-height: 60rpx;
+	font-size: 34rpx;
+	font-weight: bold;
+	color: #094aad;
+}
+.header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: auto;
+	margin-top: 160rpx;
 }
 /* 提示栏 */
 .noticeBar {
@@ -21,7 +47,7 @@ page {
 	align-items: center;
 	height: 150rpx;
 	width: 650rpx;
-	margin-top: 13px;
+	margin-top: 50rpx;
 	background-color: #fff;
 	border-radius: 30rpx;
 	box-shadow: 0 0 30rpx rgb(190, 190, 190);
@@ -70,7 +96,7 @@ page {
 	justify-content: center;
 }
 .getAvatarBtn {
-	margin-top: 60rpx;
+	margin-top: 160rpx;
 	height: 110rpx;
 	width: 160rpx;
 	padding: none;
@@ -111,6 +137,7 @@ page {
 .submitBtn {
 	margin-right: 10%;
 	float: right;
+	background-color: #086cf8 !important;
 }
 
 /* 中间信息模块 */
@@ -166,12 +193,27 @@ page {
 	border-radius: 20rpx;
 }
 
+/* 点击连接按钮 */
+.chartText {
+	display: flex;
+	justify-content: center;
+	height: 100rpx;
+	width: 650rpx;
+	background: #fff;
+	border-radius: 20rpx;
+	margin-bottom: 50rpx;
+	line-height: 100rpx;
+	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+	font-weight: bold;
+	color: #094aad;
+}
+
 /* 波形图显示模块 */
 .dataContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 380rpx;
+	height: 420rpx;
 	width: 650rpx;
 	background: var(--lightGray);
 	border-radius: 30rpx;
@@ -188,7 +230,7 @@ page {
 .title {
 	display: inline-block;
 	height: 50rpx;
-	width: 70rpx;
+	width: auto;
 	font-size: 32rpx;
 	line-height: 50rpx;
 	margin-right: 10rpx;
@@ -197,6 +239,7 @@ page {
 	display: inline-block;
 	height: 50rpx;
 	width: auto;
+	margin-right: 16rpx;
 	line-height: 50rpx;
 	font-weight: bold;
 }
@@ -213,8 +256,23 @@ page {
 .dataCanvas {
 	display: block;
 	position: relative;
-	height: 290rpx;
+	height: 330rpx;
 	width: 100%;
 	background: #fff;
 	border-radius: 30rpx;
+}
+
+/* echarts */
+.echarts {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 650rpx;
+	height: 100%;
+	border-radius: 30rpx;
+	background: #fff;
+}
+#echarts {
+	width: 650rpx;
+	height: 330rpx;
 }

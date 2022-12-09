@@ -11,7 +11,7 @@
 	backdrop-filter: blur(10px);
 }
 .-emotion-unknown {
-	background: linear-gradient(180deg, #6e6e6e, #efefef);
+	background: linear-gradient(180deg, #237cf8, #bcd1f0);
 }
 .-emotion-happy {
 	background: linear-gradient(180deg, #f97878, #efefef);

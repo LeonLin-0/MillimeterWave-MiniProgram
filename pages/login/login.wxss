@@ -1,0 +1,194 @@
+/* pages/login/login.wxss */
+page {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	display: grid;
+	grid-template-rows: 2fr 1fr 4fr;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+/* 顶部登录状态 */
+.title {
+	position: relative;
+	height: 70rpx;
+	width: auto;
+	padding: 0rpx 15rpx;
+	border-radius: 20rpx;
+	line-height: 70rpx;
+	text-align: left;
+	font-size: 50rpx;
+	font-weight: bold;
+	color: #000;
+}
+.title::before {
+	content: '';
+	position: absolute;
+	top: -80%;
+	left: 2%;
+	height: 50rpx;
+	width: 50rpx;
+	z-index: 1;
+	border-radius: 50%;
+	background: linear-gradient(45deg, var(--deepBlue), #efefef);
+	filter: blur(1rpx);
+}
+/* 小程序名 */
+.miniprogramTitle {
+	position: relative;
+	height: 150rpx;
+	width: 100%;
+	line-height: 150rpx;
+	font-size: 80rpx;
+	font-weight: bold;
+	color: var(--deepBlue);
+}
+.miniprogramTitle::before {
+	content: '';
+	position: absolute;
+	top: -100%;
+	left: -10%;
+	height: 250rpx;
+	width: 250rpx;
+	z-index: -1;
+	border-radius: 50%;
+	background: linear-gradient(var(--blue), rgb(206, 206, 206));
+	filter: blur(18rpx);
+}
+.miniprogramTitle::after {
+	content: '';
+	position: absolute;
+	top: 60%;
+	right: -18%;
+	height: 200rpx;
+	width: 200rpx;
+	z-index: -1;
+	border-radius: 50%;
+	background: linear-gradient(rgb(206, 206, 206), #efefef);
+	filter: blur(14rpx);
+}
+/* 信息框 */
+.infoContainer {
+	position: relative;
+	height: auto;
+	width: 100%;
+	margin-bottom: 200rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: left;
+}
+.infoContainer::before {
+	content: '';
+	position: absolute;
+	top: -5%;
+	left: 50%;
+	height: 120rpx;
+	width: 120rpx;
+	border-radius: 50%;
+	z-index: -1;
+	background: linear-gradient(180deg, var(--lightBlue), var(--gray));
+	filter: blur(16rpx);
+}
+.inputNickName {
+	position: relative;
+	height: 80rpx;
+	width: 60%;
+	padding: 5rpx 10rpx 5rpx 160rpx;
+	margin-bottom: 20rpx;
+	background: rgba(200,200,200,0.3);
+	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(30rpx);
+	border-radius: 20rpx;
+	line-height: 80rpx;
+	font-size: 30rpx;
+	font-weight: bold;
+}
+.inputNickName::before {
+	content: '用户名';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 90rpx;
+	width: 98rpx;
+	padding-left: 20rpx;
+	padding-right: 20rpx;
+	line-height: 90rpx;
+	border-right: 1px solid #efefef;
+	z-index: 0;
+	text-align-last: justify;
+	font-size: 30rpx;
+	font-weight: bold;
+	color: #000;
+}
+.password {
+	position: relative;
+	height: 80rpx;
+	width: 60%;
+	padding: 5rpx 10rpx 5rpx 160rpx;
+	margin-bottom: 50rpx;
+	background: rgba(200,200,200,0.3);
+	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(30rpx);
+	border-radius: 20rpx;
+	line-height: 80rpx;
+	font-size: 30rpx;
+	font-weight: bold;
+}
+.password::before {
+	content: '密码';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 90rpx;
+	width: 98rpx;
+	padding-left: 20rpx;
+	padding-right: 20rpx;
+	line-height: 90rpx;
+	border-right: 1px solid #efefef;
+	z-index: 0;
+	text-align-last: justify;
+	font-size: 30rpx;
+	font-weight: bold;
+	color: #000;
+}
+.changeState {
+	position: relative;
+	height: 50rpx;
+	width: auto;
+	line-height: 50rpx;
+	text-align: center;
+	font-size: 30rpx;
+	text-decoration: underline;
+	color: gray;
+}
+.button {
+	position: relative;
+	height: 50rpx;
+	width: auto;
+	margin: 50rpx 0rpx 0rpx 420rpx;
+	padding: 10rpx 20rpx;
+	background: linear-gradient(90deg, var(--blue), var(--lightBlue));
+	border-radius: 20rpx;
+	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.5);
+	line-height: 50rpx;
+	font-weight: bold;
+	font-size: 36rpx;
+	color: #fff;
+}
+.button::before {
+	content: '';
+	position: absolute;
+	top: -50%;
+	right: 90%;
+	height: 250rpx;
+	width: 250rpx;
+	z-index: -1;
+	border-radius: 40%;
+	background: linear-gradient(-45deg, var(--darkGray), var(--lightBlue));
+	filter: blur(46rpx);
+}

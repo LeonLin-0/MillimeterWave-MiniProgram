@@ -1,0 +1,60 @@
+<!-- 标题 -->
+<headerTitle title="编辑资料"></headerTitle>
+<!-- 内容 -->
+<view class="body">
+	<!-- 修改头像 -->
+	<view class="modifyAvatar modify">
+		<text class="title">头像</text>
+		<button
+			class="loginBtn getAvatarBtn"
+			open-type="chooseAvatar"
+			bind:chooseavatar="onChooseAvatar">
+			<image class="avatar" src="{{userInfo.avatarURL ? userInfo.avatarURL : defaultURL}}"></image>
+		</button>
+	</view>
+	<!-- 修改名字 -->
+	<view class="modifyName modify">
+	<text class="title">姓名</text>
+		<input
+		type="nickname"
+		class="inputNickName"
+		bindinput="getNickName"
+		value="{{userInfo.nickName}}"
+		placeholder="请输入您的名字"/>
+	</view>
+	<!-- 修改年龄 -->
+	<view class="modifyAge modify">
+		<text class="title">年龄</text>
+		<picker class="userHeight" mode="selector" range="{{ageRange}}" value="{{userInfo.userAge}}" bindchange="getUserAge">
+			{{userInfo.userAge}}
+		</picker>
+	</view>
+	<!-- 修改身高 -->
+	<view class="modifyHeight modify">
+		<text class="title">身高/cm</text>
+		<input class="userHeight" type="digit" placeholder="0" value="{{userInfo.userHeight}}" bindchange="getUserHeight"/>
+	</view>
+	<!-- 修改体重 -->
+	<view class="modifyWeight modify">
+		<text class="title">体重/kg</text>
+		<input class="userHeight" type="digit" placeholder="0" value="{{userInfo.userWeight}}" bindchange="getUserWeight"/>
+	</view>
+	<!-- 显示BMI指数 -->
+	<view class="showBMI modify">
+		<text class="title">BMI指数</text>
+		<span class="userHeight">{{BMI}}</span>
+	</view>
+	<!-- 修改疾病 -->
+	<view class="modifyDisease modify">
+		<text class="title">疾病</text>
+		<checkbox-group class="diseaseContainer" bindchange="getCheckbox">
+			<label wx:for="{{diseasesArray}}" wx:key="value">
+				<checkbox class="diseaseBox" checked="{{item.checked}}" value="{{item.name}}" color="#2e65b9">{{item.name}}</checkbox>
+			</label>
+		</checkbox-group>
+    <view class="littleTitle">这里没有符合的选项？</view>
+    <view class="littleTitle">请在下面输入，用空格隔开!</view>
+    <input class="moreDisease" type="text" placeholder="请用空格来分隔" bindchange="getMoreDisease"/>
+	</view>
+  <button class="submitBtn" bindtap="submitAllinfo">确定</button>
+</view>

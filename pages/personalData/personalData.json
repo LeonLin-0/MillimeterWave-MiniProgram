@@ -2,8 +2,8 @@
 	"usingComponents": {
 		"van-image": "@vant/weapp/image/index",
 		"van-icon": "@vant/weapp/icon/index",
-		"van-popup": "@vant/weapp/popup/index",
 		"van-notice-bar": "@vant/weapp/notice-bar/index",
-		"emotionComponent": "/components/emotionComponent/emotionComponent"
+		"emotionComponent": "/components/emotionComponent/emotionComponent",
+		"ec-canvas": "../../ec-canvas/ec-canvas"
 	}
 }

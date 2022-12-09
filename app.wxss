@@ -6,6 +6,9 @@ page {
   --lightGray: #efefef;
   --gray: #e5e5e5;
   --darkGray: #afafaf;
+  --deepBlue: #0058cc;
+  --blue: #2b80f8;
+  --lightBlue:#72a8f4;
 }
 .container {
   height: 100%;

@@ -1,0 +1,24 @@
+<!--pages/login/login.wxml-->
+<view class="register title" wx:if="{{isRegister}}">注册</view>
+<view class="login title" wx:if="{{!isRegister}}">登录</view>
+<header class="miniprogramTitle">MillimeterWave</header>
+<view class="infoContainer">
+	<input
+		type="nickname"
+		class="inputNickName"
+		bindinput="getNickName"
+		value="{{userInfo.nickName}}"
+		placeholder="请输入您的名字"/>
+	<input
+		class="password"
+		type="text"
+		password
+		bindinput="getPassword"
+		value="{{userInfo.password}}"
+		placeholder="请输入密码"/>
+	<view class="changeState" wx:if="{{isRegister}}" bindtap="changeRegisterState">前往登录</view>
+	<view class="changeState" wx:if="{{!isRegister}}" bindtap="changeRegisterState">还未注册？点我注册吧</view>
+	<view class="button" wx:if="{{isRegister}}" bindtap="login">注册</view>
+	<view class="button" wx:if="{{!isRegister}}" bindtap="login">登录</view>
+</view>
+

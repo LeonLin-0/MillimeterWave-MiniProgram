@@ -1,1 +1,195 @@
 /* pages/home/home.wxss */
+page {
+	margin: 0;
+	padding: 0;
+}
+/* 顶部模块 */
+.header {
+  display: flex;
+	flex-direction: column;
+	justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 160rpx 0rpx 50rpx;
+	width: 100%;
+	height: auto;
+	background: linear-gradient(180deg, #408fff, #fff);
+}
+/* 头像 */
+.avatar {
+	height: 220rpx;
+  width: 220rpx;
+  margin-top: 50rpx;
+	border-radius: 50%;
+	border: 6rpx solid #fff;
+	box-shadow: 0 0 40rpx rgba(209, 209, 209, 0.5);
+	background: no-repeat;
+}
+/* 个人信息 */
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+	height: auto;
+	width: 85%;
+	margin-top: 50rpx;
+	font-weight: bold;
+	font-size: 36rpx;
+}
+.name {
+  height: 60rpx;
+  font-size: 46rpx;
+	width: auto;
+	margin: 10rpx 0;
+	line-height: 60rpx;
+}
+.detailInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 10rpx;
+}
+.age, .height, .weight {
+  display: inline;
+  position: relative;
+  height: 34rpx;
+  width: auto;
+  margin: 0 10rpx 10rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  line-height: 35rpx;
+  font-size: 30rpx;
+  font-weight: normal;
+  color: #000;
+}
+/* 疾病 */
+.disease {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  margin-top: 10rpx;
+}
+.diseaseName {
+  display: inline-block;
+  position: relative;
+  height: 40rpx;
+  width: auto;
+  padding: 8rpx 14rpx;
+  margin: 0 10rpx 10rpx;
+  background-color: rgba(228, 228, 228, 0.5);
+  box-shadow: inset 1rpx 1rpx 10rpx rgba(255,255,255,0.5), 1rpx 1rpx 10rpx rgba(0,0,0,0.2);
+  border-radius: 20rpx;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+/* 功能模块 */
+.body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  padding-top: 50rpx;
+  font-size: 38rpx;
+  font-weight: normal;
+  color: #000;
+}
+.setting {
+  height: 100rpx;
+  width: auto;
+  padding: 0 70rpx;
+  margin-bottom: -1rpx;
+  background: #fff;
+  border-top: 1rpx solid #cfcfcf;
+  border-bottom: 1px solid #dfdfdf;
+  line-height: 100rpx;
+  border-collapse: collapse;
+}
+.rightIcon {
+  height: 100rpx;
+  width: auto;
+  float: right;
+}
+.log {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  width: 80%;
+  margin: 80rpx auto 0rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+  box-shadow: 10rpx 10rpx 20rpx #dfdfdf, inset 10rpx 10rpx 20rpx #f5f5f5;
+}
+
+/* 填写数据弹出层 */
+.popup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+/* 清除原生按钮样式 */
+.loginBtn {
+	background: none;
+}
+.loginBtn::after {
+	border: none;
+}
+.getAvatarBtn {
+	margin-top: 160rpx;
+	height: 110rpx;
+	width: 160rpx;
+	padding: none;
+}
+.getImg {
+	height: 110rpx;
+	width: 110rpx;
+	margin: none;
+	padding-left: none;
+	border-radius: 24rpx;
+}
+.inputNickName {
+	height: 70rpx;
+	width: 80%;
+	margin: 20rpx auto 30rpx;
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+	padding-left: 10rpx;
+	font-size: 32rpx;
+	line-height: 70rpx;
+}
+.ageTip {
+	display: block;
+	height: 26rpx;
+	width: 200rpx;
+	margin-left: 10%;
+	font-size: 26rpx;
+	line-height: 26rpx;
+	color: var(--darkGray);
+}
+.getAge {
+	display: block;
+	height: 80rpx;
+	width: 80%;
+	line-height: 80rpx;
+	margin: 10rpx auto 20rpx;
+}
+.submitBtn {
+	margin-right: 10%;
+	float: right;
+	background-color: #086cf8 !important;
+}
