@@ -3,12 +3,13 @@
 <view class="login title" wx:if="{{!isRegister}}">登录</view>
 <header class="miniprogramTitle">MillimeterWave</header>
 <view class="infoContainer">
+
 	<input
-		type="nickname"
-		class="inputNickName"
-		bindinput="getNickName"
-		value="{{userInfo.nickName}}"
-		placeholder="请输入您的名字"/>
+		type="number"
+		class="inputUserPhone"
+		bindinput="getUserPhone"
+		value="{{userInfo.userPhone}}"
+		placeholder="请输入您的手机号"/>
 	<input
 		class="password"
 		type="text"
@@ -16,9 +17,18 @@
 		bindinput="getPassword"
 		value="{{userInfo.password}}"
 		placeholder="请输入密码"/>
+	<input
+		class="verifyCode"
+		type="text"
+		bindinput="getVerifyCode"
+		value="{{verifyCode}}"
+		placeholder="请输入图形验证码"/>
+	<image class="imgCode" src="{{imgCode}}" bindtap="getImgCode"></image>
+
 	<view class="changeState" wx:if="{{isRegister}}" bindtap="changeRegisterState">前往登录</view>
 	<view class="changeState" wx:if="{{!isRegister}}" bindtap="changeRegisterState">还未注册？点我注册吧</view>
-	<view class="button" wx:if="{{isRegister}}" bindtap="login">注册</view>
-	<view class="button" wx:if="{{!isRegister}}" bindtap="login">登录</view>
+
+	<view class="button" wx:if="{{isRegister}}" bindtap="loginOrRegister">注册</view>
+	<view class="button" wx:if="{{!isRegister}}" bindtap="loginOrRegister">登录</view>
 </view>
 

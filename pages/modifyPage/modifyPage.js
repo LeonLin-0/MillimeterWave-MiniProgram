@@ -1,6 +1,6 @@
 // pages/modifyPage/modifyPage.js
+import { ip } from '../../utils/util'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -10,6 +10,7 @@ Page({
     userInfo: {
       avatarURL: "",
       nickName: '',
+      userPhone: undefined,
       userAge: 20,
       userHeight: undefined,
       userWeight: undefined,
@@ -61,6 +62,14 @@ Page({
         userInfo: userInfo
       })
     }
+    else {
+      // 注册状态，保存用户手机号码
+      let userPhone = userInfo.userPhone;
+      this.setData({
+        ['userInfo.userPhone']: userPhone
+      })
+
+    }
     this.showBMI();
     // 修改疾病选择状态
     let tempDiseaseArray = this.data.diseasesArray;
@@ -68,6 +77,9 @@ Page({
       for(var arrayItem of tempDiseaseArray) {
         if(arrayItem.name == item) {
           arrayItem.checked = true;
+          this.setData({
+            checkedDisease: [...this.data.checkedDisease, arrayItem.name]
+          })
         }
       }
     }
@@ -112,9 +124,26 @@ Page({
   },
   // 获取头像
   onChooseAvatar(e) {
+    console.log(e);
     const { avatarUrl } = e.detail;
     this.setData({
       ['userInfo.avatarURL']: avatarUrl
+    })
+    // 上传头像到后端进行存储
+    wx.uploadFile({
+      filePath: avatarUrl,
+      name: 'file',
+      url: `http://${ip}:8090/v1/user/UploadImg`,
+      header: {
+        'x-token': wx.getStorageSync('x-token')
+      },
+      success: res => {
+        let temp = JSON.parse(res.data);
+        console.log(temp);
+        this.setData({
+          ['userInfo.avatarURL']: 'data:image/png;base64,' + temp.img
+        })
+      }
     })
   },
   // 获取名字
@@ -122,6 +151,13 @@ Page({
     const { value } = e.detail;
     this.setData({
       ['userInfo.nickName']: value
+    })
+  },
+  // 获取手机号
+  getUserPhone(e) {
+    let phone = e.detail.value;
+    this.setData({
+      ['userInfo.userPhone']: phone
     })
   },
   // 获取年龄
@@ -221,13 +257,31 @@ Page({
         ['userInfo.userDisease']: [...checkDisease, ...moreDisease]
       })
     }
+    // 发送数据
     let userInfo = this.data.userInfo;
     console.log(userInfo);
-    wx.setStorageSync('userInfo', userInfo);
+    // 不缺基础信息之后，上传数据
     if(userInfo.nickName!="" && userInfo.userAge!="" && userInfo.avatarURL!="") {
-      wx.setStorageSync('needFillData', false);
+      wx.request({
+        method: 'POST',
+        url: `http://${ip}:8090/v1/user/ChangeUserInfo`,
+        data: {
+          'nickName': userInfo.nickName,
+          'mobile': userInfo.userPhone+'',
+          'headerImg': userInfo.avatarURL,
+          'height': userInfo.userHeight,
+          'weight': userInfo.userWeight,
+          'sick': userInfo.userDisease
+        },
+        success: res => {
+          wx.setStorageSync('userInfo', userInfo);
+          wx.setStorageSync('needFillData', false);
+          wx.navigateBack({ delta: 1 }); // 自动返回上一页
+        }
+      })
+      
     }
     // 发送成功后跳回前一页
-    wx.navigateBack(-1);
+    // wx.navigateBack(-1);
   }
 })

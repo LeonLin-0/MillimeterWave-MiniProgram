@@ -1,27 +1,20 @@
 // pages/historyPage/historyPage.js
+import { ip } from "../../utils/util"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    history: [
-      { id: 0, date: "2022/12/7" },
-      { id: 1, date: "2022/12/6" },
-      { id: 2, date: "2022/12/5" },
-      { id: 3, date: "2022/12/4" },
-      { id: 4, date: "2022/12/3" },
-      { id: 4, date: "2022/12/2" },
-      { id: 4, date: "2022/12/1" },
-      { id: 4, date: "2022/11/30" }
-    ]
+    history: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    // 获取历史日期
+    this.getDateList();
   },
 
   /**
@@ -72,6 +65,25 @@ Page({
   onShareAppMessage() {
 
   },
+  // 获取历史日期,并进行处理
+  getDateList() {
+    wx.request({
+      method: 'GET',
+      url: `http://${ip}:8090/v1/healthyData/GetDate`,
+      success: res => {
+        let resData = res.data.data;
+        let tempArray = [];
+        for(var i in resData) {
+          let time = resData[i].time.split('T')[0];
+          tempArray.push({date: time});
+        }
+        this.setData({
+          history: tempArray.reverse()
+        })
+      }
+    })
+  },
+  // 前往详细页
   toDetailPage(e) {
     let date = e.currentTarget.dataset.text.date;
     console.log(date);

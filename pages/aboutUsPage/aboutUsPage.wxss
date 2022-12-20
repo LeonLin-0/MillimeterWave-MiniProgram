@@ -1,1 +1,84 @@
 /* pages/aboutUsPage/aboutUsPage.wxss */
+page {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.pageBody {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	width: 100%;
+	margin-top: 250rpx;
+}
+.pageBody::before {
+	content: '';
+	position: absolute;
+	top: 20%;
+	left: 10%;
+	height: 120rpx;
+	width: 120rpx;
+	border-radius: 50%;
+	background: linear-gradient(90deg, var(--lightBlue), var(--blue));
+	z-index: -1;
+}
+.pageBody::after {
+	content: '';
+	position: absolute;
+	top: 40%;
+	right: 0%;
+	height: 200rpx;
+	width: 200rpx;
+	border-radius: 50%;
+	background: linear-gradient(0deg, #0c74d6, var(--blue));
+	filter: opacity(0.8);
+	z-index: -1;
+}
+.title {
+	display: block;
+	height: 80rpx;
+	width: auto;
+	padding: 10rpx 20rpx;
+	border-radius: 30rpx;
+	backdrop-filter: blur(20rpx);
+	box-shadow: 0 0 20rpx rgba(0,0,0,0.45);
+	line-height: 80rpx;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: var(--deepBlue);
+}
+.textContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	width: 88%;
+	box-sizing: border-box;
+	margin-top: 50rpx;
+	padding: 30rpx 30rpx;
+	background: rgb(239,239,239,0.25);
+	backdrop-filter: blur(25rpx) brightness(95%);
+	-webkit-backdrop-filter: blur(24rpx) brightness(95%);
+	border-radius: 30rpx;
+	box-shadow: 0 0 40rpx rgba(0,0,0,0.45);
+	font-size: 32rpx;
+	text-align: justify;
+}
+.textContainer::before {
+	content: "";
+	position: absolute;
+	bottom: -4%;
+	left: -4%;
+	height: 50rpx;
+	width: 50rpx;
+	border-radius: 50%;
+	background: linear-gradient(0deg, var(--lightBlue), var(--deepBlue));
+}
+.text {
+	line-height: 40rpx;
+	font-weight: normal;
+	text-indent: 2em;
+}

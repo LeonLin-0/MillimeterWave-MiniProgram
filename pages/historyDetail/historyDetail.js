@@ -1,5 +1,5 @@
 // pages/historyDetail/historyDetail.js
-
+import { ip } from "../../utils/util"
 import * as echarts from "../../ec-canvas/echarts";
 let sleepChart = null; // 睡眠饼图
 Page({
@@ -15,9 +15,10 @@ Page({
       midWakeUpTimeLength: 0,      
     },
     heart: {
-      baseHeartRate: 62,
-      heightestHeartRate: 70,
-      lowestHeartRate: 39,
+      baseHeartRate: undefined,
+      heightestHeartRate: undefined,
+      lowestHeartRate: undefined,
+      count: undefined,
       heartAnalysisText: ''
     },
     breath: {
@@ -26,7 +27,7 @@ Page({
       lowestBreathRate: 7,
       breathAnalysisText: ''
     },
-    sleepConclusionAndSuggest: '',
+    sleepConclusionAndSuggest: '暂无',
     ec: { // 睡眠饼图,初始化饼图
       onInit: function initSleepChart(canvas, width, height, dpr) {
         sleepChart = echarts.init(canvas, null, {
@@ -45,8 +46,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    // 发送请求获取健康报告数据
+    this.getSleepDetail(options.date);
+    // 设置时间
     this.setData({
-      date: options.date.split("/")
+      date: options.date.split("-")
     })
     // 格式化睡眠时间
     let time = this.getSleepTime();
@@ -78,12 +82,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // 睡眠分析
     this.sleepAnalysis();
-    // 心率分析
-    this.heartAnnalysis();
-    // 呼吸率分析
-    this.breathAnalysis();
   },
 
   /**
@@ -119,6 +118,31 @@ Page({
    */
   onShareAppMessage() {
   },
+  // 获取当前日期睡眠数据
+  getSleepDetail(date) {
+    wx.request({
+      method: 'GET',
+      url: `http://${ip}:8090/v1/healthyData/GetDataReport`,
+      data: {
+        date: date
+      },
+      success: res => {
+        let resData = res.data.data;
+        // 设置心率和呼吸率数据，进行分析
+        this.setData({
+          ['heart.baseHeartRate']: resData.data,
+          ['heart.heightestHeartRate']: resData.maxH,
+          ['heart.lowestHeartRate']: resData.minH,
+          ['heart.count']: resData.count,
+          ['breath.averageBreathRate']: resData.avg,
+          ['breath.heightestBreathRate']: resData.maxB,
+          ['breath.lowestBreathRate']: resData.minB,
+        })
+        this.heartAnnalysis();
+        this.breathAnalysis();
+      }
+    })
+  },
   // 格式化睡眠时间
   getSleepTime() {
     let time = this.data.time.sleepTime;
@@ -142,8 +166,10 @@ Page({
   },
   // 心率分析
   heartAnnalysis() {
+    let baseHeartRate = this.data.heart.baseHeartRate;
     let heightHeartRate = this.data.heart.heightestHeartRate;
     let lowHeartRate = this.data.heart.lowestHeartRate;
+    let count = this.data.heart.count;
     let heartText="";
     if(heightHeartRate<=80 && lowHeartRate>=40) {
       heartText = "睡眠心率正常";
@@ -156,8 +182,9 @@ Page({
     } else {
       if(lowHeartRate<40) {
         heartText = `发生心率过低，最低心率为${lowHeartRate}bpm`;
-      }      
+      }
     }
+    heartText = heartText + `\n您出现次数最多的心率为${baseHeartRate}bpm，共计${count}次`
     this.setData({
       ['heart.heartAnalysisText']: heartText
     })

@@ -14,6 +14,9 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 
+const ip = '10.151.11.2';
+
 module.exports = {
-  formatTime
+  formatTime,
+  ip
 }

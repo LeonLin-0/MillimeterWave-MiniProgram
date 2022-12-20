@@ -1,42 +1,6 @@
 <!-- 顶部标题 -->
 <view class="headTitle">MillimeterWave</view>
 
-<!-- 填写个人数据弹出层 -->
-<!-- <van-popup
-	show="{{showPopUp}}"
-	bind:close="onClosePopUp"
-	position="top"
-	closeable
-	custom-style="height: 44%;"
-	round
-	class="popup"
->
-	<button 
-		class="loginBtn getAvatarBtn"			
-		open-type="chooseAvatar"
-		bind:chooseavatar="onChooseAvatar">	
-		<image src="{{userInfo.avatarURL}}" class="getImg"></image>
-	</button>
-	<input
-		type="nickname"
-		class="inputNickName"
-		bindinput="getNickName"
-		value=""
-		placeholder="请输入您的名字"/>
-	<text class="ageTip">请选择您的年龄</text>
-	<slider
-		class="getAge"
-		min="0"
-		max="120"
-		step="1"
-		value="0"
-		activeColor="#0058cc"
-		show-value="true"
-		bindchange="getUserAge"
-	></slider>
-	<button class="submitBtn" type="primary" size="mini" bindtap="submitAllData">确认</button>
-</van-popup> -->
-
 <!-- 头部 -->
 <view class="header">
 	<!-- 通知栏 -->
@@ -80,8 +44,8 @@
 	<!-- 疾病史 -->
 	<view class="diseaseContainer">
 		<view class="diseaseHistory">疾病史</view>
-		<block wx:if="{{userInfo.userDisease.length === 0 ? true : false}}">
-			<view class="diseaseList" bindtap="fillDiseaseData">暂无数据，点击完善</view>
+		<block wx:if="{{userInfo.userDisease.length === 0 ? true : false || needFillData === true}}">
+			<view class="diseaseList" bindtap="fillDiseaseData">暂无数据</view>
 		</block>
 		<block wx:else>
 			<view class="diseaseList">

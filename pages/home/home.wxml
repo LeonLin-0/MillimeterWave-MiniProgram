@@ -30,6 +30,5 @@
     关于我们
     <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
   </view>
-  <view wx:if="{{userUnlogin}}" class="log" bindtap="logIn">登录</view>
   <view wx:if="{{!userUnlogin}}" class="log" bindtap="logOut">注销</view>
 </view>

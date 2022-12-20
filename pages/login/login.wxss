@@ -76,7 +76,7 @@ page {
 	position: relative;
 	height: auto;
 	width: 100%;
-	margin-bottom: 200rpx;
+	margin: 40rpx auto 0rpx;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -94,7 +94,7 @@ page {
 	background: linear-gradient(180deg, var(--lightBlue), var(--gray));
 	filter: blur(16rpx);
 }
-.inputNickName {
+.inputUserPhone {
 	position: relative;
 	height: 80rpx;
 	width: 60%;
@@ -108,8 +108,8 @@ page {
 	font-size: 30rpx;
 	font-weight: bold;
 }
-.inputNickName::before {
-	content: '用户名';
+.inputUserPhone::before {
+	content: '手机';
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -130,7 +130,7 @@ page {
 	height: 80rpx;
 	width: 60%;
 	padding: 5rpx 10rpx 5rpx 160rpx;
-	margin-bottom: 50rpx;
+	margin-bottom: 20rpx;
 	background: rgba(200,200,200,0.3);
 	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
 	backdrop-filter: blur(30rpx);
@@ -156,6 +156,44 @@ page {
 	font-weight: bold;
 	color: #000;
 }
+.verifyCode{
+	position: relative;
+	height: 80rpx;
+	width: 60%;
+	padding: 5rpx 10rpx 5rpx 160rpx;
+	margin-bottom: 20rpx;
+	background: rgba(200,200,200,0.3);
+	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(30rpx);
+	border-radius: 20rpx;
+	line-height: 80rpx;
+	font-size: 30rpx;
+	font-weight: bold;
+}
+.verifyCode::before {
+	content: '验证码';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 90rpx;
+	width: 98rpx;
+	padding-left: 20rpx;
+	padding-right: 20rpx;
+	line-height: 90rpx;
+	border-right: 1px solid #efefef;
+	z-index: 0;
+	text-align-last: justify;
+	font-size: 30rpx;
+	font-weight: bold;
+	color: #000;
+}
+.imgCode {
+	width: 300rpx;
+	height: 125rpx;
+	background: no-repeat;
+	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx rgba(0,0,0,0.2);
+}
 .changeState {
 	position: relative;
 	height: 50rpx;
@@ -174,7 +212,7 @@ page {
 	padding: 10rpx 20rpx;
 	background: linear-gradient(90deg, var(--blue), var(--lightBlue));
 	border-radius: 20rpx;
-	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.4);
 	line-height: 50rpx;
 	font-weight: bold;
 	font-size: 36rpx;

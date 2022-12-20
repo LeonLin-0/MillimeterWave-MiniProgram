@@ -1,4 +1,5 @@
 <headerTitle title="睡眠报告"></headerTitle>
+<!-- 头部信息 -->
 <view class="header">
   <!-- 日期 -->
   <view class="year">{{date[0]}}年</view>
@@ -58,7 +59,7 @@
       </view>
     </view>
     <view class="analysis">
-      <view class="analysisTitle">风险提示</view>
+      <view class="analysisTitle">风险提示与总结</view>
       <text class="analysisText">{{heart.heartAnalysisText}}</text>
     </view>
   </view>

@@ -22,6 +22,16 @@
 		value="{{userInfo.nickName}}"
 		placeholder="请输入您的名字"/>
 	</view>
+	<!-- 修改手机号 -->
+	<view class="modifyName modify">
+	<text class="title">手机号</text>
+		<input
+		type="number"
+		class="inputNickName"
+		bindinput="getUserPhone"
+		value="{{userInfo.userPhone}}"
+		placeholder="请输入您的手机号"/>
+	</view>
 	<!-- 修改年龄 -->
 	<view class="modifyAge modify">
 		<text class="title">年龄</text>

@@ -46,21 +46,6 @@ Page({
       })
       wx.setStorageSync('needFillData', this.data.needFillData);
     }
-    // 未登陆过或注销了
-    // if (userUnlogin==="" && userUnlogin!=false) {
-    //   this.setData({
-    //     userUnlogin: true,
-    //     userInfo: {
-    //       avatarURL: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-    //     }
-    //   })
-    // } else if(userUnlogin===false) {
-    //   // 处于登陆状态
-    //   this.setData({
-    //     userInfo: userInfo,
-    //     userUnlogin: userUnlogin
-    //   })
-    // }
   },
 
   /**
@@ -98,32 +83,26 @@ Page({
 
   },
 
-  // 登录：显示弹出层
-  logIn() {
-    this.setData({
-      showPopUp: true
-    })
-  },
   // 退出登录
   logOut() {
-    if(wx.getStorageSync('userInfo')){
-      wx.showModal({
-        title: "您确定注销吗",
-        success: res => {
-          if (res.confirm==true) {
-            wx.removeStorageSync('userInfo');
-            this.setData({
-              userInfo: {
-                avatarURL: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-              }
-            })
-            wx.navigateTo({
-              url: '/pages/login/login',
-            })           
-          }
+    wx.showModal({
+      title: "您确定注销吗",
+      success: res => {
+        if (res.confirm==true) {
+          wx.removeStorageSync('userInfo');
+          wx.removeStorageSync('x-token');
+          this.setData({
+            userInfo: {
+              avatarURL: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+            }
+          })
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })           
         }
-      })
-    }
+      }
+    })
+    
   },
   // 跳转到修改信息页面
   toModifyPage() {

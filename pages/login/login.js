@@ -1,4 +1,5 @@
 // pages/login/login.js
+import { ip } from '../../utils/util'
 Page({
 
   /**
@@ -8,15 +9,19 @@ Page({
     isRegister: false,
     userInfo: {
       nickName: '',
-      password: ''
-    }
+      userPhone: undefined,
+      password: '',
+    },
+    verifyCode: '',
+    imgCode: '',
+    captchaId: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.getImgCode();
   },
 
   /**
@@ -67,19 +72,21 @@ Page({
   onShareAppMessage() {
 
   },
-  // 修改登录模式
+  // 更改模式
   changeRegisterState() {
     this.setData({
       isRegister: !this.data.isRegister,
-      ['userInfo.nickName']: '',
-      ['userInfo.password']: ''
+      ['userInfo.userPhone']: '',
+      ['userInfo.password']: '',
+      verifyCode: ''
     })
+    this.getImgCode();
   },
-  // 获取用户名
-  getNickName(e) {
-    let name = e.detail.value;
+  // 获取手机号
+  getUserPhone(e) {
+    let phone = e.detail.value;
     this.setData({
-      ['userInfo.nickName']: name
+      ['userInfo.userPhone']: phone
     })
   },
   // 获取密码
@@ -89,27 +96,91 @@ Page({
       ['userInfo.password']: pw
     })
   },
-  login() {
+  // 获取输入的验证码
+  getVerifyCode(e) {
+    let vc = e.detail.value;
+    this.setData({
+      verifyCode: vc
+    })
+  },
+  // 获取图形验证码
+  getImgCode() {
+    wx.request({
+      method: 'GET',
+      url: `http://${ip}:8090/v1/base/captcha`,
+      success: res => {
+        this.setData({
+          imgCode: res.data.picPath,
+          captchaId: res.data.captchaId
+        })
+      }
+    })
+  },
+  // 注册/登录
+  loginOrRegister() {
     let state = this.data.isRegister;
-    let userName = this.data.userInfo.nickName;
+    let userPhone = this.data.userInfo.userPhone;
     let password = this.data.userInfo.password;
-    if (userName!="" && password!="") {
+    let captcha = this.data.verifyCode;
+    let captchaId = this.data.captchaId;
+    if (userPhone!="" && password!="" && captcha!="" && captchaId!="") {
       if(state) { // 注册状态
-        console.log("申请注册：",userName, password);
-        // 注册后，保存个人信息
-        wx.setStorageSync('userInfo', this.data.userInfo);
-        wx.setStorageSync('needFillData', true);
-        // 成功后跳转
-        wx.switchTab({
-          url: "/pages/personalData/personalData",
+        // 发送请求，注册账号
+        wx.request({
+          method: 'POST',
+          url: `http://${ip}:8090/v1/user/MobileRegister`,
+          data: {
+            'mobile': userPhone,
+            'password': password,
+            'captcha': captcha,
+            'captchaId': captchaId
+          },
+          success: res => {
+            // 如果注册成功
+            if( res.statusCode===200 ) {
+              wx.setStorageSync('userInfo', this.data.userInfo);
+              wx.setStorageSync('needFillData', true);
+              wx.setStorageSync('x-token', res.data.token);
+              // 成功后跳转
+              wx.switchTab({
+                url: "/pages/personalData/personalData",
+              })
+            } else {
+              // 注册失败
+              wx.showToast({
+                title: res.data.msg,
+                icon: 'error'
+              })
+            }
+          }
         })
       }
       else { // 登陆状态
-        console.log("申请登录：",userName, password);
-        // 成功后跳转
-        // 保存用户信息
-        wx.switchTab({
-          url: "/pages/personalData/personalData",
+        // 发送请求，注册账号
+        wx.request({
+          method: 'POST',
+          url: `http://${ip}:8090/v1/user/Login`,
+          data: {
+            'mobile': userPhone,
+            'password': password,
+            'captcha': captcha,
+            'captchaId': captchaId
+          },
+          success: res => {
+            console.log(res);
+            if( res.statusCode === 200 ) {
+              // 保存token
+              wx.setStorageSync('x-token', res.data.token);
+              // 保存用户信息
+              wx.setStorageSync('userInfo',res.data.data);
+              // 设置无需完善信息
+              wx.setStorageSync('needFillData', false);
+              // 跳转页面
+              wx.switchTab({
+               url: "/pages/personalData/personalData",
+              })              
+            }
+          }
         })
       }      
     } else {
