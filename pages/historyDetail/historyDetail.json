@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "headerTitle": "/components/headerTitle/headerTitle",
-    "ec-canvas": "/ec-canvas/ec-canvas"
-  }
-}
