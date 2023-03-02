@@ -1,0 +1,29 @@
+/* components/chatRoomHeader/chatRoomHeader.wxss */
+.chatRoomHeader {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 90rpx;
+  width: 100%;
+  z-index: 999;
+	padding-top: 80rpx;
+  background: linear-gradient(0deg, rgba(255,255,255,0.1)-5%, rgba(255,255,255,1)100%);
+  backdrop-filter: blur(6px);
+	line-height: 70rpx;
+	text-align: center;
+	font-size: 36rpx;
+	font-weight: bold;
+	text-shadow: 0 0 1.5px rgba(0,0,0,0.1);
+	color: #2861b7;
+}
+.leftIcon {
+	display: block;
+	position: absolute;
+	top: 103rpx;
+	left: 50rpx;
+	height: 36rpx;
+	width: 36rpx;
+	font-size: 36rpx;
+	line-height: 36rpx;
+}

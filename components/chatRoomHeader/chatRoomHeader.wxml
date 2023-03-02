@@ -1,0 +1,5 @@
+<!--components/chatRoomHeader/chatRoomHeader.wxml-->
+<view class="chatRoomHeader">
+	<van-icon name="arrow-left" class="leftIcon" bindtap="goBack"></van-icon>
+	{{title}}
+</view>

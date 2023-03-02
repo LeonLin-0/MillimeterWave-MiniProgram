@@ -1,23 +1,16 @@
 // pages/personalDataPage/personalDataPage.js
-import { ip } from '../../utils/util'
+import { getRequest } from '../../utils/util'
 import * as echarts from "../../ec-canvas/echarts";
 let heartChart = null; // 心率echart
 let breathChart = null; // 呼吸echart
-
+const app = getApp();
 Page({
   data: {
-    needFillData: true, // 判断是否需要完善信息
-		showPopUp: false, // 判断是否显示弹出层
+    headerTitle: "MillimeterWave",
     showChart: false, // 判断是否已经连接
     // 用户个人信息
-    userInfo: {
-      avatarURL: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
-      nickName: "",
-      userAge: "",
-      userHeight: 0,
-      userWeight: 0,
-      userDisease: []
-		},
+    userInfo: null,
+    getDate: '2022-12-1',
 		ec1: { // 心率图
 			onInit: initHeartChart
 		},
@@ -40,7 +33,7 @@ Page({
     heartRateData: [],
     breathData: [],
     // 总体定时器
-    allTimer: undefined
+    allTimer: null
   },
 
   /**
@@ -56,17 +49,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // 初始化
     this.setData({
-      needFillData: wx.getStorageSync('needFillData'),
-      userInfo: wx.getStorageSync('userInfo')
+      userInfo: app.globalData.userInfo || wx.getStorageSync('userInfo')
     })
   },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
   },
   /**
    * 生命周期函数--监听页面卸载
@@ -91,56 +81,21 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-	},
-	
-  // 跳转到我的页面
-  toMyPage() {
-    wx.switchTab({
-      url: '/pages/home/home',
-    })
   },
-  // 跳转到完善信息页面
-  toFillInfoPage() {
-    wx.navigateTo({
-      url: '/pages/modifyPage/modifyPage',
-    })
+  /**
+   * 切换tabBar页面事件
+   */
+  onTabItemTap() {
+    this.upDateDiseaseData();
   },
-  // 情绪感知
-  judgeEmotion() {
-    let background = 'emotion.emotionBackground';
-    let icon = 'emotion.emotionIcon';
-    switch (this.data.emotion.emotionText) {
-      case '未知': {
-        this.setData({
-          [background]: '-emotion-unknown',
-          [icon]: '/icon/unknown.png'
-        })
-        break;
-      }
-      case '愉悦': {
-        this.setData({
-          [background]: '-emotion-happy',
-          [icon]: '/icon/happy.png'
-        });
-        break;
-      }
-      case '平静': {
-        this.setData({
-          [background]: '-emotion-calm',
-          [icon]: '/icon/calm.png'
-        });
-        break;
-      }
-      case '压力': {
-        this.setData({
-          [background]: '-emotion-stressful',
-          [icon]: '/icon/stressful.png'
-        })
-      }
-    }
+  // 更新疾病数据
+  upDateDiseaseData() {
+    this.setData({
+      userInfo: app.globalData.userInfo || wx.getStorageSync('userInfo')
+    })
   },
 	// 点击进行连接，获取数据，整体的入口
-	connectAndStarttpGetData() {
+	connectAndStartGetData() {
 		// 如果还未登录,先进行登录
 		if (this.data.userUnlogin) {
 			wx.showToast({
@@ -182,51 +137,63 @@ Page({
         },6000);
 			}			
 		}
-	},
+  },
+  // 点击断开连接
+  stopConnect() {
+    clearInterval(this.data.allTimer);
+    this.setData({
+      heartRateNum: 0,
+      breathNum: 0,
+      showChart: false
+    })
+  },
   // 发送请求获取呼吸数据,整理得出需要的数据
 	async getBreathData() {
-    // 获取数据
-    const {data: res} = await wx.p.request({
-      method: 'GET',
-      header: { 'Content-Type': 'application/json' },
-			url: `http://${ip}:8090/v1/healthyData/GetBreathData`,
-      data: {
-        'page': this.data.breathTime,
-        'date': '2022-12-01'
-      }
+    return await new Promise((resolve, reject) => {
+      let data = {
+        page: this.data.breathTime,
+        date: this.data.getDate
+      };
+      // 获取数据
+      getRequest('/healthyData/GetBreathData',data).then(({data: res}) => {
+        // 清空
+        this.setData({
+          originBreathData: [],
+          breathTime: this.data.breathTime + 1
+        })
+        // 赋值
+        for(let i=0; i<res.data.length; i++) {
+          this.data.originBreathData.push(res.data[i].data);
+        }
+        resolve(res);
+      }).catch(res => {
+        resolve(res);
+      });
     })
-    // 清空
-    this.setData({
-      originBreathData: [],
-      breathTime: this.data.breathTime + 1
-    })
-    // 赋值
-    for(let i=0; i<res.data.length; i++) {
-      this.data.originBreathData.push(res.data[i].data);
-    }
-    return res;
   },
   // 发送请求获取心跳数据，整理得出需要的数据
-  async getHeartData() {
-    const { data: res } = await wx.p.request({
-      method: 'GET',
-      header: { 'Content-Type': 'application/json' },
-      url: `http://${ip}:8090/v1/healthyData/GetHeartData`,
-      data: {
-        'page': this.data.heartTime,
-        'date': '2022-12-05'
-      }
+  getHeartData() {
+    return new Promise((resolve, reject) => {
+      let data = {
+        page: this.data.heartTime,
+        date: this.data.getDate
+      };
+      // 发送请求
+      getRequest('/healthyData/GetHeartData',data).then(({data: res}) => {
+        // 清空
+        this.setData({
+          originHeartData: [],
+          heartTime: this.data.heartTime + 1
+        })
+        // 赋值
+        for (let i=0; i<res.data.length; i++) {
+          this.data.originHeartData.push(res.data[i].data);
+        }
+        resolve(res);
+      }).catch(res => {
+        reject(res);
+      })
     })
-    // 清空
-    this.setData({
-      originHeartData: [],
-      heartTime: this.data.heartTime + 1
-    })
-    // 赋值
-    for (let i=0; i<res.data.length; i++) {
-      this.data.originHeartData.push(res.data[i].data);
-    }
-    return res;
   },
   
 	// 处理数据及画心率图表
@@ -234,25 +201,27 @@ Page({
     console.log(newHeartData);
     let i = 0;
     let timer = setInterval(()=>{
-      this.setData({
-        heartRateData: this.data.heartRateData.concat(newHeartData[i]), // 数组
-        heartRateNum: newHeartData[i]
-      })
-      console.log('heart: ',i,' ', newHeartData[i]);
-      i+=1;
-      if(i>=5) {
-        clearInterval(timer);
+      if(this.data.showChart) {
+        this.setData({
+          heartRateData: this.data.heartRateData.concat(newHeartData[i]), // 数组
+          heartRateNum: newHeartData[i]
+        })
+        console.log('heart: ',i,' ', newHeartData[i]);
+        i+=1;
+        if(i>=5) {
+          clearInterval(timer);
+        }
+        let data = []; // 对数据进行处理，增加x轴的时间
+        let tick = 0;
+        for(var item of this.data.heartRateData) { // 遍历合并后的原始数据
+          data.push([+tick.toFixed(2), +(+item).toFixed(5)]);
+          tick += 1; // 一秒一个数据
+        }
+        // 修改数据
+        heartOption.series[0].data = data;
+        // 绘图
+        heartChart.setOption(heartOption);         
       }
-      let data = []; // 对数据进行处理，增加x轴的时间
-      let tick = 0;
-      for(var item of this.data.heartRateData) { // 遍历合并后的原始数据
-        data.push([+tick.toFixed(2), +(+item).toFixed(5)]);
-        tick += 1; // 一秒一个数据
-      }
-      // 修改数据
-      heartOption.series[0].data = data;
-      // 绘图
-      heartChart.setOption(heartOption); 
     },1000);
   },
   // 处理数据及画呼吸波形图
@@ -260,25 +229,27 @@ Page({
     console.log(newBreathData);
     let i = 0;
     let timer = setInterval(()=>{
-      this.setData({
-        breathData: this.data.breathData.concat(newBreathData[i]), // 数组
-        breathNum: newBreathData[i]
-      })
-      console.log('breath: ',i," ",newBreathData[i]);
-      i+=1;
-      if(i>=5) {
-        clearInterval(timer);
+      if(this.data.showChart) {
+        this.setData({
+          breathData: this.data.breathData.concat(newBreathData[i]), // 数组
+          breathNum: newBreathData[i]
+        })
+        console.log('breath: ',i," ",newBreathData[i]);
+        i+=1;
+        if(i>=5) {
+          clearInterval(timer);
+        }
+        let data = []; // 对数据进行处理，增加x轴的时间
+        let tick = 0;
+        for(var item of this.data.breathData) { // 遍历合并后的原始数据
+          data.push([+tick.toFixed(2), +(+item).toFixed(5)]);
+          tick += 1; // 一秒一个数据
+        }
+        // 修改数据
+        breathOption.series[0].data = data;
+        // 绘图
+        breathChart.setOption(breathOption);         
       }
-      let data = []; // 对数据进行处理，增加x轴的时间
-      let tick = 0;
-      for(var item of this.data.breathData) { // 遍历合并后的原始数据
-        data.push([+tick.toFixed(2), +(+item).toFixed(5)]);
-        tick += 1; // 一秒一个数据
-      }
-      // 修改数据
-      breathOption.series[0].data = data;
-      // 绘图
-      breathChart.setOption(breathOption); 
     },1000);
   }
 })

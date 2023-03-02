@@ -1,0 +1,10 @@
+<!--components/chatHistoryComponent/chatHistoryComponent.wxml-->
+<view class="chatContainer" data-chatInfo="{{chatInfo}}" bindtap="toChatRoom">
+	<image class="userPic" src="{{chatInfo.headerImg}}" mode="aspectFill" />
+	<view class="infoContainer">
+		<text class="userName">{{chatInfo.userName}}</text>
+		<text class="lastChat">{{chatInfo.lastChat}}</text>
+		<text class="time">{{chatInfo.time}}</text>
+		<text class="redDot {{chatInfo.unReadCount==0 ? 'unShow' : ''}}">{{chatInfo.unReadCount<99 ? chatInfo.unReadCount : '···' }}</text>
+	</view>
+</view>

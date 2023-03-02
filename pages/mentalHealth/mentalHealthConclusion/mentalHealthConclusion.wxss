@@ -1,0 +1,202 @@
+/* pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion.wxss */
+page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.imageContainer {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 300rpx;
+	width: 93%;
+	margin-top: 180rpx;
+	margin-bottom: 50rpx;
+	border-radius: 30rpx;
+	background: linear-gradient(0deg, var(--lightBlue), var(--blue));
+	box-shadow: 0 0 20rpx rgba(40,40,40,0.2);
+}
+.backgroundImg {
+	height: 250rpx;
+	width: 250rpx;
+}
+.title {
+	position: absolute;
+	height: 44rpx;
+	width: fit-content;
+	line-height: 44rpx;
+	font-size: 40rpx;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	text-shadow: 0 0 15rpx rgba(255,255,255,0.6);
+}
+.userInfo {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	align-items: center;
+	position: absolute;
+	top: 30rpx;
+	left: 30rpx;
+	height: 100rpx;
+	width: fit-content;
+}
+.userPic {
+	height: 90rpx;
+	width: 90rpx;
+	margin-right: 20rpx;
+	border-radius: 50%;
+	background: #efefef;
+}
+.userName {
+	height: 40rpx;
+	width: fit-content;
+	line-height: 40rpx;
+	font-size: 34rpx;
+	font-weight: normal;
+}
+
+.headerContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: max-content;
+	width: 93%;
+	margin-bottom: 50rpx;
+	padding-bottom: 30rpx;
+	box-shadow: 0 0 20rpx rgba(40,40,40,0.2);
+	border-radius: 30rpx;
+}
+.headerContainer::before {
+	content: "报告阅读说明";
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	height: 40rpx;
+	width: fit-content;
+	padding: 5rpx 20rpx;
+	background: linear-gradient(90deg, var(--deepBlue), var(--blue));
+	border-radius: 30rpx 0rpx 30rpx 0rpx;
+	color: #fff;
+	line-height: 40rpx;
+	font-size: 28rpx;
+	font-weight: lighter;
+}
+.tips {
+	box-sizing: border-box;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	gap: 4rpx;
+	margin-top: 60rpx;
+	margin-left: 1em;
+	height: fit-content;
+	width: 100%;
+	font-size: 30rpx;
+	line-height: 50rpx;
+	font-weight: bold;
+}
+.tipsContent {
+	display: list-item;
+	height: fit-content;
+	width: 91%;
+	overflow-wrap: break-word;
+	margin-left: 1em;
+	font-size: 30rpx;
+	line-height: 44rpx;
+	text-align: left;
+	font-weight: normal;
+}
+
+.conclusionContainer {
+	height: max-content;
+	width: 93%;
+	box-sizing: border-box;
+	margin-bottom: 50rpx;
+	padding: 30rpx 20rpx;
+	box-shadow: 0 0 30rpx #d8d8d8;
+	border-radius: 30rpx;
+}
+.conclusionTitle {
+	position: relative;
+	height: 40rpx;
+	width: fit-content;
+	margin-left: 40rpx;
+	margin-bottom: 20rpx;
+	line-height: 40rpx;
+	font-size: 34rpx;
+	font-weight: bold;
+	color: gray;
+}
+.conclusionTitle::before {
+	content: "";
+	position: absolute;
+	top: 6rpx;
+	left: -25rpx;
+	height: 34rpx;
+	width: 10rpx;
+	background: gray;
+}
+.echart {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: 450rpx;
+	width: 95%;
+	margin: 40rpx auto 40rpx;
+	box-shadow: 0 0 20rpx rgba(40,40,40,0.2);
+	border-radius: 30rpx;
+}
+ec-canvas {
+	height: 450rpx;
+	width: 100%;
+}
+.conclusionList {
+	display: flex;
+	flex-direction: row;
+	height: fit-content;
+	flex-wrap: wrap;
+	word-wrap: break-word;
+	width: 100%;
+	margin-bottom: 10rpx;
+}
+.conclusionLittleTitle {
+	height: 38rpx;
+	width: fit-content;
+	line-height: 38rpx;
+	font-size: 34rpx;
+	font-weight: bold;
+	color: gray;
+}
+.conclusionContent {
+	height: fit-content;
+	width: fit-content;
+	word-wrap: break-word;
+	flex-wrap: wrap;
+	line-height: 38rpx;
+	font-size: 34rpx;
+	font-weight: bold;
+	color: #000;
+}
+.analysis .conclusionList{
+	flex-direction: column;
+	margin-bottom: 15rpx;
+}
+.analysis .conclusionContent {
+	box-sizing: border-box;
+	padding-left: 1.5em;
+	padding-top: 10rpx;
+	font-weight: normal;
+	font-size: 32rpx;
+}

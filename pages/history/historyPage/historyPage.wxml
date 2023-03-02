@@ -1,0 +1,23 @@
+<!-- 顶部标题 -->
+<mainPageHeader headerTitle="{{headerTitle}}"></mainPageHeader>
+
+<view class="body">
+  <block wx:if="{{!hasHistory}}">
+    <image class="noDataImg" src="{{noDataImg}}"></image>
+    <text class="noHistory">暂无记录\n先去检测吧</text>
+  </block>
+  <block wx:if="{{hasHistory}}">
+    <block wx:for="{{history}}" wx:key="index">
+      <view class="historyContainer">
+        <view class="timeContainer">
+          <van-icon name="clock-o" class="icon"/>
+          <text class="time">{{item.time}}</text>
+        </view>
+        <view class="rightPart" bindtap="toDetailPage" data-date="{{item}}">
+          <text class="toDetail">查看详细</text>
+          <van-icon name="arrow" class="icon"/>
+        </view>
+      </view>
+    </block>
+  </block>
+</view>

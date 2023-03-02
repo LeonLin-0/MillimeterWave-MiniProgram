@@ -1,0 +1,86 @@
+/* pages/mentalHealth/psychologistContainer/psychologistContainer.wxss */
+.psychologistContainer {
+	display: grid;
+	grid-template-columns: 1.25fr 4fr;
+	align-items: center;
+	width: 100%;
+	height: fit-content;
+	min-height: 200rpx;
+	border-bottom: 1rpx solid #efefef;
+}
+.picContainer {
+	height: 100%;
+	width: 100%;
+}
+.pic {
+	height: 130rpx;
+	width: 130rpx;
+	margin: 30rpx auto 0rpx;
+	background-color: #efefef;
+	border-radius: 20rpx;
+	box-shadow: 0 0 10rpx rgba(0,0,0,0.1);
+}
+.introduction {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	height: fit-content;
+	width: 500rpx;
+	padding-left: 10rpx;
+	padding-top: 30rpx;
+	padding-bottom: 30rpx;
+}
+.name {
+	display: block;
+	height: 40rpx;
+	width: fit-content;
+	max-width: 95%;
+	line-height: 40rpx;
+	font-size: 36rpx;
+	font-weight: bold;
+}
+.certificate {
+	display: block;
+	height: fit-content;
+	width: fit-content;
+	max-width: 95%;
+	margin-top: 10rpx;
+	line-height: 32rpx;
+	font-size: 26rpx;
+	color: gray;
+}
+.exp {
+	height: 30rpx;
+	width: fit-content;
+	max-width: 95%;
+	margin-top: 10rpx;
+	line-height: 30rpx;
+	font-size: 24rpx;
+	color: gray;
+}
+.expInfo {
+	color: #000;
+}
+.tagContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	height: fit-content;
+	width: fit-content;
+	max-width: 95%;
+	margin-top: 10rpx;
+}
+.tag {
+	height: 20rpx;
+	width: fit-content;
+	margin-right: 10rpx;
+	padding: 6rpx;
+	border: 1rpx solid rgba(0,0,0,0.3);
+	border-radius: 12rpx;
+	line-height: 20rpx;
+	text-align: center;
+	font-size: 20rpx;
+	color: rgba(0,0,0,0.6);
+}

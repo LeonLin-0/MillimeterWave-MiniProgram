@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mainPageHeader": "/components/mainPageHeader/mainPageHeader",
+    "psychologist": "/components/psychologistContainer/psychologistContainer"
+  }
+}

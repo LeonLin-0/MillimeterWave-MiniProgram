@@ -2,33 +2,90 @@
 <view class="register title" wx:if="{{isRegister}}">注册</view>
 <view class="login title" wx:if="{{!isRegister}}">登录</view>
 <header class="miniprogramTitle">MillimeterWave</header>
+<!-- 信息填写 -->
 <view class="infoContainer">
+	<!-- 登录模块 -->
+	<block wx:if="{{isRegister ? false : true}}">
+		<!-- 登陆方式选择 -->
+		<view class="loginMethodContainer">
+			<view class="useMessage {{isPassword ? 'unSelected' : 'selected'}}" bindtap="setLoginMethod" data-method="message">短信登录</view>
+			<text class="line"></text>
+			<view class="usePassword {{isPassword ? 'selected' : 'unSelected'}}" bindtap="setLoginMethod" data-method="password">密码登录</view>
+		</view>
+		<!-- 密码登录 -->
+		<block wx:if="{{isPassword ? true : false}}">
+			<input
+				type="number"
+				class="inputUserPhone"
+				bindinput="getUserPhone"
+				value="{{userInfo.userPhone}}"
+				placeholder="手机号"/>
+			<input
+				class="password"
+				type="text"
+				password
+				bindinput="getPassword"
+				value="{{userInfo.password}}"
+				placeholder="密码"/>
+			<view class="verifyContainer">
+				<input
+					class="verifyCode"
+					type="text"
+					bindinput="getVerifyCode"
+					value="{{verifyCode}}"
+					placeholder="验证码"/>
+				<image class="imgCode" src="{{imgCode}}" bindtap="getImgCode"></image>	
+			</view>
+		</block>
+		<!-- 短信登录 -->
+		<block wx:if="{{isPassword ? false : true}}">
+			<input
+				type="number"
+				class="inputUserPhone"
+				bindinput="getUserPhone"
+				value="{{userInfo.userPhone}}"
+				placeholder="手机号"/>
+			<view class="verifyContainer">
+				<input
+					class="msgVerifyCode"
+					type="text"
+					bindinput="getInputMsgVerifyCode"
+					value="{{messageVerifyCode}}"
+					placeholder="手机验证码"/>
+				<button class="getMsgVerifyCodeBtn" bindtap="getMsgVerifyCode" disabled="{{mvcDisable}}">{{msgVerifyCodeText}}</button>
+			</view>
+		</block>
+	</block>
+	<!-- 注册模块 -->
+	<block wx:if="{{isRegister ? true : false}}">
+		<view class="registerMethodContainer">
+			<view class="usePassword selected">短信注册</view>
+		</view>
+		<input
+			type="number"
+			class="inputUserPhone"
+			bindinput="getUserPhone"
+			value="{{userInfo.userPhone}}"
+			placeholder="手机号"/>
+		<view class="verifyContainer">
+			<input
+				class="msgVerifyCode"
+				type="text"
+				bindinput="getInputMsgVerifyCode"
+				value="{{messageVerifyCode}}"
+				placeholder="手机验证码"/>
+			<button class="getMsgVerifyCodeBtn" bindtap="getMsgVerifyCode" disabled="{{mvcDisable}}">{{msgVerifyCodeText}}</button>
+		</view>
+	</block>
+	<!-- 底部 -->
+	<view class="footer">
+		<view class="changeState" wx:if="{{isRegister}}" bindtap="changeRegisterState">已有帐号？前往登录</view>
+		<view class="changeState" wx:if="{{!isRegister}}" bindtap="changeRegisterState">还没账号？前往注册</view>
 
-	<input
-		type="number"
-		class="inputUserPhone"
-		bindinput="getUserPhone"
-		value="{{userInfo.userPhone}}"
-		placeholder="请输入您的手机号"/>
-	<input
-		class="password"
-		type="text"
-		password
-		bindinput="getPassword"
-		value="{{userInfo.password}}"
-		placeholder="请输入密码"/>
-	<input
-		class="verifyCode"
-		type="text"
-		bindinput="getVerifyCode"
-		value="{{verifyCode}}"
-		placeholder="请输入图形验证码"/>
-	<image class="imgCode" src="{{imgCode}}" bindtap="getImgCode"></image>
-
-	<view class="changeState" wx:if="{{isRegister}}" bindtap="changeRegisterState">前往登录</view>
-	<view class="changeState" wx:if="{{!isRegister}}" bindtap="changeRegisterState">还未注册？点我注册吧</view>
-
-	<view class="button" wx:if="{{isRegister}}" bindtap="loginOrRegister">注册</view>
-	<view class="button" wx:if="{{!isRegister}}" bindtap="loginOrRegister">登录</view>
+		<view class="button" wx:if="{{isRegister}}" bindtap="loginOrRegister">注册</view>
+		<view class="button" wx:if="{{!isRegister}}" bindtap="loginOrRegister">登录</view>
+	</view>	
 </view>
+
+
 

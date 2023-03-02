@@ -1,0 +1,148 @@
+/* pages/mentalHealth/psychologyTestPage/psychologyTestPage.wxss */
+page {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* 顶部进度条 */
+.psyTestHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 150rpx;
+	width: 100%;
+	margin-top: 180rpx;
+	border-bottom: 10rpx solid #efefef;
+}
+.psyTestPreSubjectBtn {
+	position: absolute;
+	left: 4%;
+	height: 40rpx;
+	width: fit-content;
+	padding: 5rpx 10rpx;
+	border: 1rpx solid gray;
+	border-radius: 20rpx;
+	line-height: 40rpx;
+	font-size: 30rpx;
+	color: gray;
+}
+.psyTestProgressLine {
+	position: relative;
+	width: 350rpx;
+}
+.psyTestProgress {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: 4%;
+	height: 40rpx;
+	width: fit-content;
+	line-height: 40rpx;
+	font-size: 30rpx;
+	color: gray;
+}
+
+/* 内容 */
+.psyTestContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: fit-content;
+	width: 100%;
+	padding: 50rpx 45rpx;
+	box-sizing: border-box;
+}
+.psyTestContentTitle {
+	width: 100%;
+	height: fit-content;
+	margin-bottom: 50rpx;
+	line-height: 40rpx;
+	font-size: 36rpx;
+	font-weight: bold;
+}
+.psyTestContentChoiceContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: fit-content;	
+}
+.psyTestContentChoice {
+	width: 50%;
+	margin-top: 30rpx;
+	padding: 20rpx 30rpx;
+	box-sizing: border-box;
+	background: #91d2a9;
+	border-radius: 30rpx;
+	line-height: 40rpx;
+	text-align: center;
+	font-size: 34rpx;
+	font-weight: normal;
+	animation: all 1s ease-in;
+}
+.selected {
+	width: 50%;
+	margin-top: 30rpx;
+	padding: 20rpx 30rpx;
+	box-sizing: border-box;
+	background: #36995a;
+	box-shadow: 0 0 30rpx rgba(0,0,0,0.2);
+	border-radius: 30rpx;
+	line-height: 40rpx;
+	text-align: center;
+	font-size: 34rpx;
+	font-weight: normal;
+}
+
+/* 底部 */
+.footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	height: 100rpx;
+	width: 100%;
+	box-sizing: border-box;
+	padding-right: 40px;
+	margin-top: 50rpx;
+}
+/* picker */
+.chooseQueNum {
+	height: 50rpx;
+	width: fit-content;
+	padding: 10rpx 20rpx;
+	margin-right: 14rpx;
+	border-radius: 30rpx;
+	box-shadow: 0 0 10rpx rgba(210,210,210,1);
+	text-align: center;
+	line-height: 50rpx;
+	font-weight: bold;
+	color: #000;
+}
+/* 下一题按钮 */
+.psyNextBtn {
+	height: 50rpx;
+	width: fit-content;
+	padding: 10rpx 20rpx;
+	border: 1rpx solid gray;
+	border-radius: 20rpx;
+	line-height: 50rpx;
+	font-size: 38rpx;
+	color: gray;
+}
+/* 提交答案按钮 */
+.submitAllBtn {
+	height: 50rpx;
+	width: fit-content;
+	padding: 10rpx 30rpx;
+	background: #36995a;
+	border-radius: 20rpx;
+	line-height: 50rpx;
+	font-size: 38rpx;
+	font-weight: bold;
+}

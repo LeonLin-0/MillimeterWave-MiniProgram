@@ -1,0 +1,280 @@
+/* pages/historyDetail/historyDetail.wxss */
+page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 上方 */
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding-top: 200rpx;
+  margin: 0rpx auto 30rpx;
+  background: linear-gradient(180deg,rgba(255,255,255,0.9) 0%, var(--lightBlue) 10%, var(--blue) 90%);
+  border-radius: 0rpx 0rpx 55rpx 55rpx;
+  text-shadow: 0 0 2rpx rgba(255,255,255,0.9);
+}
+/* 日期 */
+.year {
+  height: 40rpx;
+  width: 80%;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #000;
+}
+.date {
+  height: 80rpx;
+  width: 80%;
+  line-height: 80rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: var(--deepBlue);
+}
+/* 图表 */
+.echart {
+  position: relative;
+  height: 450rpx;
+  width: 450rpx;
+  margin: 0rpx auto 20rpx;
+}
+/* 关闭的模块 */
+.sleepLengthContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  height: 270rpx;
+  width: 270rpx;
+  border-radius: 50%;
+}
+.sleepTitle {
+  margin-bottom: 8rpx;
+  font-size: 26rpx;
+  text-shadow: 1rpx #efefef;
+}
+.sleepTime {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+/* 睡眠时间容器 */
+.sleepTimeConclusion {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 200rpx;
+  width: 92%;
+  margin: 10rpx auto 38rpx;
+  background: #fff;
+  border-radius: 32rpx;
+  color: var(--deepBlue);
+}
+.timeSpan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.timeTitle {
+  height: 40rpx;
+  width: auto;
+  margin-bottom: 10rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  font-weight: normal;
+  -webkit-text-stroke: 0.2px var(--deepBlue);
+}
+.time {
+  height: 80rpx;
+  width: auto;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 54rpx;
+  font-weight: bold;
+}
+.last {
+  padding-left: 20rpx;
+}
+.unit {
+  height: 100rpx;
+  width: auto;
+  padding-left: 10rpx;
+  font-size: 26rpx;
+  font-weight: normal;
+}
+/* 评价和建议 */
+.sleepConclusionAndSuggest {
+  height: auto;
+  width: 92%;
+  box-sizing: border-box;
+  margin: 0rpx auto 38rpx;
+  padding: 15rpx 35rpx 30rpx;
+  background: #fff;
+  border-radius: 32rpx;
+  text-align: justify;
+  color: var(--deepBlue);
+}
+.sleepConclusionAndSuggest .title {
+  height: 50rpx;
+  width: auto;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #efefef;
+  line-height: 50rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.conclusionAndSuggestText {
+  height: auto;
+  width: auto;
+  margin-top: 10rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+}
+/* 睡眠分析框 */
+.sleepContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 92%;
+  margin: 0rpx auto 30rpx;
+}
+/* 标题 */
+.bigTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  height: 70rpx;
+  width: 100%;
+  padding-left: 20rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #0054c9;
+}
+/* 总体 */
+.body {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin: 20rpx auto 0rpx;
+  padding: 0rpx 10rpx 20rpx;
+  background: linear-gradient( 180deg, var(--blue), var(--lightBlue) );
+  border-radius: 30rpx;
+  color: #fdfdfd;
+}
+.icon {
+  height: 70rpx;
+  width: 70rpx;
+  margin-right: 10rpx;
+  background: no-repeat;
+}
+/* 数据表 */
+.table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 92%;
+  height: 150rpx;
+  margin-top: 40rpx;
+  border-bottom: 1rpx solid rgba(255,255,255,0.7);
+}
+.span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.tableTitle {
+  height: 38rpx;
+  width: 100%;
+  line-height: 38rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+.showData {
+  height: 100rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 56rpx;
+  font-weight: normal;
+  font-family: '等线','微软雅黑';
+}
+/* 分析 */
+.analysis {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 93%;
+  margin-top: 20rpx;
+}
+.analysisTitle {
+  height: 40rpx;
+  width: auto;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.analysisText {
+  display: block;
+  height: auto;
+  width: 100%;
+  line-height: 50rpx;
+  word-wrap: break-word;
+}
+.instructionAndSuggestion {
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 30rpx auto 0rpx;
+  background: linear-gradient(180deg, var(--deepBlue)-10%, var(--lightBlue) 120%);
+  border-radius: 30rpx;
+  color: #f0f0f0;
+}
+.instructionAndSuggestion .title {
+  height: 50rpx;
+  width: auto;
+  line-height: 50rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  padding: 25rpx 0rpx 10rpx 25rpx;
+}
+.instructionAndSuggestion .text {
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 20rpx;
+  /* background: rgba(50,50,50,0.15); */
+  background: rgb(239,239,239,0.15);
+  text-align: justify;
+  border-radius: 30rpx;
+  line-height: 36rpx;
+  font-size: 28rpx;
+  font-weight: normal;
+  letter-spacing: 0.14ch;
+  color: #fff;
+}

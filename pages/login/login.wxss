@@ -5,16 +5,18 @@ page {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	display: grid;
-	grid-template-rows: 2fr 1fr 4fr;
+	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
 }
+
 /* 顶部登录状态 */
 .title {
-	position: relative;
+	position: absolute;
+	top: 15%;
+	left: 10%;
 	height: 70rpx;
 	width: auto;
 	padding: 0rpx 15rpx;
@@ -37,11 +39,13 @@ page {
 	background: linear-gradient(45deg, var(--deepBlue), #efefef);
 	filter: blur(1rpx);
 }
+
 /* 小程序名 */
 .miniprogramTitle {
 	position: relative;
 	height: 150rpx;
 	width: 100%;
+	margin-top: 480rpx;
 	line-height: 150rpx;
 	font-size: 80rpx;
 	font-weight: bold;
@@ -58,6 +62,7 @@ page {
 	border-radius: 50%;
 	background: linear-gradient(var(--blue), rgb(206, 206, 206));
 	filter: blur(18rpx);
+	animation: ballAnimation3 20s ease infinite;
 }
 .miniprogramTitle::after {
 	content: '';
@@ -71,12 +76,15 @@ page {
 	background: linear-gradient(rgb(206, 206, 206), #efefef);
 	filter: blur(14rpx);
 }
-/* 信息框 */
+
+/* 信息填写区域 */
 .infoContainer {
-	position: relative;
+	position: absolute;
+	top: 38%;
+	left: 5%;
 	height: auto;
-	width: 100%;
-	margin: 40rpx auto 0rpx;
+	width: 90%;
+	margin: 200rpx auto 0rpx;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -85,28 +93,124 @@ page {
 .infoContainer::before {
 	content: '';
 	position: absolute;
-	top: -5%;
-	left: 50%;
+	top: 10rpx;
+	left: 10%;
 	height: 120rpx;
 	width: 120rpx;
 	border-radius: 50%;
 	z-index: -1;
 	background: linear-gradient(180deg, var(--lightBlue), var(--gray));
 	filter: blur(16rpx);
+	animation: ballAnimation2 4s ease-in-out infinite;
 }
+.infoContainer::after {
+	content: '';
+	position: absolute;
+	top: 450rpx;
+	left: 40%;
+	height: 250rpx;
+	width: 250rpx;
+	z-index: -1;
+	border-radius: 50%;
+	background: linear-gradient(-45deg, var(--darkGray), var(--lightBlue));
+	filter: blur(15px);
+	animation: ballAnimation1 4s ease-in-out infinite;
+}
+@keyframes ballAnimation1 {
+	0% {
+		transform: scale(0.85) translateX(0rpx);
+		filter: blur(5px);
+	}
+	50% {
+		transform: scale(0.75) translateX(80rpx);
+		filter: blur(15px);
+	}
+	100% {
+		transform: scale(0.85) translateX(0rpx);
+		filter: blur(5px);
+	}
+}
+@keyframes ballAnimation2 {
+	0% {
+		transform: scale(0.9) translateY(0rpx) translateX(0rpx);
+		filter: blur(6px);
+	}
+	50% {
+		transform: scale(0.7) translateY(-40rpx) translateY(-40rpx);
+		filter: blur(16px);
+	}
+	100% {
+		transform: scale(0.9) translateY(0rpx) translateY(0rpx);
+		filter: blur(6px);
+	}
+}
+@keyframes ballAnimation3 {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	50% {
+		transform: rotateZ(180deg);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+/* 切换登陆状态 */
+.loginMethodContainer {
+	display: grid;
+	grid-template-columns: 1fr 0fr 1fr;
+	justify-content: center;
+	align-items: center;
+	height: 50rpx;
+	width: 50%;
+	margin-bottom: 40rpx;
+	text-align: center;
+	font-size: 36rpx;
+	font-weight: bold;
+	color: #5a5a5a;
+}
+.registerMethodContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50rpx;
+	width: 50%;
+	margin-bottom: 40rpx;
+	text-align: center;
+	font-size: 36rpx;
+	font-weight: bold;
+}
+.line {
+	height: 100%;
+	width: 0;
+	background: #5c5c5c;
+	border: 2rpx solid #5c5c5c;
+}
+.selected {
+	transition: all 0.15s ease-in-out;
+	color: #0058cc;
+	animation: enlarge 0.4s ease-in-out;
+}
+.unSelected {
+	transition: all 0.15s ease-in-out;
+	color: #5a5a5a;
+}
+
+/* 输入区域 */
 .inputUserPhone {
 	position: relative;
 	height: 80rpx;
-	width: 60%;
-	padding: 5rpx 10rpx 5rpx 160rpx;
+	width: 65%;
+	padding: 5rpx 10rpx 5rpx 130rpx;
 	margin-bottom: 20rpx;
-	background: rgba(200,200,200,0.3);
+	background: rgb(90,90,90,0.15);
+	backdrop-filter: blur(5px);
 	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
-	backdrop-filter: blur(30rpx);
 	border-radius: 20rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
-	font-weight: bold;
+	font-weight: normal;
+	animation: showContainer 0.3s ease-in-out;
 }
 .inputUserPhone::before {
 	content: '手机';
@@ -114,11 +218,10 @@ page {
 	top: 0;
 	left: 0;
 	height: 90rpx;
-	width: 98rpx;
+	width: 80rpx;
 	padding-left: 20rpx;
 	padding-right: 20rpx;
 	line-height: 90rpx;
-	border-right: 1px solid #efefef;
 	z-index: 0;
 	text-align-last: justify;
 	font-size: 30rpx;
@@ -128,16 +231,17 @@ page {
 .password {
 	position: relative;
 	height: 80rpx;
-	width: 60%;
-	padding: 5rpx 10rpx 5rpx 160rpx;
+	width: 65%;
+	padding: 5rpx 10rpx 5rpx 130rpx;
 	margin-bottom: 20rpx;
-	background: rgba(200,200,200,0.3);
+	background: rgb(90,90,90,0.15);
+	backdrop-filter: blur(5px);
 	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
-	backdrop-filter: blur(30rpx);
 	border-radius: 20rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
-	font-weight: bold;
+	font-weight: normal;
+	animation: showContainer 0.4s ease-in-out;
 }
 .password::before {
 	content: '密码';
@@ -145,30 +249,40 @@ page {
 	top: 0;
 	left: 0;
 	height: 90rpx;
-	width: 98rpx;
+	width: 80rpx;
 	padding-left: 20rpx;
 	padding-right: 20rpx;
 	line-height: 90rpx;
-	border-right: 1px solid #efefef;
 	z-index: 0;
 	text-align-last: justify;
 	font-size: 30rpx;
 	font-weight: bold;
 	color: #000;
 }
-.verifyCode{
+.verifyContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	position: relative;
 	height: 80rpx;
-	width: 60%;
-	padding: 5rpx 10rpx 5rpx 160rpx;
+	width: 85%;
+	padding: 5rpx 5rpx 5rpx 0rpx;
 	margin-bottom: 20rpx;
-	background: rgba(200,200,200,0.3);
+	animation: showContainer 0.5s ease-in-out;
+}
+.verifyCode{
+	position: relative;
+	height: 100%;
+	width: 31%;
+	padding: 5rpx 10rpx 5rpx 130rpx;
+	background: rgb(90,90,90,0.15);
+	backdrop-filter: blur(5px);
 	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
-	backdrop-filter: blur(30rpx);
 	border-radius: 20rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
-	font-weight: bold;
+	font-weight: normal;
 }
 .verifyCode::before {
 	content: '验证码';
@@ -176,11 +290,10 @@ page {
 	top: 0;
 	left: 0;
 	height: 90rpx;
-	width: 98rpx;
+	width: 80rpx;
 	padding-left: 20rpx;
 	padding-right: 20rpx;
 	line-height: 90rpx;
-	border-right: 1px solid #efefef;
 	z-index: 0;
 	text-align-last: justify;
 	font-size: 30rpx;
@@ -188,28 +301,78 @@ page {
 	color: #000;
 }
 .imgCode {
-	width: 300rpx;
-	height: 125rpx;
+	width: 40%;
+	height: 100%;
+	padding: 5rpx 5rpx;
 	background: no-repeat;
 	border-radius: 20rpx;
 	box-shadow: 0 0 20rpx rgba(0,0,0,0.2);
 }
+.msgVerifyCode {
+	position: relative;
+	height: 80rpx;
+	width: 35%;
+	padding: 5rpx 10rpx 5rpx 130rpx;
+	background: rgb(90,90,90,0.15);
+	backdrop-filter: blur(5px);
+	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
+	border-radius: 20rpx;
+	line-height: 80rpx;
+	font-size: 30rpx;
+	font-weight: normal;
+}
+.msgVerifyCode::before {
+	content: '验证码';
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	height: 90rpx;
+	width: 80rpx;
+	padding-left: 20rpx;
+	padding-right: 20rpx;
+	line-height: 90rpx;
+	z-index: 0;
+	text-align-last: justify;
+	font-size: 30rpx;
+	font-weight: bold;
+	color: #000;
+}
+.getMsgVerifyCodeBtn {
+	height: 100%;
+	width: 35%;
+	margin: 0;
+	padding: 5rpx 0rpx;
+	background: linear-gradient(90deg, var(--blue), var(--lightBlue));
+	border-radius: 20rpx;
+	text-align: center;
+	font-size: 30rpx;
+	font-weight: bold;
+}
+
+/* 底部区域 */
+.footer {
+	position: relative;
+	height: fit-content;
+	width: 100%;
+	text-align: center;
+}
 .changeState {
 	position: relative;
 	height: 50rpx;
-	width: auto;
+	width: fit-content;
+	margin: 10rpx auto 0rpx;
 	line-height: 50rpx;
-	text-align: center;
 	font-size: 30rpx;
 	text-decoration: underline;
 	color: gray;
 }
 .button {
-	position: relative;
+	position: absolute;
+	bottom: -100rpx;
+	right: 60rpx;
 	height: 50rpx;
 	width: auto;
-	margin: 50rpx 0rpx 0rpx 420rpx;
-	padding: 10rpx 20rpx;
+	padding: 10rpx 30rpx;
 	background: linear-gradient(90deg, var(--blue), var(--lightBlue));
 	border-radius: 20rpx;
 	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.4);
@@ -218,15 +381,24 @@ page {
 	font-size: 36rpx;
 	color: #fff;
 }
-.button::before {
-	content: '';
-	position: absolute;
-	top: -50%;
-	right: 90%;
-	height: 250rpx;
-	width: 250rpx;
-	z-index: -1;
-	border-radius: 40%;
-	background: linear-gradient(-45deg, var(--darkGray), var(--lightBlue));
-	filter: blur(46rpx);
+@keyframes showContainer {
+	0% {
+		opacity: 0;
+		transform: scale(0.85) translateY(30%);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+@keyframes enlarge {
+	0% {
+		transform: translateY(0%);
+	}
+	50% {
+		transform: translateY(-30%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
 }

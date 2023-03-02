@@ -1,0 +1,40 @@
+/* components/getPic/getPic.wxss */
+.getPic {
+  position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	height: fit-content;
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+.userPic {
+	position: relative;
+	height: 80rpx;
+	width: 80rpx;
+	margin-left: 20rpx;
+	border-radius: 20rpx;
+	box-shadow: 0 0 16rpx rgba(120,120,120,0.3);
+}
+.chatPic {
+	position: relative;
+	width: 220rpx;
+	margin-left: 20rpx;
+	margin-top: 6rpx;
+	border: 2rpx solid rgba(90,90,90,0.6);
+	box-shadow: 0 0 20rpx rgba(90,90,90,0.2);
+  border-radius: 16rpx;
+  text-align: left;
+	font-size: 29rpx;
+}
+.timeStamp {
+  position: absolute;
+  bottom: -25rpx;
+  left: 130rpx;
+  height: 20rpx;
+  width: fit-content;
+  line-height: 20rpx;
+  font-size: 20rpx;
+  color: rgba(120,120,120,0.5);
+}

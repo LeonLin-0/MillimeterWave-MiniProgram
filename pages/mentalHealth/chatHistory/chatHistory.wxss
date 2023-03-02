@@ -1,0 +1,32 @@
+/* pages/mentalHealth/chatHistory/chatHistory.wxss */
+page {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+}
+.chatHistoryContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: fit-content;
+	width: 100%;
+	margin-top: 180rpx;
+	border-top: 1rpx solid rgba(0,0,0,0.25);
+}
+.noMessageImg {
+	width: 400rpx;
+	height: 400rpx;
+	margin-top: 100rpx;
+}
+.noHistory {
+	height: 100rpx;
+	width: fit-content;
+	line-height: 100rpx;
+	font-size: 50rpx;
+	font-weight: bold;
+	color: rgba(0,0,0,0.15);
+}

@@ -1,0 +1,49 @@
+<!--pages/mentalHealth/psychologyTestPage/psychologyTestPage.wxml-->
+<headerTitle title="{{title}}"></headerTitle>
+<!-- 题目进度 -->
+<view class="psyTestHeader">
+	<view class="psyTestPreSubjectBtn"
+		wx:if="{{nowSubjectNum === 1 ? false:true}}"
+		bindtap="backToLastSubject"
+	>上一题</view>
+	<van-progress class="psyTestProgressLine"
+		percentage="{{progressNum}}"
+		stroke-width="6"
+		color="#36995a"
+		bindtouchend="movePivot"
+	></van-progress>
+	<view class="psyTestProgress">
+		<picker class="chooseQueNum" mode="selector" range="{{numRange}}" value="{{nowSubjectNum-1}}" bindchange="getQueNum">{{nowSubjectNum}}</picker>/ {{allSubjectNum}}
+	</view>
+</view>
+<!-- 题目内容 -->
+<view class="psyTestContent">
+	<view class="psyTestContentTitle">{{subjectList[nowSubjectNum-1].content}}</view>
+	<view class="psyTestContentChoiceContainer">
+		<block wx:for="{{choices}}" wx:key="index">
+		<view
+			class="{{currentBtn===index ? 'selected' : 'psyTestContentChoice'}}"
+			bindtap="selected"
+			data-choice="{{item.answer}}"
+			data-index="{{index}}"
+			data-score="{{item.score}}"
+		>{{item.answer}}</view>
+		</block>
+	</view>
+</view>
+
+<view class="footer">
+	<view class="btnArea">
+		<view
+			class="psyNextBtn"
+			bindtap="toNextSubject"
+			wx:if="{{((nowSubjectNum!=allSubjectNum) && !showSubmitBtn) ? true : false}}"
+		>下一题</view>
+		<view
+			class="submitAllBtn"
+			bindtap="submitAllSubject"
+			wx:if="{{((nowSubjectNum==allSubjectNum) || showSubmitBtn) ? true : false}}"
+		>提交</view>
+	</view>
+</view>
+

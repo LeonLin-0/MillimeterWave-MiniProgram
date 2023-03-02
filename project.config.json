@@ -37,7 +37,8 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "condition": false
   },
   "compileType": "miniprogram",
   "condition": {},
@@ -49,5 +50,6 @@
     "ignore": [],
     "include": []
   },
-  "appid": "wx628276f104aa220f"
+  "appid": "wx628276f104aa220f",
+  "simulatorPluginLibVersion": {}
 }

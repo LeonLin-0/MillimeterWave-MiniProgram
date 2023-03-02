@@ -3,7 +3,9 @@
   "projectname": "MillimeterWave-MiniProgram",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false
+    "urlCheck": true,
+    "preloadBackgroundData": false,
+    "autoAudits": false
   },
   "condition": {
     "miniprogram": {
@@ -56,9 +58,23 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "心理测试页面",
+          "pathName": "pages/mentalHealth/psychologyTestChoicePage/psychologyTestChoicePage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "心理健康",
+          "pathName": "pages/mentalHealth/mentalHealthHomePage/mentalHealthHomePage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
   },
-  "libVersion": "2.28.1"
+  "libVersion": "2.30.1"
 }

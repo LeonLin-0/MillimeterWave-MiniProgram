@@ -1,0 +1,106 @@
+/* pages/mentalHealth/mentalHealthHomePage/mentalHealthHomePage.wxss */
+page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* 功能选择区 */
+.functionContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 180rpx;
+	width: 90%;
+	box-sizing: border-box;
+	padding: 0 30rpx;
+	margin: 200rpx auto 0;
+	border-radius: 30rpx;
+	box-shadow: 0 0 30rpx rgba(0,0,0,0.25)
+}
+.functionBlock {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 130rpx;
+	width: 130rpx;
+}
+.functionPic {
+	height: 70rpx;
+	width: 70rpx;
+	margin-bottom: 10rpx;
+}
+.functionTitle {
+	height: 38rpx;
+	width: fit-content;
+	line-height: 38rpx;
+	font-size: 30rpx;
+	font-weight: normal;
+}
+.unReadCount {
+	position: absolute;
+	top: 35%;
+	right: 15%;
+	height: 40rpx;
+	width: 40rpx;
+	background: #cc463d;
+	border-radius: 50%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: 40rpx;
+	text-align: center;
+	font-size: 24rpx;
+	color: #fff;
+}
+.unShowRedDot {
+	display: none;
+}
+/* 心理咨询师模块 */
+.psychologicalCounseling {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	width: 90%;
+	margin-top: 50rpx;
+}
+.psychologicalTitle {
+	position: relative;
+	height: 60rpx;
+	width: fit-content;
+	padding: 0rpx 10rpx;
+	line-height: 60rpx;
+	font-size: 44rpx;
+	font-weight: bold;
+	z-index: 0;
+}
+.psychologicalTitle::before {
+	content: "";
+	position: absolute;
+	bottom: 5%;
+	left: 0%;
+	height: 14rpx;
+	width: 100%;
+	background: var(--lightBlue);
+	border-radius: 4rpx;
+	z-index: -1;
+}
+.psychologistList {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	width: 100%;
+	padding: 50rpx 0rpx;
+}
+psychologist {
+	width: 100%;
+}

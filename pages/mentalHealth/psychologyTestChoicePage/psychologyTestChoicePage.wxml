@@ -1,0 +1,14 @@
+<!--pages/mentalHealth/psychologyTestChoicePage/psychologyTestChoicePage.wxml-->
+<headerTitle title="测试问卷"></headerTitle>
+<view class="psyTestTitle">请选择一项开始测试吧</view>
+<view class="psyTestList">
+<block  wx:for="{{psyTestList}}" wx:key="index">
+	<view class="psyTestContainer" bindtap="toPsyTestPage" data-item="{{item}}">
+		<image class="psyTestPic" src="{{item.psyTestPic || defaultImg}}"></image>
+		<view class="psyTestTextContainer">
+			<text class="psyTestTitle">{{item.psyTestTitle}}</text>
+			<text class="psyTestNum">题数：{{item.psyTestNum}}</text>		
+		</view>
+	</view>
+</block>
+</view>

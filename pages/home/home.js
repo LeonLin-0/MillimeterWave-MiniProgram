@@ -1,4 +1,5 @@
 // pages/home/home.js
+const app = getApp();
 Page({
 
   /**
@@ -6,14 +7,7 @@ Page({
    */
   data: {
     defaultURL: "https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0",
-    userInfo: {
-      avatarURL: "",
-      nickName: '',
-      userAge: 0,
-      userHeight: 0,
-      userWeight: 0,
-      userDisease: []
-    }
+    userInfo: null
   },
 
   /**
@@ -33,19 +27,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    let userInfo = wx.getStorageSync('userInfo');
-    // 进入页面后，判断个人信息情况，如果信息不完善，则前往完善信息页面
-    if(userInfo.avatarURL==="" || userInfo.avatarURL===undefined) {
-      this.setData({
-        ['userInfo.nickName']: userInfo.nickName
-      })
-    } else { // 有信息后，赋值显示
-      this.setData({
-        userInfo: userInfo,
-        needFillData: false
-      })
-      wx.setStorageSync('needFillData', this.data.needFillData);
-    }
+    this.setData({
+      userInfo: app.globalData.userInfo || wx.getStorageSync('userInfo')
+    })
   },
 
   /**
@@ -86,16 +70,12 @@ Page({
   // 退出登录
   logOut() {
     wx.showModal({
-      title: "您确定注销吗",
+      title: "退出登录将清除本地所有信息，您确定退出吗？",
       success: res => {
         if (res.confirm==true) {
           wx.removeStorageSync('userInfo');
           wx.removeStorageSync('x-token');
-          this.setData({
-            userInfo: {
-              avatarURL: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-            }
-          })
+          wx.removeStorageSync('userChatMemory');
           wx.navigateTo({
             url: '/pages/login/login',
           })           
@@ -110,16 +90,24 @@ Page({
       url: '/pages/modifyPage/modifyPage',
     })
   },
-  // 跳转到历史记录页面
-  toHistoryPage() {
+  // 跳转到修改密码页面
+  toModifyPasswordPage() {
     wx.navigateTo({
-      url: '/pages/historyPage/historyPage',
+      url: '/pages/modifyPasswordPage/modifyPasswordPage',
     })
   },
   // 跳转到关于我们页面
   toAboutUsPage() {
     wx.navigateTo({
       url: '/pages/aboutUsPage/aboutUsPage',
+    })
+  },
+  // 未开发功能弹窗
+  unDevelopContainer() {
+    wx.showToast({
+      title: '正在开发中...',
+      icon: 'none',
+      duration: 800
     })
   }
 })

@@ -4,28 +4,15 @@ page {
 	--notice-bar-height: 68rpx;
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
-	height: 120%;
+	width: 100vw;
+	height: fit-content;
+	min-height: 100vh;
 	font-family: 'Microsoft YaHei';
 	font-weight: normal;
 }
-
-/* 顶部标题 */
-.headTitle {
-	position: fixed;
-	display: flex;
-	flex-direction: column-reverse;
-	height: 160rpx;
-	width: 100%;
-	padding-left: 100rpx;
-	/* background: rgba(219,219,219,0.35); */
-	z-index: 1;
-	backdrop-filter: blur(10rpx);
-	line-height: 60rpx;
-	font-size: 34rpx;
-	font-weight: bold;
-	color: #094aad;
-}
+/* 提示栏 */
 .header {
 	display: flex;
 	flex-direction: column;
@@ -35,116 +22,19 @@ page {
 	height: auto;
 	margin-top: 160rpx;
 }
-/* 提示栏 */
 .noticeBar {
+	margin-top: 2rpx;
 	width: 100%;
-}
-
-/* 个人信息 */
-.personalInfo {
-	display: flex;
-	position: relative;
-	align-items: center;
-	height: 150rpx;
-	width: 650rpx;
-	margin-top: 50rpx;
-	background-color: #fff;
-	border-radius: 30rpx;
-	box-shadow: 0 0 30rpx rgb(190, 190, 190);
-}
-.userImg {
-	height: 110rpx;
-	width: 110rpx;
-	margin: 20rpx 50rpx;
-}
-.personalMsg {
-	display: flex;
-	align-items: center;
-	flex-direction: row;
-	height: 100%;
-	width: 60%;
-}
-.userName, .userAge {
-	height: 40rpx;
-	width: auto;
-	margin-right: 50rpx;
-	line-height: 40rpx;
-	font-size: 34rpx;
-	color: #000;
-	font-weight: 450;
-}
-.toMyPage {
-	display: inline-block;
-	position: absolute;
-	right: 50rpx;
-	height: 40rpx;
-	width: 40rpx;
-}
-/* 清除原生按钮样式 */
-.loginBtn {
-	background: none;
-}
-.loginBtn::after {
-	border: none;
-}
-
-/* 填写数据弹出层 */
-.popup {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-.getAvatarBtn {
-	margin-top: 160rpx;
-	height: 110rpx;
-	width: 160rpx;
-	padding: none;
-}
-.getImg {
-	height: 110rpx;
-	width: 110rpx;
-	margin: none;
-	padding-left: none;
-	border-radius: 24rpx;
-}
-.inputNickName {
-	height: 70rpx;
-	width: 80%;
-	margin: 20rpx auto 30rpx;
-	border-top: 1px solid #efefef;
-	border-bottom: 1px solid #efefef;
-	padding-left: 10rpx;
-	font-size: 32rpx;
-	line-height: 70rpx;
-}
-.ageTip {
-	display: block;
-	height: 26rpx;
-	width: 200rpx;
-	margin-left: 10%;
-	font-size: 26rpx;
-	line-height: 26rpx;
-	color: var(--darkGray);
-}
-.getAge {
-	display: block;
-	height: 80rpx;
-	width: 80%;
-	line-height: 80rpx;
-	margin: 10rpx auto 20rpx;
-}
-.submitBtn {
-	margin-right: 10%;
-	float: right;
-	background-color: #086cf8 !important;
 }
 
 /* 中间信息模块 */
 .middleContainer {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
 	height: auto;
 	width: 650rpx;
 	margin: 50rpx auto;
@@ -154,8 +44,11 @@ page {
 .diseaseContainer {
 	display: flex;
 	flex-direction: column;
-	height: auto;
+	justify-content: center;
+	align-items: left;
+	height: 300rpx;
 	width: 300rpx;
+	box-sizing: border-box;
 	margin-right: 50rpx;
 	backdrop-filter: blur(10px);
 	background: linear-gradient(160deg, #fba32fe0, #f56f2ce3);
@@ -172,10 +65,10 @@ page {
 	font-weight: 600;
 }
 .diseaseList {
-	height: 220rpx;
-	width: 90%;
-	margin: 0rpx 0rpx 10rpx 20rpx;
+	height: 210rpx;
+	width: 91%;
 	box-sizing: border-box;
+	margin: 0rpx 0rpx 20rpx 15rpx;
 	font-weight: 400;
 	font-size: 30rpx;
 	overflow-y: scroll;
@@ -184,13 +77,13 @@ page {
 	display: inline-block;
 	height: 32rpx;
 	width: auto;
-	margin-right: 10rpx;
-	margin-bottom: 10rpx;
-	padding: 8rpx 14rpx;
+	margin-right: 8rpx;
+	margin-bottom: 8rpx;
+	padding: 6rpx 12rpx;
 	line-height: 32rpx;
 	background: rgba(250, 250, 250, 0.5);
 	backdrop-filter: blur(30rpx) ;
-	border-radius: 20rpx;
+	border-radius: 16rpx;
 }
 
 /* 点击连接按钮 */
@@ -214,6 +107,7 @@ page {
 	flex-direction: column;
 	align-items: center;
 	height: 420rpx;
+	min-height: 420rpx;
 	width: 650rpx;
 	background: var(--lightGray);
 	border-radius: 30rpx;
@@ -248,10 +142,14 @@ page {
 	position: absolute;
 	top: 5rpx;
 	right: 0rpx;
-	height: 40rpx;
-	width: 40rpx;
+	height: 42rpx;
+	width: 42rpx;
 	margin: 5rpx 0rpx;
 	right: 0;
+}
+.heartRate .dataIcon {
+	height: 50rpx;
+	width: 50rpx;
 }
 .dataCanvas {
 	display: block;

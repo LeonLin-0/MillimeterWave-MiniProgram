@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.10.5",
-    "miniprogram-api-promise": "^1.0.4"
+    "dayjs": "^1.11.7"
   }
 }

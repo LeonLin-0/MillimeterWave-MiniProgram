@@ -1,5 +1,6 @@
 // pages/modifyPage/modifyPage.js
-import { ip } from '../../utils/util'
+import { ip, postRequest } from '../../utils/util'
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -7,18 +8,10 @@ Page({
   data: {
     // 用户信息
     defaultURL: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0', 
-    userInfo: {
-      avatarURL: "",
-      nickName: '',
-      userPhone: undefined,
-      userAge: 20,
-      userHeight: undefined,
-      userWeight: undefined,
-      userDisease: []
-    },
+    userInfo: null,
     BMI: "",
     // picker
-    ageRange: [],
+    ageRange: null,
     // checkedDisease
     checkedDisease: [],
     // diseasesArray
@@ -45,47 +38,24 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    // 初始化
+    let userInfo = {...(app.globalData.userInfo || wx.getStorageSync('userInfo'))};
+    this.setData({
+      ageRange: Array(110).fill(0).map((value, index) => value+index)
+    });
+    this.setData({
+      userInfo: userInfo
+    })
+    this.showBMI();
+    // 修改疾病选择状态
+    this.initDiseaseList();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    let userInfo = wx.getStorageSync('userInfo');
-    this.setData({
-      ageRange: Array(110).fill(0).map((value, index) => value+index)
-    });
-    if(userInfo.avatarURL!="" && userInfo.avatarURL!=undefined) {
-      // 真正有数据
-      this.setData({
-        userInfo: userInfo
-      })
-    }
-    else {
-      // 注册状态，保存用户手机号码
-      let userPhone = userInfo.userPhone;
-      this.setData({
-        ['userInfo.userPhone']: userPhone
-      })
 
-    }
-    this.showBMI();
-    // 修改疾病选择状态
-    let tempDiseaseArray = this.data.diseasesArray;
-    for(var item of this.data.userInfo.userDisease){
-      for(var arrayItem of tempDiseaseArray) {
-        if(arrayItem.name == item) {
-          arrayItem.checked = true;
-          this.setData({
-            checkedDisease: [...this.data.checkedDisease, arrayItem.name]
-          })
-        }
-      }
-    }
-    this.setData({
-      diseasesArray: tempDiseaseArray
-    })
   },
 
   /**
@@ -122,27 +92,66 @@ Page({
   onShareAppMessage() {
 
   },
+  // 进入页面时初始化疾病列表
+  initDiseaseList() {
+    let tempDiseaseArray = this.data.diseasesArray;
+    let sicks = this.data.userInfo.sicks;
+    // forEach不能被break打断
+    for(var item of sicks){
+      for(var arrayItem of tempDiseaseArray) {
+        if(arrayItem.name == item) {
+          arrayItem.checked = true;
+          this.setData({
+            checkedDisease: [...this.data.checkedDisease, item]
+          })
+          break;
+        }
+        else {
+          if(item === "身体健康") {
+            tempDiseaseArray[0].checked = true;
+          }
+          // 如果到最后一个都没有，则添加
+          else if(arrayItem.name != item && arrayItem.value == this.data.diseasesArray.length - 1) {
+            tempDiseaseArray = [...tempDiseaseArray, {value: tempDiseaseArray.length, name: item, checked: true}]
+            this.setData({
+              checkedDisease: [...this.data.checkedDisease, item]
+            })
+          }
+        }
+      }
+    }
+    this.setData({
+      diseasesArray: tempDiseaseArray
+    })
+  },
   // 获取头像
   onChooseAvatar(e) {
-    console.log(e);
     const { avatarUrl } = e.detail;
-    this.setData({
-      ['userInfo.avatarURL']: avatarUrl
+    wx.showToast({
+      title: '头像上传中',
+      icon: 'loading',
+      duration: 1500
     })
     // 上传头像到后端进行存储
     wx.uploadFile({
       filePath: avatarUrl,
       name: 'file',
-      url: `http://${ip}:8090/v1/user/UploadImg`,
+      url: `${ip}/user/UploadImg`,
       header: {
         'x-token': wx.getStorageSync('x-token')
       },
-      success: res => {
-        let temp = JSON.parse(res.data);
-        console.log(temp);
+      success: ({data: res}) => {
+        res = JSON.parse(res);
         this.setData({
-          ['userInfo.avatarURL']: 'data:image/png;base64,' + temp.img
+          ['userInfo.headerImg']: res.data.headerImg
         })
+        if(res.code === 200) {
+          wx.showToast({
+            title: '上传成功',
+            icon: 'success',
+            duration: 500
+          })          
+        }
       }
     })
   },
@@ -157,37 +166,39 @@ Page({
   getUserPhone(e) {
     let phone = e.detail.value;
     this.setData({
-      ['userInfo.userPhone']: phone
+      ['userInfo.mobile']: phone
     })
   },
   // 获取年龄
   getUserAge(e) {
     this.setData({
-      ['userInfo.userAge']: +e.detail.value
+      ['userInfo.age']: +e.detail.value
     })
   },
   // 获取身高
   getUserHeight(e) {
-    let num = +e.detail.value <=0? 0:+e.detail.value;
+    let num = +e.detail.value <= 0 ? 0 : +e.detail.value;
     this.setData({
-      ['userInfo.userHeight']: num
+      ['userInfo.height']: num
     });
     this.showBMI();
   },
   // 获取体重
   getUserWeight(e) {
-    let num = +e.detail.value <=0? 0:+e.detail.value;
+    let num = +e.detail.value <= 0 ? 0 : +e.detail.value;
     this.setData({
-      ['userInfo.userWeight']: num
+      ['userInfo.weight']: num
     });
     this.showBMI();
   },
   // 计算BMI指数
   showBMI() {
-    const height = this.data.userInfo.userHeight;
-    const weight = this.data.userInfo.userWeight;
+    const height = this.data.userInfo.height;
+    const weight = this.data.userInfo.weight;
     if(height && weight && height>0 && weight>0) {
-      this.setData({ BMI: +(weight/((height/100)**2)).toFixed(2) });
+      this.setData({
+        BMI: +(weight/((height/100)**2)).toFixed(2)
+      });
     }
     else {
       this.setData({ BMI: "" })
@@ -195,93 +206,157 @@ Page({
   },
   // 获取用户疾病选项
   getCheckbox(e) {
-    // 若选中"无"，则将其余选项置为未选中
-    if(e.detail.value.indexOf("无")!=-1) {
-      this.setData({
-        ['diseaseArray[0].checked']: true
-      })
-      for(let i=1;i<this.data.diseasesArray.length; i++){
+    // 若选中"无"
+    if(e.detail.value.indexOf("无") != -1) {
+      // 选其他选项后，再选中"无"，清空其他选项
+      if(e.detail.value.indexOf("无")!=0) {
         this.setData({
-          [`diseasesArray[${i}].checked`]: false
+          ['diseaseArray[0].checked']: true
+        })
+        for(let i=1,len=this.data.diseasesArray.length; i<len; i++){
+          this.setData({
+            [`diseasesArray[${i}].checked`]: false
+          })
+        }
+        this.setData({
+          checkedDisease: ["无"]
         })
       }
-    } else { // 没选中"无"，则将“无”置为未选中
+      // 选"无"后选择其他选项，清掉"无"
+      else if(e.detail.value.length > 1){
+        this.setData({
+          [`diseasesArray[${0}].checked`]: false
+        })
+        let tempArr = [];
+        e.detail.value.forEach(item => {
+          if(item != "无") {
+            tempArr.push(item);
+          }
+        })
+        this.setData({
+          checkedDisease: tempArr
+        }) 
+      }
+      else {
+        this.setData({
+          checkedDisease: ["无"]
+        })
+      }
+    }
+    // 没选择"无"
+    else {
       this.setData({
-        ['diseasesArray[0].checked']: false
+        checkedDisease: e.detail.value
       })
     }
-    this.setData({
-      checkedDisease: e.detail.value
-    })
   },
   // 获取更多疾病信息
   getMoreDisease(e) {
-    let originData = e.detail.value;
-    this.setData({
-      moreDisease: originData.split(" ")
-    })
+    let originData = e.detail.value.trim();
+    if (originData != "") {
+      this.setData({
+        moreDisease: originData.split(" ")
+      })
+    }
+    else {
+      this.setData({
+        moreDisease: ""
+      })
+    }
   },
-  // 提交所有信息，判断状态
-  submitAllinfo() {
-    // 过滤疾病信息
+  // 整理疾病填写
+  tidySicksArray() {
     let checkDisease = this.data.checkedDisease;
     let moreDisease = this.data.moreDisease;
+    if(typeof moreDisease === "Array") {
+      moreDisease = [...moreDisease.split(" ")]
+    }
     // 选择无疾病
-    if(checkDisease.indexOf("无")===0) {
-      if(moreDisease.length===0 || moreDisease[0]==="") {
+    if(checkDisease[0]==="无") {
+      // 没有额外输入的疾病
+      if(moreDisease.length === 0) {
         this.setData({
-          ['userInfo.userDisease']: ["身体健康"]
+          ['userInfo.sicks']: ["身体健康"]
         })
-      } else {
+      }
+      // 有额外输入的疾病
+      else {
         this.setData({
-          ['userInfo.userDisease']: [...moreDisease]
-        })          
+          ['userInfo.sicks']: [...moreDisease]
+        })
       }
     }
-    // 什么都没选 
-    else if(checkDisease.indexOf("无")===-1 && checkDisease.length===0) {
-      if(moreDisease.length===0 || moreDisease[0]==="") {
-        // 没有填写任何疾病信息
+    // 什么都没选
+    else if(checkDisease.length === 0) {
+      // 没有填写额外信息
+      if(moreDisease.length === 0) {
         this.setData({
-          ['userInfo.userDisease']: []
+          ['userInfo.sicks']: []
         })
-      } else{ // 填写了额外疾病信息
+      }
+      // 填写了额外疾病信息
+      else{
         this.setData({
-          ['userInfo.userDisease']: [...moreDisease]
+          ['userInfo.sicks']: [...moreDisease]
         })
       }
     }
     // 选了疾病
-    else if(checkDisease.indexOf("无")===-1 && checkDisease.length!=0){
+    else {
+      // 最终处理疾病数组
+      let sicksArr;
+      if(moreDisease.length != 0) {
+        sicksArr = [...checkDisease, ...moreDisease];
+      }
+      else {
+        sicksArr = [...checkDisease];
+      }
       this.setData({
-        ['userInfo.userDisease']: [...checkDisease, ...moreDisease]
+        ['userInfo.sicks']: sicksArr
       })
     }
+  },
+  // 提交所有信息，判断状态
+  submitAllinfo() {
+    // 过滤疾病信息
+    this.tidySicksArray();
+    wx.showToast({
+      title: '正在提交',
+      icon: 'loading',
+      duration: 1500,
+      mask: true
+    })
     // 发送数据
     let userInfo = this.data.userInfo;
-    console.log(userInfo);
     // 不缺基础信息之后，上传数据
-    if(userInfo.nickName!="" && userInfo.userAge!="" && userInfo.avatarURL!="") {
-      wx.request({
-        method: 'POST',
-        url: `http://${ip}:8090/v1/user/ChangeUserInfo`,
-        data: {
-          'nickName': userInfo.nickName,
-          'mobile': userInfo.userPhone+'',
-          'headerImg': userInfo.avatarURL,
-          'height': userInfo.userHeight,
-          'weight': userInfo.userWeight,
-          'sick': userInfo.userDisease
-        },
-        success: res => {
-          wx.setStorageSync('userInfo', userInfo);
-          wx.setStorageSync('needFillData', false);
-          wx.navigateBack({ delta: 1 }); // 自动返回上一页
-        }
+    if(userInfo.nickName!="" && userInfo.age!="" && userInfo.headerImg!="") {
+      postRequest('/user/ChangeUserInfo',
+      {
+        nickName: userInfo.nickName,
+        mobile: userInfo.mobile+'',
+        height: userInfo.height,
+        weight: userInfo.weight,
+        sicks: userInfo.sicks,
+        age: userInfo.age
+      }).then(res => {
+        wx.showToast({
+          title: '修改成功',
+          icon: 'success',
+          duration: 800,
+        })
+        wx.setStorageSync('userInfo', userInfo);
+        app.globalData.userInfo = userInfo;
+        // 自动返回个人主页
+        wx.switchTab({
+          url: '/pages/home/home',
+        });
       })
-      
     }
-    // 发送成功后跳回前一页
-    // wx.navigateBack(-1);
+    else {
+      wx.showModal({
+        title: "请完善信息再提交",
+        showCancel: false
+      })
+    }
   }
 })

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mainPageHeader": "/components/mainPageHeader/mainPageHeader",
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

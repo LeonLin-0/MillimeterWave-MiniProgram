@@ -1,0 +1,36 @@
+<!--pages/mentalHealth/psychologistDetailPage/psychologistDetailPage.wxml-->
+<headerTitle title="详情"></headerTitle>
+<view class="psyInfoContainer">
+	<view class="headerContainer">
+		<image class="headerImg" src="{{psyInfo.img}}" bindtap="previewPic" data-url="{{psyInfo.img}}"></image>
+		<view class="infoContainer">
+			<view class="name">{{psyInfo.name}}</view>
+			<view class="introduce">{{psyInfo.introduce}}</view>
+			<view class="tagContainer">
+				<block wx:for="{{psyInfo.tag}}" wx:key="index">
+					<text class="tag">{{item}}</text>
+				</block>
+			</view>
+			<view class="peopleNum">访客数 {{psyInfo.visitor}}</view>
+		</view>
+	</view>
+	<view class="infoTable">
+		<view class="block">
+			<text class="num">{{psyInfo.workingYear}}</text>
+			<view class="title">从业年限</view>
+		</view>
+		<view class="block">
+			<text class="num">{{psyInfo.helpPerson}}</text>
+			<view class="title">帮助人数</view>
+		</view>
+		<view class="block">
+			<text class="num">{{psyInfo.fans}}</text>
+			<view class="title">粉丝人数</view>
+		</view>
+		<view class="block">
+			<text class="num">{{psyInfo.score}}</text>
+			<view class="title">评分</view>
+		</view>
+	</view>
+</view>
+<button class="toChatBtn" bindtap="toChatRoom">前往咨询</button>

@@ -1,0 +1,34 @@
+<!--pages/mentalHealth/mentalHealthHomePage/mentalHealthHomePage.wxml-->
+<!-- 顶部标题 -->
+<mainPageHeader headerTitle="{{headerTitle}}"></mainPageHeader>
+
+<!-- 功能选择框 -->
+<view class="functionContainer">
+	<view class="functionBlock" bindtap="onUndevelopedState">
+		<image class="functionPic" src="/icon/emotion.svg"></image>
+		<text class="functionTitle">情绪压力</text>
+	</view>
+	<view class="functionBlock" bindtap="toChatHistoryPage">
+		<image class="functionPic" src="/icon/chatHistory.svg"></image>
+		<text class="functionTitle">个人信息</text>
+		<text class="unReadCount {{userChatMemory.totalUnReadCount === 0 ? 'unShowRedDot': ''}}">{{userChatMemory.totalUnReadCount > 99 ? '···' : userChatMemory.totalUnReadCount}}</text>
+	</view>
+	<view class="functionBlock" bindtap="onUndevelopedState">
+		<image class="functionPic" src="/icon/growth.svg"></image>
+		<text class="functionTitle">个人成长</text>
+	</view>
+	<view class="functionBlock" bindtap="toPsyTestChoicePage">
+		<image class="functionPic" src="/icon/mentalTest.svg"></image>
+		<text class="functionTitle">测试问卷</text>
+	</view>
+</view>
+
+<!-- 心理老师模块 -->
+<view class="psychologicalCounseling">
+	<view class="psychologicalTitle">咨询·理解</view>
+	<view class="psychologistList">
+		<psychologist wx:for="{{psychologistList}}" wx:key="index"
+			psyInfo="{{item}}"
+		></psychologist>
+	</view>
+</view>

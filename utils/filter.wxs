@@ -1,0 +1,17 @@
+var getTime = function(timeStamp) {
+  var nowDate = getDate(Date.now())
+  var date = getDate(timeStamp*1000);
+  var formatTime = "";
+  var time = date.getHours()+':'+ (date.getMinutes()<10 ? '0'+date.getMinutes() : date.getMinutes());
+  if(nowDate.getFullYear() != date.getFullYear()) {
+    formatTime = formatTime + date.getFullYear()+'年';
+  }
+  if(nowDate.getMonth()==date.getMonth() && nowDate.getDate()==date.getDate()) {
+    formatTime+=time;
+  }
+  else {
+    formatTime = formatTime + (date.getMonth()+1)+'月'+date.getDate()+'日'+time;
+  }
+  return formatTime;
+}
+module.exports = { getTime: getTime }

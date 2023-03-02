@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "headerTitle": "/components/headerTitle/headerTitle",
+    "chatHistoryComponent": "/components/chatHistoryComponent/chatHistoryComponent"
+  }
+}

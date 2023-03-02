@@ -1,0 +1,15 @@
+<!--pages/mentalHealth/chatHistory/chatHistory.wxml-->
+<headerTitle title="咨询历史"></headerTitle>
+<view class="chatHistoryContainer">
+	<!-- 没有聊天记录 -->
+	<block wx:if="{{!hasChatHistory}}">
+	<image class="noMessageImg" src="{{noMessageImg}}"></image>
+		<view class="noHistory">暂无聊天记录</view>
+	</block>
+	<!-- 有聊天记录 -->
+	<block wx:if="{{hasChatHistory}}">
+		<block wx:for="{{chatHistory}}" wx:key="index">
+			<chatHistoryComponent chatInfo="{{item}}"></chatHistoryComponent>	
+		</block>	
+	</block>
+</view>

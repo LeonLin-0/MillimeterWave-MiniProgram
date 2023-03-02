@@ -1,7 +1,6 @@
 {
 	"usingComponents": {
-		"van-image": "@vant/weapp/image/index",
-		"van-icon": "@vant/weapp/icon/index",
+		"mainPageHeader": "/components/mainPageHeader/mainPageHeader",
 		"van-notice-bar": "@vant/weapp/notice-bar/index",
 		"emotionComponent": "/components/emotionComponent/emotionComponent",
 		"ec-canvas": "../../ec-canvas/ec-canvas"

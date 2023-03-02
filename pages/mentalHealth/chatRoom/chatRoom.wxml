@@ -1,0 +1,50 @@
+<!--pages/mentalHealth/chatRoom/chatRoom.wxml-->
+<chatRoomHeader title="{{chatName}}"></chatRoomHeader>
+<scroll-view
+  class="chatContainer"
+  enable-passive="{{true}}"
+  enable-flex="{{false}}"
+  scroll-with-animation="{{useAnimation}}"
+  scroll-y
+  scroll-into-view="{{lastMsgId}}"
+  style="height: {{scrollViewHeight}};"
+  upper-threshold="5"
+  bindscrolltoupper="touchTop"
+>
+  <view class="blankspace" style="height: 180rpx; width: 100%;"></view>
+  <block wx:for="{{msgList}}" wx:for-item="item" wx:key="index">
+    <!-- 发送文字信息 -->
+    <block wx:if="{{item.media==0 && item.fromId == userInfo.userId}}">
+      <sendMsg msg="{{item}}" userPic="{{userInfo.headerImg}}" id="msg-{{index}}"></sendMsg>
+    </block>
+    <!-- 接收文字信息 -->
+    <block wx:if="{{item.media==0 && item.toId == userInfo.userId}}">
+      <getMsg msg="{{item}}" userPic="{{chatImg}}" id="msg-{{index}}"></getMsg>
+    </block>
+    <!-- 发送图片信息 -->
+    <block wx:if="{{item.media==1 && item.fromId == userInfo.userId}}">
+      <sendPic msg="{{item}}" userPic="{{userInfo.headerImg}}" id="msg-{{index}}"></sendPic>
+    </block>
+    <!-- 接收图片信息 -->
+    <block wx:if="{{item.media==1 && item.toId == userInfo.userId}}">
+      <getPic msg="{{item}}" userPic="{{chatImg}}" id="msg-{{index}}"></getPic>
+    </block>
+  </block>
+</scroll-view>
+<view class="bottomContainer"  style="bottom: {{inputContainerHeight}};">
+  <view class="inputContainer">
+    <block wx:if="{{!isAudio}}">
+      <textarea type="text" class="userInput" value="{{userInput}}" bindfocus="adjustScrollHeightToShort" bindblur="adjustScrollHeightToLong" bindinput="getUserInput" auto-height show-confirm-bar="{{false}}" confirm-type="return" adjust-position="{{false}}" confirm-hold="{{true}}" cursor-spacing="120rpx"></textarea>
+      <van-icon name="add-o" class="moreFunction {{isRotate ? '.rotate' : '.unrotate'}}" bindtap="showFunctionArea"></van-icon>
+      <button class="sendBtn" bindtap="sendMsg">发送</button>    
+    </block>
+    <block wx:if="{{isAudio}}">
+      <view class="audioBtn" bindlongpress="handleRecordStart" bindtouchmove="handleRecordMove" bindtouchend="handleRecordEnd">{{audioText}}</view>
+      <image class="keyboardBtn" bindtap="useKeyBoard" src="/icon/keyboard.svg"></image>
+    </block>
+  </view>
+  <view class="moreFunctionContainer {{isRotate ? '.showFunArea' : '.unShowFunArea'}}">
+    <image class="function" src="/icon/audio.svg" bindtap="audioInput"/>
+    <image class="function pic" src="/icon/pic.svg" bindtap="sendPic"/>
+  </view>
+</view>

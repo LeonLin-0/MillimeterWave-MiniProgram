@@ -1,16 +1,16 @@
 <!--pages/home/home.wxml-->
 <!-- 头部 -->
 <view class="header">
-	<image class="avatar" src="{{userInfo.avatarURL ? userInfo.avatarURL: defaultURL}}"></image>
+	<image class="avatar" src="{{userInfo.headerImg ? userInfo.headerImg: defaultURL}}"></image>
 	<view class="personalInfo">
 		<view class="name">{{userInfo.nickName}}</view>
 		<view class="detailInfo">
-      <text class="age">{{userInfo.userAge ? userInfo.userAge : 0}}岁</text>
-		  <text class="height">{{userInfo.userHeight ? userInfo.userHeight : 0}}cm</text>
-      <text class="weight">{{userInfo.userWeight ? userInfo.userWeight : 0}}kg</text>
+      <text class="age">{{userInfo.age ? userInfo.age : 0}}岁</text>
+		  <text class="height">{{userInfo.height ? userInfo.height : 0}}cm</text>
+      <text class="weight">{{userInfo.weight ? userInfo.weight : 0}}kg</text>
 	  </view>
     <view class="disease">
-      <block wx:for="{{userInfo.userDisease}}" wx:key="index">
+      <block wx:for="{{userInfo.sicks}}" wx:key="index">
         <text class="diseaseName">{{item}}</text>
       </block>
     </view>
@@ -22,13 +22,17 @@
     修改资料
     <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
   </view>
-  <view class="setting history" bindtap="toHistoryPage">
-    历史记录
+  <view class="setting modifyPassword" bindtap="toModifyPasswordPage">
+    修改密码
     <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
   </view>
   <view class="setting introduction" bindtap="toAboutUsPage">
     关于我们
     <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
   </view>
-  <view wx:if="{{!userUnlogin}}" class="log" bindtap="logOut">注销</view>
+  <view class="setting introduction" bindtap="unDevelopContainer">
+    专家入驻
+    <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
+  </view>
+  <view wx:if="{{!userUnlogin}}" class="log" bindtap="logOut">退出登录</view>
 </view>

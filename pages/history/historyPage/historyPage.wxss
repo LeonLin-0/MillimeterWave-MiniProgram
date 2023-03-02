@@ -1,0 +1,69 @@
+/* pages/historyPage/historyPage.wxss */
+page {
+  height: fit-content;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  margin-top: 200rpx;
+}
+.noDataImg {
+  height: 400rpx;
+  width: 400rpx;
+  margin-top: 100rpx;
+}
+.noHistory {
+  height: 120rpx;
+  width: fit-content;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 46rpx;
+  font-weight: bold;
+  color: rgba(0,0,0,0.15);
+}
+.historyContainer {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 150rpx;
+  width: 85%;
+  margin: 0rpx auto 50rpx;
+  background: linear-gradient(90deg, var(--deepBlue), #1487d4ea);
+  box-shadow: 5rpx 5rpx 20rpx rgba(0,0,0,0.35), 5rpx 5rpx 20rpx rgba(255,255,255,0.35) inset;
+  border-radius: 26rpx;
+  text-align: left;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(255,255,255,0.9);
+  animation: showComponent 0.6s ease-in-out;
+}
+.timeContainer {
+  margin-left: 30rpx;
+}
+.time {
+  padding-left: 20rpx;
+}
+.toDetail {
+  padding-right: 10rpx;
+}
+@keyframes showComponent {
+  0% {
+    opacity: 0;
+    transform: translateY(60%) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}

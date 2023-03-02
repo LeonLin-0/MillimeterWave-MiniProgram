@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "chatRoomHeader": "/components/chatRoomHeader/chatRoomHeader",
+    "sendMsg": "/components/sendMsg/sendMsg",
+    "getMsg": "/components/getMsg/getMsg",
+    "sendPic": "/components/sendPic/sendPic",
+    "getPic": "/components/getPic/getPic"
+  }
+}

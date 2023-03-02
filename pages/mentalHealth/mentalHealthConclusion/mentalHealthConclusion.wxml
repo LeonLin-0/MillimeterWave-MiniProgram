@@ -1,0 +1,49 @@
+<!--pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion.wxml-->
+<headerTitle title="测评结果"></headerTitle>
+<view class="imageContainer">
+	<view class="title">{{psyTitle}}</view>
+	<view class="userInfo">
+		<image class="userPic" src="{{userInfo.headerImg}}"/>
+		<text class="userName">{{userInfo.nickName}}</text>
+	</view>
+</view>
+<view class="headerContainer">
+	<view class="tips">
+		谢谢您的参与，阅读本报告时，请注意以下内容：
+		<text class="tipsContent">测评图表可快速帮您掌握报告内容；</text>
+		<text class="tipsContent">本结果仅提供参考，不可作为临床诊断结果；</text>
+		<text class="tipsContent">如结果与你自己或他人感知的有出入，可回忆在测试时是否有事情影响了您，或自己答题时是否有所顾虑；</text>
+		<text class="tipsContent">如对报告有不理解的地方，建议向专业资质人士进行咨询。</text>
+	</view>
+</view>
+<view class="conclusionContainer">
+	<view class="conclusionTitle">结果</view>
+	<view class="conclusionList">
+		<view	class="conclusionLittleTitle">✨总分：</view>
+		<view class="conclusionContent">{{psyResult.toTalScore}}</view>		
+	</view>
+	<view class="conclusionList">
+		<view	class="conclusionLittleTitle">✨平均分：</view>
+		<view class="conclusionContent">{{psyResult.avgScore}} (越低越好)</view>		
+	</view>
+	<view class="conclusionList" wx:if="{{!isTCM}}">
+		<view	class="conclusionLittleTitle">✨阳性题目：</view>
+		<view class="conclusionContent">{{psyResult.yan}} 个</view>		
+	</view>
+	<view class="conclusionList" wx:if="{{!isTCM}}">
+		<view	class="conclusionLittleTitle">✨阴性题目：</view>
+		<view class="conclusionContent">{{psyResult.yin}} 个</view>		
+	</view>
+</view>
+<view class="conclusionContainer analysis">
+	<view class="conclusionTitle">结果分析</view>
+	<view class="echart" wx:if="{{!isTCM}}">
+		<ec-canvas ec="{{ec}}" canvas-id="radarChart"/>
+	</view>
+	<block wx:for="{{conclusionList}}" wx:key="index" wx:for-item="conclusion">
+		<view class="conclusionList">
+			<view	class="conclusionLittleTitle">✨{{conclusion.itemName}}</view>
+			<view class="conclusionContent">{{conclusion.itemConclusion}}</view>		
+	</view>
+	</block>
+</view>

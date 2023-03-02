@@ -1,0 +1,19 @@
+<!--pages/mentalHealth/psychologistContainer/psychologistContainer.wxml-->
+<view class="psychologistContainer" bindtap="toDetailPage" data-psy_info="{{psyInfo}}">
+	<view class="picContainer">
+		<image class="pic" src="{{psyInfo.img}}"></image>
+	</view>
+	<view class="introduction">
+		<text class="name">{{psyInfo.name}}</text>
+		<text class="certificate">{{psyInfo.introduce}}</text>
+		<view class="exp">
+			帮助人数<text class="expInfo"> {{psyInfo.helpPerson}}</text> |
+			粉丝数<text class="expInfo"> {{psyInfo.fans}}</text>
+		</view>
+		<view class="tagContainer">
+			<block  wx:for="{{psyInfo.tag}}" wx:key="index">
+				<text class="tag">{{item}}</text>
+			</block>
+		</view>
+	</view>
+</view>
