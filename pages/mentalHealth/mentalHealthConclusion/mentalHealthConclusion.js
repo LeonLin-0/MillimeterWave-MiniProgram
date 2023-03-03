@@ -181,7 +181,7 @@ Page({
           itemConclusion: data.tizhiType
         },
         {
-          itemName: '健康状态',
+          itemName: '调养原则',
           itemConclusion: data.principle
         },
         {
@@ -189,7 +189,7 @@ Page({
           itemConclusion: data.feature
         },
         {
-          itemName: '关键点',
+          itemName: '养生要点',
           itemConclusion: data.keyPoint
         }
       ]

@@ -141,15 +141,17 @@ Page({
   },
   // 获取图形验证码
   getImgCode() {
-    if(!wx.getStorageSync('x-token')) {
-      getRequest('/base/SendCaptcha').then(({data: res}) => {
+    wx.request({
+      url: `${ip}/base/SendCaptcha`,
+      method: 'GET',
+      success: ({data: res}) => {
         this.setData({
           imgCode: res.data.picPath,
           captchaId: res.data.captchaId,
           verifyCode: ''
         })
-      })
-    }
+      }
+    })
   },
   // 获取输入的手机验证码
   getInputMsgVerifyCode(e) {
