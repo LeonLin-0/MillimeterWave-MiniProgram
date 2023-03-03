@@ -197,13 +197,16 @@ Page({
       let data = {
         mobile: this.data.userInfo.userPhone.toString()
       };
-      getRequest('/base/SendSms').then(({data: res}) => {
-        if(res.code !== 200) {
-          wx.showToast({
-            title: `${res.msg}`,
-            icon: 'error',
-            duration: 800
-          })
+      wx.request({
+        url: `${ip}/base/SendSms`,
+        success: ({data: res}) => {
+          if(res.code !== 200) {
+            wx.showToast({
+              title: `${res.msg}`,
+              icon: 'error',
+              duration: 800
+            })
+          }
         }
       })
     }
