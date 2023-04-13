@@ -4,6 +4,12 @@ page {
 	padding: 0;
 	box-sizing: border-box;
 }
+/* 通知栏 */
+.noticeBar {
+	display: block;
+	width: 100%;
+	margin-top: 180rpx;
+}
 
 /* 内容 */
 .body {
@@ -13,13 +19,14 @@ page {
 	align-items: center;
 	width: 100%;
 	height: auto;
-	margin-top: 200rpx;
+	margin-top: 20rpx;
 }
 
 /* 头像 */
 .modifyAvatar, .modify {
 	display: block;
 	position: relative;
+	box-sizing: border-box;
 	height: auto;
 	width: 100%;
 	margin-bottom: 18rpx;
@@ -32,7 +39,7 @@ page {
 	height: 120rpx;
   width: auto;
 	padding-left: 50rpx;
-	line-height: 130rpx;
+	line-height: 120rpx;
 	font-size: 38rpx;
 	font-weight: normal;
 	color: #3b3b3b;
@@ -146,4 +153,80 @@ button {
   height: auto;
   width: 30%;
   margin: 40rpx 0rpx 50rpx 450rpx;
+}
+
+/* 弹窗 */
+.dialog {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	height: 100%;
+	width: 100%;
+	background: rgba(161, 161, 161, 0.502);
+	backdrop-filter: blur(10rpx);
+	z-index: 10;
+	opacity: 0;
+	animation: showDialogBG 0.3s ease-in-out;
+	animation-fill-mode: forwards;
+	animation-delay: 0.4s;
+}
+.dialogContainer {
+	box-sizing: border-box;
+	height: auto;
+	width: 500rpx;
+	padding: 30rpx;
+	background: #efefef;
+	border-radius: 30rpx;
+	box-shadow: 0 0 40rpx rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	animation: showDialog 0.6s ease-in-out;
+	animation-fill-mode: forwards;
+	animation-delay: 0.4s;
+}
+.text {
+	font-size: 34rpx;
+	font-weight: bold;
+	color: #3b3b3b;
+	text-align: justify;
+}
+.unshowAgain {
+	margin: 20rpx 0rpx;
+	font-size: 30rpx;
+}
+.btnContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	height: 80rpx;
+	width: 100%;
+}
+.btn {
+	width: 90%;
+}
+.btn:last-child {
+	background: #094aad;
+}
+.radioBtn {
+	font-size: 32rpx;
+}
+@keyframes showDialog {
+	0% {
+		opacity: 0;
+		transform: translateY(10%) scale(1);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0%) scale(1);
+	}
+}
+@keyframes showDialogBG {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }

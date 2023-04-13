@@ -1,7 +1,7 @@
 <!--pages/mentalHealth/psychologistContainer/psychologistContainer.wxml-->
 <view class="psychologistContainer" bindtap="toDetailPage" data-psy_info="{{psyInfo}}">
 	<view class="picContainer">
-		<image class="pic" src="{{psyInfo.img}}"></image>
+		<image class="pic" src="{{psyInfo.img}}" mode="aspectFill"></image>
 	</view>
 	<view class="introduction">
 		<text class="name">{{psyInfo.name}}</text>

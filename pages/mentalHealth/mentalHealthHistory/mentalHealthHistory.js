@@ -1,24 +1,18 @@
-// pages/mentalHealth/psychologistDetailPage/psychologistDetailPage.js
+// pages/mentalHealth/mentalHealthHistory/mentalHealthHistory.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id: null,
-    psyInfo: null
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let info = JSON.parse(options.psyInfo);
-    info.score = (+info.score).toFixed(1);
-    this.setData({
-      id: info.userId,
-      psyInfo: info
-    })
+
   },
 
   /**
@@ -68,20 +62,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-  // 前往聊天室
-  toChatRoom() {
-    wx.navigateTo({
-      url: `/pages/mentalHealth/chatRoom/chatRoom?id=${this.data.id}&name=${this.data.psyInfo.name}&img=${this.data.psyInfo.img}`,
-    })
-  },
-  // 点击预览图片
-  previewPic(e) {
-    let imgUrl = e.currentTarget.dataset.url;
-    wx.previewImage({
-      urls: [imgUrl],
-      current: imgUrl,
-      showmenu: true
-    })
   }
 })

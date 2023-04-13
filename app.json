@@ -1,20 +1,21 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/personalData/personalData",
-    "pages/home/home",
-    "pages/modifyPage/modifyPage",
+    "pages/mentalHealth/mentalHealthHomePage/mentalHealthHomePage",
     "pages/history/historyPage/historyPage",
+    "pages/home/home",
+    "pages/login/login",
+    "pages/modifyPage/modifyPage",
     "pages/history/historyDetail/historyDetail",
     "pages/aboutUsPage/aboutUsPage",
     "pages/modifyPasswordPage/modifyPasswordPage",
-    "pages/mentalHealth/mentalHealthHomePage/mentalHealthHomePage",
     "pages/mentalHealth/psychologistDetailPage/psychologistDetailPage",
     "pages/mentalHealth/chatHistory/chatHistory",
     "pages/mentalHealth/chatRoom/chatRoom",
     "pages/mentalHealth/psychologyTestChoicePage/psychologyTestChoicePage",
     "pages/mentalHealth/psychologyTestPage/psychologyTestPage",
-    "pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion"
+    "pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion",
+    "pages/mentalHealth/mentalHealthHistory/mentalHealthHistory"
   ],
   "tabBar": {
     "position": "bottom",

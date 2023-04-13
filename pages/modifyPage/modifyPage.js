@@ -25,7 +25,10 @@ Page({
       { value: "6", name: "抑郁症", checked: false},
       { value: "7", name: "焦虑症", checked: false},
     ],
-    moreDisease: ""
+    moreDisease: "",
+    showDialog: true, // 显示弹窗
+    unshowAgain: false, // 不再显示弹窗
+    showAll: true // 显示所有填写选项
   },
 
   /**
@@ -40,8 +43,14 @@ Page({
   onReady() {
     // 初始化
     let userInfo = {...(app.globalData.userInfo || wx.getStorageSync('userInfo'))};
+    let unshowAgain = wx.getStorageSync('unshowDialogAgain');
+    unshowAgain = unshowAgain === "" ? false : (unshowAgain === true ? true : false);
+    let showAll = wx.getStorageSync('showAll');
+    showAll = showAll === "" ? true : (showAll === true ? true : false);
     this.setData({
-      ageRange: Array(110).fill(0).map((value, index) => value+index)
+      ageRange: Array(110).fill(0).map((value, index) => value+index),
+      showDialog: !unshowAgain,
+      showAll: showAll
     });
     this.setData({
       userInfo: userInfo
@@ -92,11 +101,45 @@ Page({
   onShareAppMessage() {
 
   },
+  // 点击不再显示 
+  unshow() {
+    let unshow = this.data.unshowAgain;
+    this.setData({
+      unshowAgain: !unshow
+    })
+  },
+  // 点击拒绝
+  disagree() {
+    this.setUnshowAgain(false);
+    this.setData({
+      showAll: false,
+      showDialog: false // 关闭弹窗
+    })
+  },
+  // 点击接受
+  agree() {
+    this.setUnshowAgain(true);
+    this.setData({
+      showAll: true,
+      showDialog: false
+    })
+  },
+  // 后悔按钮
+  regretToShowAll() {
+    this.setData({
+      showAll: !this.data.showAll
+    })
+  },
+  // 设置是否点击不再显示
+  setUnshowAgain(bool) {
+    let unshowAgain = this.data.unshowAgain;
+    wx.setStorageSync('unshowDialogAgain', unshowAgain);
+    wx.setStorageSync('showAll', bool);
+  },
   // 进入页面时初始化疾病列表
   initDiseaseList() {
     let tempDiseaseArray = this.data.diseasesArray;
     let sicks = this.data.userInfo.sicks;
-    // forEach不能被break打断
     for(var item of sicks){
       for(var arrayItem of tempDiseaseArray) {
         if(arrayItem.name == item) {
@@ -119,6 +162,9 @@ Page({
           }
         }
       }
+    }
+    if(sicks.length === 0) {
+      tempDiseaseArray[0].checked = true;
     }
     this.setData({
       diseasesArray: tempDiseaseArray
@@ -329,7 +375,7 @@ Page({
     // 发送数据
     let userInfo = this.data.userInfo;
     // 不缺基础信息之后，上传数据
-    if(userInfo.nickName!="" && userInfo.age!="" && userInfo.headerImg!="") {
+    if(userInfo.nickName && userInfo.mobile && userInfo.headerImg) {
       postRequest('/user/ChangeUserInfo',
       {
         nickName: userInfo.nickName,

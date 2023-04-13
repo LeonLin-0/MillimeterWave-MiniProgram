@@ -58,8 +58,8 @@ Page({
       userInfo: app.globalData.userInfo,
       ['sendModule.toId']: options.id,
       ['sendModule.fromId']: app.globalData.userInfo.userId+"",
-      chatName: options.userName,
-      chatImg: options.headerImg
+      chatName: options.name,
+      chatImg: options.img
     })
     // 获取聊天记录
     let allMsg = app.globalData.userChatMemory || wx.getStorageSync('userChatMemory');
@@ -85,17 +85,17 @@ Page({
       unReadCount: targetMsg.unReadMsg.length
     })
     // 更新聊天对象信息
-    this.getChatObjectMsg(options.id).then(res => {
-      let target = res.data;
-      if(this.data.chatImg != target.headerImg || this.data.chatName != target.nickName) {
-        this.setData({
-          chatName: target.nickName,
-          chatImg: target.headerImg
-        })
-        targetMsg.headerImg = target.headerImg;
-        targetMsg.userName = target.nickName;
-      }
-    })
+    // this.getChatObjectMsg(options.id).then(res => {
+    //   let target = res.data;
+    //   if(this.data.chatImg != target.headerImg || this.data.chatName != target.nickName) {
+    //     this.setData({
+    //       chatName: target.nickName,
+    //       chatImg: target.headerImg
+    //     })
+    //     targetMsg.headerImg = target.headerImg;
+    //     targetMsg.userName = target.nickName;
+    //   }
+    // })
     targetMsg.readMsg = msgList;
     targetMsg.unReadMsg = [];
     allMsg.totalUnReadCount -= targetMsg.unReadCount;

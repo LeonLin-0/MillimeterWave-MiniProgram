@@ -22,7 +22,7 @@ Component({
       let userName = this.properties.chatInfo.userName;
       let headerImg = this.properties.chatInfo.headerImg;
       wx.navigateTo({
-        url: `/pages/mentalHealth/chatRoom/chatRoom?id=${id}&userName=${userName}&headerImg=${headerImg}`,
+        url: `/pages/mentalHealth/chatRoom/chatRoom?id=${id}&name=${userName}&img=${headerImg}`,
       })
     }
   }

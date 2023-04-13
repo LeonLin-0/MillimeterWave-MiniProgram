@@ -14,6 +14,7 @@ page {
 	width: 100%;
 	margin-top: 180rpx;
 	border-bottom: 10rpx solid #efefef;
+	animation: showComponent 350ms ease-in-out;
 }
 .psyTestPreSubjectBtn {
 	position: absolute;
@@ -55,6 +56,7 @@ page {
 	width: 100%;
 	padding: 50rpx 45rpx;
 	box-sizing: border-box;
+	animation: showComponent 350ms ease-in-out;
 }
 .psyTestContentTitle {
 	width: 100%;
@@ -70,7 +72,7 @@ page {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: fit-content;	
+	height: fit-content;
 }
 .psyTestContentChoice {
 	width: 50%;
@@ -83,7 +85,7 @@ page {
 	text-align: center;
 	font-size: 34rpx;
 	font-weight: normal;
-	animation: all 1s ease-in;
+	transition: all 0.1s ease-in-out;
 }
 .selected {
 	width: 50%;
@@ -97,6 +99,7 @@ page {
 	text-align: center;
 	font-size: 34rpx;
 	font-weight: normal;
+	transition: all 0.1s ease-in-out;
 }
 
 /* 底部 */
@@ -110,6 +113,7 @@ page {
 	box-sizing: border-box;
 	padding-right: 40px;
 	margin-top: 50rpx;
+	animation: showComponent 350ms ease-in-out;
 }
 /* picker */
 .chooseQueNum {
@@ -145,4 +149,28 @@ page {
 	line-height: 50rpx;
 	font-size: 38rpx;
 	font-weight: bold;
+	animation: showComponent1 0.5s ease-in-out;
+}
+.van-progress__portion, .van-progress__pivot {
+	transition: all 0.1s ease-in-out;
+}
+@keyframes showComponent {
+	0% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}
+@keyframes showComponent1 {
+	0% {
+		opacity: 0;
+		transform: translateY(25%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0%);
+	}
 }

@@ -18,11 +18,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
-  // 返回上一页
-  goBack() {
-    wx.navigateBack({
-      delta: -1,
-    })
-  },
+    // 根据页面路径返回上一页
+    goBack() {
+      let page = getCurrentPages();
+      let length = page.length;
+      let path = page[length-1].route;
+      if(path != 'pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion') {
+        wx.navigateBack({
+          delta: -1,
+        })      
+      }
+      else {
+        wx.switchTab({
+          url: '/pages/mentalHealth/mentalHealthHomePage/mentalHealthHomePage',
+        })
+      }
+    }
   }
 })

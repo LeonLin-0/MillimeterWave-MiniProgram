@@ -65,8 +65,10 @@
 .tagContainer {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: center;
+	gap: 10rpx;
 	height: fit-content;
 	width: fit-content;
 	max-width: 95%;
@@ -75,7 +77,6 @@
 .tag {
 	height: 20rpx;
 	width: fit-content;
-	margin-right: 10rpx;
 	padding: 6rpx;
 	border: 1rpx solid rgba(0,0,0,0.3);
 	border-radius: 12rpx;

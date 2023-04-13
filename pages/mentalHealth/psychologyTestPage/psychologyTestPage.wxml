@@ -1,7 +1,7 @@
 <!--pages/mentalHealth/psychologyTestPage/psychologyTestPage.wxml-->
 <headerTitle title="{{title}}"></headerTitle>
 <!-- 题目进度 -->
-<view class="psyTestHeader">
+<view class="psyTestHeader" wx:if="{{showComponent}}">
 	<view class="psyTestPreSubjectBtn"
 		wx:if="{{nowSubjectNum === 1 ? false:true}}"
 		bindtap="backToLastSubject"
@@ -17,7 +17,7 @@
 	</view>
 </view>
 <!-- 题目内容 -->
-<view class="psyTestContent">
+<view class="psyTestContent" wx:if="{{showComponent}}">
 	<view class="psyTestContentTitle">{{subjectList[nowSubjectNum-1].content}}</view>
 	<view class="psyTestContentChoiceContainer">
 		<block wx:for="{{choices}}" wx:key="index">
@@ -32,7 +32,7 @@
 	</view>
 </view>
 
-<view class="footer">
+<view class="footer" wx:if="{{showComponent}}">
 	<view class="btnArea">
 		<view
 			class="psyNextBtn"

@@ -15,7 +15,7 @@ App({
   // 初始化
   onLaunch() {
     // 判断是否已经登录
-    if(wx.getStorageSync('userInfo')&& wx.getStorageSync('x-token')) {
+    if(wx.getStorageSync('x-token')) {
       // 获取userInfo
       this.globalData.userInfo = wx.getStorageSync('userInfo') || {};
       // 获取userChatMemory

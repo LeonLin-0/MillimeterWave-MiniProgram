@@ -1,6 +1,8 @@
 // pages/mentalHealth/mentalHealthHomePage/mentalHealthHomePage.js
 const { getRequest } = require("../../../utils/util");
 let timer;
+
+// const { teacherList } = require("../../../utils/teacherList");
 // 当前页面获取信息，存入未读信息中
 const app = getApp();
 Page({
@@ -10,7 +12,7 @@ Page({
    */
   data: {
     headerTitle: "心理健康",
-    psychologistList: null,
+    psychologistList: [],
     userChatMemory: null,
   },
 
@@ -18,6 +20,9 @@ Page({
    * 生命周期函数--监听页面加载,初始化聊天记录
    */
   onLoad(options) {
+    wx.showLoading({
+      title: '获取列表中'
+    })
     this.getPsychologistList();
   },
 
@@ -91,6 +96,18 @@ Page({
       url: `/pages/mentalHealth/chatHistory/chatHistory`,
     })
   },
+  // 前往chatGPT聊天页面：fromId和toId都是自己
+  toChatGPTPage() {
+    wx.navigateTo({
+      url: `/pages/mentalHealth/chatRoom/chatRoom?id=${app.globalData.userInfo.userId+''}`,
+    })
+  },
+  // 前往个人成长页面
+  toPersonalGrowthPage() {
+    wx.navigateTo({
+      url: '/pages/mentalHealth/mentalHealthHistory/mentalHealthHistory',
+    })
+  },
   // 还未开发
   onUndevelopedState() {
     wx.showToast({
@@ -105,6 +122,7 @@ Page({
     .then(({data: res}) => {
       this.processData(res.data.list);
     })
+    // this.processData(teacherList);
   },
   // 处理咨询师数据
   processData(list) {
@@ -113,8 +131,16 @@ Page({
       item.tag = item.tag.split(";")
       return item;
     })
-    this.setData({
-      psychologistList: newList
-    })
+    wx.hideLoading();
+    let timer1 = setInterval(() => {
+      if(newList.length != 0) {
+        this.setData({
+          psychologistList: [...this.data.psychologistList, newList.shift()]
+        })
+      }
+      else {
+        clearInterval(timer1);
+      }
+    }, 300);
   }
-})
+});

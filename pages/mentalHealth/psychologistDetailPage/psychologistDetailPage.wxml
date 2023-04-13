@@ -2,7 +2,7 @@
 <headerTitle title="详情"></headerTitle>
 <view class="psyInfoContainer">
 	<view class="headerContainer">
-		<image class="headerImg" src="{{psyInfo.img}}" bindtap="previewPic" data-url="{{psyInfo.img}}"></image>
+		<image class="headerImg" src="{{psyInfo.img}}" mode="aspectFill" bindtap="previewPic" data-url="{{psyInfo.img}}"></image>
 		<view class="infoContainer">
 			<view class="name">{{psyInfo.name}}</view>
 			<view class="introduce">{{psyInfo.introduce}}</view>

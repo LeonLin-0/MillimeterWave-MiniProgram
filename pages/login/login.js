@@ -199,6 +199,7 @@ Page({
       };
       wx.request({
         url: `${ip}/base/SendSms`,
+        data: data,
         success: ({data: res}) => {
           if(res.code !== 200) {
             wx.showToast({

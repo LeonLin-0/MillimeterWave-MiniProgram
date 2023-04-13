@@ -22,6 +22,7 @@ Page({
     choiceList: [], // 答案选项数组
     startTime: '', // 测试开始时间
     showSubmitBtn: false, // 显示提交按钮
+    showComponent: false
   },
 
   /**
@@ -44,6 +45,9 @@ Page({
    */
   onReady() {
     // 发送请求获取题目数据
+    wx.showLoading({
+      title: '获取题目中',
+    })
     this.getQuestionList();
   },
 
@@ -130,8 +134,10 @@ Page({
           numRange: Array(res.data.pageSize).fill(1).map( (item, index) => { return item + index } ),
           startTime: res.data.startTime,
           choiceList: Array(res.data.pageSize).fill(-1),
-          answerList: Array(res.data.pageSize).fill(-1)
+          answerList: Array(res.data.pageSize).fill(-1),
+          showComponent: true
         })
+        wx.hideLoading();
         this.judgeFinishedAll();   
       }
       else {

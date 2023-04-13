@@ -1,6 +1,6 @@
 <wxs src="../../utils/filter.wxs" module="filter"></wxs>
 <view class="getMsg">
-	<image class="userPic" src="{{userPic}}"/>
+	<image class="userPic" src="{{userPic}}" mode="aspectFill"/>
 	<text class="chatContent" user-select="{{true}}">{{msg.content}}</text>
   <text class="timeStamp">{{filter.getTime(msg.timeStamp)}}</text>
 </view>

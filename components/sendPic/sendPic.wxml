@@ -1,7 +1,7 @@
 <!-- 引入时间格式化 -->
 <wxs src="../../utils/filter.wxs" module="filter"></wxs>
 <view class="sendPic">
-	<image class="chatPic" src="{{msg.content}}" bindtap="previewPic" data-url="{{msg.content}}" mode="widthFix"></image>
-	<image class="userPic" src="{{userPic}}"/>
+	<image class="chatPic" src="{{msg.content}}" lazy-load="{{true}}" bindtap="previewPic" data-url="{{msg.content}}" mode="widthFix"></image>
+	<image class="userPic" src="{{userPic}}" lazy-load="{{true}}" mode="aspectFill"/>
   <text class="timeStamp">{{filter.getTime(msg.timeStamp)}}</text>
 </view>

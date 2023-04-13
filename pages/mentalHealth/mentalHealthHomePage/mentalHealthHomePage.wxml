@@ -5,8 +5,8 @@
 <!-- 功能选择框 -->
 <view class="functionContainer">
 	<view class="functionBlock" bindtap="onUndevelopedState">
-		<image class="functionPic" src="/icon/emotion.svg"></image>
-		<text class="functionTitle">情绪压力</text>
+		<image class="functionPic" src="/icon/gpt.svg"></image>
+		<text class="functionTitle">在线咨询</text>
 	</view>
 	<view class="functionBlock" bindtap="toChatHistoryPage">
 		<image class="functionPic" src="/icon/chatHistory.svg"></image>
