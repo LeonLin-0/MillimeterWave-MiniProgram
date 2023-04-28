@@ -25,7 +25,7 @@ page {
 	text-align: left;
 	font-size: 50rpx;
 	font-weight: bold;
-	color: #000;
+	color: var(--lightBlack);
 }
 .title::before {
 	content: '';
@@ -36,7 +36,7 @@ page {
 	width: 50rpx;
 	z-index: 1;
 	border-radius: 50%;
-	background: linear-gradient(45deg, var(--deepBlue), #efefef);
+	background: linear-gradient(45deg, var(--deepBlue), var(--lightGray));
 	filter: blur(1rpx);
 }
 
@@ -50,6 +50,7 @@ page {
 	font-size: 80rpx;
 	font-weight: bold;
 	color: var(--deepBlue);
+	text-shadow: 0 0 20rpx rgba(156, 156, 156, 0.2);
 }
 .miniprogramTitle::before {
 	content: '';
@@ -60,7 +61,7 @@ page {
 	width: 250rpx;
 	z-index: -1;
 	border-radius: 50%;
-	background: linear-gradient(var(--blue), rgb(206, 206, 206));
+	background: linear-gradient(var(--blue), var(--gray));
 	filter: blur(18rpx);
 	animation: ballAnimation3 20s ease infinite;
 }
@@ -73,76 +74,37 @@ page {
 	width: 200rpx;
 	z-index: -1;
 	border-radius: 50%;
-	background: linear-gradient(rgb(206, 206, 206), #efefef);
+	background: linear-gradient(var(--darkGray), var(--lightGray));
 	filter: blur(14rpx);
 }
 
 /* 信息填写区域 */
 .infoContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: left;	
 	position: absolute;
 	top: 38%;
 	left: 5%;
 	height: auto;
 	width: 90%;
 	margin: 200rpx auto 0rpx;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: left;
+	padding: 40rpx 0rpx;
+	background: var(--white);
+	border-radius: 30rpx;
+	box-shadow: 0 0 50rpx rgba(0, 0, 0, 0.15);
 }
 .infoContainer::before {
 	content: '';
 	position: absolute;
-	top: 10rpx;
-	left: 10%;
-	height: 120rpx;
-	width: 120rpx;
+	bottom: -25rpx;
+	left: -25rpx;
+	height: 50rpx;
+	width: 50rpx;
 	border-radius: 50%;
 	z-index: -1;
 	background: linear-gradient(180deg, var(--lightBlue), var(--gray));
-	filter: blur(16rpx);
-	animation: ballAnimation2 4s ease-in-out infinite;
-}
-.infoContainer::after {
-	content: '';
-	position: absolute;
-	top: 450rpx;
-	left: 40%;
-	height: 250rpx;
-	width: 250rpx;
-	z-index: -1;
-	border-radius: 50%;
-	background: linear-gradient(-45deg, var(--darkGray), var(--lightBlue));
-	filter: blur(15px);
-	animation: ballAnimation1 4s ease-in-out infinite;
-}
-@keyframes ballAnimation1 {
-	0% {
-		transform: scale(0.85) translateX(0rpx);
-		filter: blur(5px);
-	}
-	50% {
-		transform: scale(0.75) translateX(80rpx);
-		filter: blur(15px);
-	}
-	100% {
-		transform: scale(0.85) translateX(0rpx);
-		filter: blur(5px);
-	}
-}
-@keyframes ballAnimation2 {
-	0% {
-		transform: scale(0.9) translateY(0rpx) translateX(0rpx);
-		filter: blur(6px);
-	}
-	50% {
-		transform: scale(0.7) translateY(-40rpx) translateY(-40rpx);
-		filter: blur(16px);
-	}
-	100% {
-		transform: scale(0.9) translateY(0rpx) translateY(0rpx);
-		filter: blur(6px);
-	}
 }
 @keyframes ballAnimation3 {
 	0% {
@@ -158,38 +120,37 @@ page {
 /* 切换登陆状态 */
 .loginMethodContainer {
 	display: grid;
-	grid-template-columns: 1fr 0fr 1fr;
+	grid-template-columns: 1fr 1fr;
 	justify-content: center;
 	align-items: center;
-	height: 50rpx;
-	width: 50%;
+	height: auto;
+	width: 60%;
 	margin-bottom: 40rpx;
 	text-align: center;
 	font-size: 36rpx;
 	font-weight: bold;
-	color: #5a5a5a;
+	color: var(--lightBlack);
+}
+.littleBtn {
+	padding: 20rpx;
+	border-radius: 20rpx;
+	background: none;
 }
 .registerMethodContainer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 50rpx;
+	height: auto;
 	width: 50%;
 	margin-bottom: 40rpx;
 	text-align: center;
 	font-size: 36rpx;
 	font-weight: bold;
 }
-.line {
-	height: 100%;
-	width: 0;
-	background: #5c5c5c;
-	border: 2rpx solid #5c5c5c;
-}
 .selected {
 	transition: all 0.15s ease-in-out;
-	color: #0058cc;
-	animation: enlarge 0.4s ease-in-out;
+	color: var(--deepBlue);
+	background: var(--lightGray);
 }
 .unSelected {
 	transition: all 0.15s ease-in-out;
@@ -202,15 +163,14 @@ page {
 	height: 80rpx;
 	width: 65%;
 	padding: 5rpx 10rpx 5rpx 130rpx;
-	margin-bottom: 20rpx;
-	background: rgb(90,90,90,0.15);
-	backdrop-filter: blur(5px);
-	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
+	margin-bottom: 30rpx;
+	background: var(--white);
+	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
 	border-radius: 20rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
 	font-weight: normal;
-	animation: showContainer 0.3s ease-in-out;
+	animation: showContainer 0.4s ease-in-out;
 }
 .inputUserPhone::before {
 	content: '手机';
@@ -226,17 +186,16 @@ page {
 	text-align-last: justify;
 	font-size: 30rpx;
 	font-weight: bold;
-	color: #000;
+	color: var(--lightBlack);
 }
 .password {
 	position: relative;
 	height: 80rpx;
 	width: 65%;
 	padding: 5rpx 10rpx 5rpx 130rpx;
-	margin-bottom: 20rpx;
-	background: rgb(90,90,90,0.15);
-	backdrop-filter: blur(5px);
-	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
+	margin-bottom: 30rpx;
+	background: var(--white);
+	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
 	border-radius: 20rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
@@ -257,7 +216,7 @@ page {
 	text-align-last: justify;
 	font-size: 30rpx;
 	font-weight: bold;
-	color: #000;
+	color: var(--lightBlack);
 }
 .verifyContainer {
 	display: flex;
@@ -269,16 +228,15 @@ page {
 	width: 85%;
 	padding: 5rpx 5rpx 5rpx 0rpx;
 	margin-bottom: 20rpx;
-	animation: showContainer 0.5s ease-in-out;
+	animation: showContainer 0.4s ease-in-out;
 }
 .verifyCode{
 	position: relative;
 	height: 100%;
 	width: 31%;
 	padding: 5rpx 10rpx 5rpx 130rpx;
-	background: rgb(90,90,90,0.15);
-	backdrop-filter: blur(5px);
-	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
+	background: var(--white);
+	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
 	border-radius: 20rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
@@ -298,7 +256,7 @@ page {
 	text-align-last: justify;
 	font-size: 30rpx;
 	font-weight: bold;
-	color: #000;
+	color: var(--lightBlack);
 }
 .imgCode {
 	width: 40%;
@@ -306,16 +264,15 @@ page {
 	padding: 5rpx 5rpx;
 	background: no-repeat;
 	border-radius: 20rpx;
-	box-shadow: 0 0 20rpx rgba(0,0,0,0.2);
+	box-shadow: 0 0 20rpx rgba(0,0,0,0.15);
 }
 .msgVerifyCode {
 	position: relative;
 	height: 80rpx;
 	width: 35%;
 	padding: 5rpx 10rpx 5rpx 130rpx;
-	background: rgb(90,90,90,0.15);
-	backdrop-filter: blur(5px);
-	box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
+	background: var(--white);
+	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
 	border-radius: 20rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
@@ -335,47 +292,47 @@ page {
 	text-align-last: justify;
 	font-size: 30rpx;
 	font-weight: bold;
-	color: #000;
+	color: var(--lightBlack);
 }
 .getMsgVerifyCodeBtn {
 	height: 100%;
 	width: 35%;
 	margin: 0;
 	padding: 5rpx 0rpx;
-	background: linear-gradient(90deg, var(--blue), var(--lightBlue));
+	background: var(--littleLightBlue);
+	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
 	border-radius: 20rpx;
 	text-align: center;
 	font-size: 30rpx;
-	font-weight: bold;
+	font-weight: normal;
+	color: var(--black);
 }
 
 /* 底部区域 */
 .footer {
 	position: relative;
-	height: fit-content;
-	width: 100%;
+	height: auto;
+	width: 85%;
 	text-align: center;
 }
 .changeState {
 	position: relative;
 	height: 50rpx;
 	width: fit-content;
-	margin: 10rpx auto 0rpx;
+	margin: 10rpx auto 30rpx;
 	line-height: 50rpx;
 	font-size: 30rpx;
-	text-decoration: underline;
-	color: gray;
+	color: var(--lightBlack);
 }
 .button {
-	position: absolute;
-	bottom: -100rpx;
-	right: 60rpx;
+	position: relative;
+	float: right;
 	height: 50rpx;
-	width: auto;
+	width: 100rpx;
 	padding: 10rpx 30rpx;
-	background: linear-gradient(90deg, var(--blue), var(--lightBlue));
+	background: var(--littleLightBlue);
 	border-radius: 20rpx;
-	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
 	line-height: 50rpx;
 	font-weight: bold;
 	font-size: 36rpx;
@@ -384,21 +341,10 @@ page {
 @keyframes showContainer {
 	0% {
 		opacity: 0;
-		transform: scale(0.85) translateY(30%);
+		transform: translateY(-20%);
 	}
 	100% {
 		opacity: 1;
-		transform: scale(1) translateY(0);
-	}
-}
-@keyframes enlarge {
-	0% {
-		transform: translateY(0%);
-	}
-	50% {
-		transform: translateY(-30%);
-	}
-	100% {
-		transform: translateY(0%);
+		transform: translateY(0);
 	}
 }

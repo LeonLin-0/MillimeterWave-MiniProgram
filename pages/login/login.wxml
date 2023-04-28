@@ -8,9 +8,8 @@
 	<block wx:if="{{isRegister ? false : true}}">
 		<!-- 登陆方式选择 -->
 		<view class="loginMethodContainer">
-			<view class="useMessage {{isPassword ? 'unSelected' : 'selected'}}" bindtap="setLoginMethod" data-method="message">短信登录</view>
-			<text class="line"></text>
-			<view class="usePassword {{isPassword ? 'selected' : 'unSelected'}}" bindtap="setLoginMethod" data-method="password">密码登录</view>
+			<view class="useMessage littleBtn {{isPassword ? 'unSelected' : 'selected'}}" bindtap="setLoginMethod" data-method="message">短信登录</view>
+			<view class="usePassword littleBtn {{isPassword ? 'selected' : 'unSelected'}}" bindtap="setLoginMethod" data-method="password">密码登录</view>
 		</view>
 		<!-- 密码登录 -->
 		<block wx:if="{{isPassword ? true : false}}">
@@ -59,7 +58,7 @@
 	<!-- 注册模块 -->
 	<block wx:if="{{isRegister ? true : false}}">
 		<view class="registerMethodContainer">
-			<view class="usePassword selected">短信注册</view>
+			<view class="usePassword selected littleBtn">短信注册</view>
 		</view>
 		<input
 			type="number"
@@ -84,7 +83,7 @@
 
 		<view class="button" wx:if="{{isRegister}}" bindtap="loginOrRegister">注册</view>
 		<view class="button" wx:if="{{!isRegister}}" bindtap="loginOrRegister">登录</view>
-	</view>	
+	</view>
 </view>
 
 

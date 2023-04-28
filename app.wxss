@@ -3,12 +3,19 @@ page {
   	/*主题色*/
   --lightPink: #fee3e3;
   --red: #f45d5d;
+  --lightBlack: #35495e;
+  --black: #000;
+  --white: #fff;
   --lightGray: #efefef;
   --gray: #e5e5e5;
   --darkGray: #afafaf;
+  --darkBlue: #0050b8;
   --deepBlue: #0058cc;
+  --littleDeepBlue: #1471eb;
   --blue: #2b80f8;
-  --lightBlue:#72a8f4;
+  --littleLightBlue: #5ea0fb;
+  --lightBlue:#93c0ff;
+  --grayBlue: #a0b7d8;
 }
 .container {
   height: 100%;
