@@ -39,13 +39,13 @@ page {
   height: 150rpx;
   width: 85%;
   margin: 0rpx auto 50rpx;
-  background: linear-gradient(90deg, var(--deepBlue), #1487d4ea);
-  box-shadow: 5rpx 5rpx 20rpx rgba(0,0,0,0.35), 5rpx 5rpx 20rpx rgba(255,255,255,0.35) inset;
-  border-radius: 26rpx;
+	background: linear-gradient(0deg, var(--lightBlue) -10%, var(--littleDeepBlue) 90%);
+  box-shadow: 0 0 20rpx var(--shadowGray);
+  border-radius: 20rpx;
   text-align: left;
   font-size: 32rpx;
   font-weight: bold;
-  color: rgba(255,255,255,0.9);
+  color: var(--white);
   animation: showComponent 0.6s ease-in-out;
 }
 .timeContainer {

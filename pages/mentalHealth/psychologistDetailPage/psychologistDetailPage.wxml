@@ -32,5 +32,94 @@
 			<view class="title">评分</view>
 		</view>
 	</view>
+	<view class="commentList">
+		<view class="commentTitle">用户评论</view>
+		<block wx:for="{{commentList}}" wx:key="index">
+			<view class="commentContainer">
+				<view class="userContainer">
+					<view class="userImg">{{item.Id}}</view>
+					<view class="userName">匿名用户{{item.Id}}</view>
+				</view>
+				<view class="commentContent">{{item.content}}</view>
+			</view>
+		</block>
+		<block wx:if="{{!commentList}}">
+			<view class="emptyContent">暂无评论</view>
+		</block>
+	</view>
 </view>
-<button class="toChatBtn" bindtap="toChatRoom">前往咨询</button>
+<view class="bottomContainer">
+	<view class="iconGroup" bindtap="setLiked">
+		<van-icon name="like-o" class="icon" wx:if="{{!isLiked}}"/>
+		<van-icon name="like" class="icon likedIcon" wx:if="{{isLiked}}"/>
+	</view>
+	<button class="toPreBtn" bindtap="showAppointmentContainer">前往预约</button>
+	<button class="toChatBtn" bindtap="toChatRoom">前往咨询</button>
+</view>
+<van-popup
+	show="{{showPopUp}}"
+	bind:before-enter="getAppointableTime"
+	bind:close="closePopUp"
+	position="bottom"
+	overlay="{{true}}"
+	safe-area-inset-bottom="{{true}}"
+	z-index="200"
+	round="{{true}}"
+	lock-scroll="{{true}}"
+	closeable
+	>
+	<view class="orderList">
+		<view class="orderTitle">可预约时间</view>
+		<van-radio-group
+			wx:if="{{appointableTime.length !== 0}}"
+			value="{{result}}"
+			bind:change="onChooseTime"
+			class="cellStyle"
+		>
+			<van-cell-group>
+				<van-cell
+					wx:for="{{ appointableTime }}"
+      		wx:key="index"
+					custom-class="cellCustomStyle"
+					title-class="cellTitleStyle"
+					value-class="cellValueStyle"
+      		data-id="{{ item.Id }}"
+					data-unchoosable="{{item.isReserved >= item.reserved}}"
+      		bind:click="onClickTime"
+				>
+					<view slot="title">
+						<view class="orderContainer">
+							<view class="orderTimeContainer">
+								<view>✨{{item.date}}-{{item.week}}</view>
+								<view>{{item.time}}</view>
+							</view>
+							<view class="position">
+								剩余：
+								<view class="residual">
+									{{item.reserved - item.isReserved}}
+								</view>
+								/
+								<view class="all">
+									{{item.reserved}}
+								</view>
+							</view>
+						</view>
+					</view>
+					<van-radio
+						name="{{item.Id}}"
+						value="{{item.isReserved >= item.reserved}}"
+						checked-color="var(--deepBlue)"
+						disabled="{{item.isReserved >= item.reserved}}"
+					/>
+				</van-cell>
+			</van-cell-group>
+		</van-radio-group>
+		<view class="emptyContainer" wx:if="{{appointableTime.length === 0}}">
+			<image class="emptyImg" src="../../../icon/noOrder.svg"/>
+			<view class="emptyText">暂无可预约时间</view>
+		</view>
+	</view>
+	<view class="popUpBtnGroup">
+		<button class="submit" bindtap="submitOrder">确定</button>
+	</view>
+</van-popup>

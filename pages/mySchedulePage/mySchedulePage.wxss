@@ -1,0 +1,395 @@
+/* pages/mySchedulePage/mySchedulePage.wxss */
+.scheduleList {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	height: auto;
+	width: 100%;
+	padding: 20rpx 4% 20rpx;
+	margin-top: 180rpx;
+}
+.scheduleCountContainer {
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	height: auto;
+	width: 100%;
+	padding: 20rpx 0rpx;
+	margin-bottom: 50rpx;
+	border: 4rpx solid var(--littleDeepBlue);
+	border-radius: 20rpx;
+}
+.childContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	border-right: 1rpx solid var(--shadowGray);
+}
+.childContainer:last-child {
+	border: none;
+}
+.title {
+	height: 50rpx;
+	width: fit-content;
+	border-bottom: 1rpx solid var(--darkGray);
+	line-height: 50rpx;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: var(--black);
+}
+.number {
+	height: 80rpx;
+	width: fit-content;
+	transform: scaleY(1.15);
+	line-height: 80rpx;
+	font-size: 50rpx;
+	font-weight: bold;
+	background-image: linear-gradient(var(--littleDeepBlue), transparent 180%);
+	color: transparent;
+	-webkit-background-clip: text;
+}
+.scheduleContainer {
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+	margin-bottom: 30rpx;
+	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx var(--shadowGray);
+	overflow: hidden;
+	animation: showContainer 0.5s ease-in-out;
+}
+.header {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	height: 70rpx;
+	width: 100%;
+	padding: 20rpx 20rpx 0;
+	background: linear-gradient(0deg, var(--littleLightBlue) -10%, var(--littleDeepBlue));
+}
+.date, .time {
+	height: 100%;
+	font-weight: bold;
+	color: var(--white);
+}
+.time {
+	color: var(--lightBlack);
+}
+.reserveList {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	height: 60rpx;
+	width: 100%;
+	padding: 10rpx 20rpx 0;
+}
+.reserveContainer {
+	height: 50rpx;
+	width: fit-content;
+	margin-right: 50rpx;
+	line-height: 50rpx;
+	font-size: 32rpx;
+	color: var(--lightBlack);
+}
+.reserveNum {
+	font-weight: bold;
+	color: var(--littleDeepBlue);
+}
+.state {
+	box-sizing: border-box;
+	height: 50rpx;
+	width: fit-content;
+	padding: 0rpx 10rpx;
+	margin-left: auto;
+	background: var(--white);
+	line-height: 46rpx;
+	border-radius: 16rpx;
+	border: 1px solid var(--green);
+	font-weight: bold;
+	font-size: 30;
+	color: var(--green);
+}
+.endState {
+	border: 1px solid var(--lightBlack);
+	color: var(--deepGray);
+}
+.userList {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	height: auto;
+	width: 100%;
+	padding: 10rpx 20rpx 20rpx;
+}
+.userContainer {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
+	height: 100rpx;
+	width: 100%;
+	margin-bottom: 16rpx;
+}
+.userContainer:last-child {
+	margin-bottom: 0;
+}
+.userImg {
+	height: 100rpx;
+	width: 100rpx;
+	margin-right: 16rpx;
+	box-shadow: 0 0 5rpx var(--shadowGray);
+	border-radius: 10rpx;
+}
+.userInfo {
+	position: relative;
+	height: 100rpx;
+	width: 82%;
+	border-bottom: 1px solid var(--shadowGray);
+}
+.userContainer:last-child .userInfo {
+	border-bottom: 0;
+}
+.userInfoLine {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	height: 50rpx;
+	width: 100%;
+	overflow: hidden;
+	line-height: 50rpx;
+	font-size: 30rpx;
+	font-weight: bold;
+	color: var(--lightBlack)
+}
+.userName, .userAge, .userGender {
+	margin-right: 30rpx;
+}
+.userSickContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+.userSick {
+	height: 40rpx;
+	width: fit-content;
+	padding: 2rpx 10rpx;
+	line-height: 40rpx;
+	border: 2rpx solid var(--lightBlack);
+	border-radius: 16rpx;
+	margin-right: 10rpx;
+	color: var(--deepGray);
+}
+.userSick:last-child {
+	margin-right: 0;
+}
+.userSickEmpty {
+	color: var(--littleDeepBlue);
+}
+/* 预约空状态 */
+.userEmptyContainer {
+	display: flex;
+	flex-direction: column;
+	height: 150rpx;
+	width: 100%;
+	margin-top: 20rpx;
+}
+.userEmptyImg {
+	height: 90rpx;
+	width: 100%;
+}
+.userEmptyText {
+	height: 50rpx;
+	width: 100%;
+	margin-top: 10rpx;
+	text-align: center;
+	line-height: 50rpx;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: var(--shadowGray);
+}
+
+.scheduleBtnGroup {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	height: 100rpx;
+	width: 100%;
+	padding: 10rpx 20rpx 20rpx;
+}
+.deleteBtn {
+	height: 70rpx;
+	width: 200rpx;
+	margin-right: 20rpx;
+	border: 1rpx solid var(--black);
+	background: transparent;
+	line-height: 68rpx;
+	font-weight: bold;
+	color: var(--black);
+}
+.modifyBtn {
+	height: 70rpx;
+	width: 200rpx;
+	margin: 0;
+	background: linear-gradient(0deg, var(--lightBlue) -10%, var(--deepBlue) 90%);
+	-webkit-background-clip: text;
+	border: 1rpx solid var(--deepBlue);
+	line-height: 68rpx;
+	font-weight: bold;
+	color: transparent;
+}
+/* 弹出层 */
+.modifyPopUpContainer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.2);
+	backdrop-filter: blur(8px);
+	z-index: 101;
+}
+/* 弹出层内容 */
+.bottomContainer {
+	height: auto;
+	width: 100%;
+}
+.formContainer {
+	box-sizing: border-box;
+	position: relative;
+	height: auto;
+	width: 90%;
+	margin: auto;
+	padding-bottom: 20rpx;
+	background: var(--white);
+	box-shadow: 0 0 20rpx var(--gray);
+	border-radius: 20rpx;
+	overflow: hidden;
+	animation: showContainer 0.4s ease-in-out;
+}
+.formTitle {
+	box-sizing: border-box;
+	height: 80rpx;
+	width: 100%;
+	padding: 20rpx 20rpx 10rpx;
+	background: var(--blue);
+	line-height: 50rpx;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: var(--white);
+}
+.formBody {
+	box-sizing: border-box;
+	position: relative;
+	height: auto;
+	width: 100%;
+	padding: 20rpx;
+}
+.formLine {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 100rpx;
+	width: 100%;
+	padding: 20rpx;
+	line-height: 100rpx;
+	border-bottom: 1px solid var(--shadowGray);
+}
+.lastLine {
+	border-bottom: none;
+}
+.formLineTitle {
+	font-size: 34rpx;
+	font-weight: bold;
+}
+.content {
+	height: 70rpx;
+	width: 250rpx;
+	border: 1px solid var(--shadowGray);
+	border-radius: 10rpx;
+	line-height: 70rpx;
+	text-align: center;
+	font-size: 34rpx;
+	font-weight: bold;
+}
+.input {
+	height: 100%;
+}
+.btnGroup {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-top: 20rpx;
+	height: 80rpx;
+	width: 100%;
+}
+.resetBtn, .addBtn {
+	height: 80rpx;
+	width: 80%;
+	line-height: 78rpx;
+	font-size: 34rpx;
+	font-weight: bold;
+}
+.resetBtn {
+	background: transparent;
+	border: 1rpx solid var(--black);
+	color: var(--black);
+}
+.addBtn {
+	border: 1rpx solid var(--blue);
+	background: var(--blue);
+	color: var(--white);
+}
+.addBtn:active {
+	background: var(--littleDeepBlue);
+}
+/* 日程空状态 */
+.emptyContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+}
+.emptyIcon {
+	height: 300rpx;
+	width: 300rpx;
+	margin-top: 200rpx;
+}
+.emptyText {
+	height: 100rpx;
+	width: auto;
+	margin-bottom: 50%;
+	font-size: 50rpx;
+	font-weight: bold;
+	color: var(--shadowGray);
+}
+@keyframes showContainer {
+	0% {
+		opacity: 0;
+		transform: translateX(80%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}

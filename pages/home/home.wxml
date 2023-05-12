@@ -26,6 +26,18 @@
     修改密码
     <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
   </view>
+  <view class="setting myOrder"  wx:if="{{userInfo.role === 2}}" bindtap="toMyOrderPage">
+    我的预约
+    <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
+  </view>
+  <view class="setting setOrder"  wx:if="{{userInfo.role === 2}}" bindtap="toSetOrderPage">
+    设置预约
+    <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
+  </view>
+  <view class="setting mySchedule" wx:if="{{userInfo.role === 2}}" bindtap="toGetSchedule">
+    我的日程
+    <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>
+  </view>
   <view class="setting introduction" bindtap="toAboutUsPage">
     关于我们
     <van-icon name="arrow" size="38rpx" class="rightIcon"></van-icon>

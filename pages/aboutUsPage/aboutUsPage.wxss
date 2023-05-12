@@ -23,7 +23,7 @@ page {
 	border-radius: 50%;
 	background: linear-gradient(90deg, var(--lightBlue), var(--blue));
 	z-index: -1;
-	animation: showContainer1 3s ease-in-out infinite;
+	/* animation: showContainer1 3s ease-in-out infinite; */
 }
 .pageBody::after {
 	content: '';
@@ -33,10 +33,10 @@ page {
 	height: 200rpx;
 	width: 200rpx;
 	border-radius: 50%;
-	background: linear-gradient(0deg, #0c74d6, var(--blue));
+	background: linear-gradient(0deg, var(--littleDeepBlue), var(--blue));
 	filter: opacity(0.8);
 	z-index: -1;
-	animation: showContainer1 3.5s ease-in-out infinite;
+	/* animation: showContainer1 3.5s ease-in-out infinite; */
 }
 .title {
 	display: block;
@@ -45,14 +45,14 @@ page {
 	padding: 20rpx;
 	border-radius: 20rpx;
 	backdrop-filter: blur(20rpx);
-	box-shadow: 0 0 20rpx rgba(0,0,0,0.45);
+	box-shadow: 0 0 20rpx var(--shadowGray);
 	line-height: 60rpx;
 	font-size: 32rpx;
 	font-weight: bold;
-	color: var(--deepBlue);
+	color: var(--darkBlue);
 }
 .projectTitle {
-	border-radius: 30rpx;
+	border-radius: 20rpx;
 }
 .textContainer {
 	display: flex;
@@ -68,8 +68,8 @@ page {
 	background: rgb(239,239,239,0.25);
 	backdrop-filter: blur(25rpx) brightness(95%);
 	-webkit-backdrop-filter: blur(24rpx) brightness(95%);
-	border-radius: 30rpx;
-	box-shadow: 0 0 40rpx rgba(0,0,0,0.45);
+	border-radius: 16rpx;
+	box-shadow: 0 0 40rpx var(--shadowGray);
 	font-size: 32rpx;
 	text-align: justify;
 }
@@ -82,13 +82,14 @@ page {
 	width: 50rpx;
 	border-radius: 50%;
 	background: linear-gradient(0deg, var(--lightBlue), var(--deepBlue));
-	animation: showContainer 3s ease-in-out infinite;
+	/* animation: showContainer 3s ease-in-out infinite; */
 }
 .textContainer .title {
 	height: 50rpx;
+	margin-bottom: 20rpx;
 	line-height: 50rpx;
 	padding: 4rpx 20rpx;
-	box-shadow: 0 0 20rpx rgba(128, 128, 128, 0.6);
+	box-shadow: 0 0 20rpx var(--shadowGray);
 }
 .textContainer:nth-last-child(1) {
 	margin-bottom: 60rpx;
@@ -125,21 +126,24 @@ page {
 	height: 50rpx;
 	width: fit-content;
 	line-height: 50rpx;
-	padding: 4rpx 10rpx;
+	padding: 4rpx 12rpx 4rpx 10rpx;
 	margin-right: 10rpx;
 	background: var(--lightGray);
-	border-radius: 20rpx;
-	box-shadow: 0 0 15rpx rgba(60, 60, 60, 0.4);
-	color: rgb(60, 60, 60);
+	border-radius: 16rpx;
+	box-shadow: 0 0 15rpx var(--shadowGray);
+	color: var(--black);
 }
 .memberName {
+	box-sizing: border-box;
 	height: 50rpx;
 	width: fit-content;
-	line-height: 50rpx;
+	line-height: 40rpx;
 	padding: 4rpx 12rpx;
-	background: var(--lightBlue);
-	border-radius: 20rpx;
-	box-shadow: 0 0 15rpx rgba(114, 114, 114, 0.4);
+	background: linear-gradient(0deg, var(--lightBlue) -10%, var(--littleDeepBlue) 70%);
+	-webkit-background-clip: text;
+	border: 1rpx solid var(--littleDeepBlue);
+	border-radius: 16rpx;
+	color: transparent;
 }
 @keyframes showContainer {
 	0% {

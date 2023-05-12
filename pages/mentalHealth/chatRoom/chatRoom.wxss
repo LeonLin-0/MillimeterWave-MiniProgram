@@ -10,7 +10,34 @@ page {
 	box-sizing: border-box;
 	height: 100vh;
 	width: 100vw;
-  background: #f5f5f5;
+  background: var(--littleGray);
+}
+.chatRoomHeader {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 90rpx;
+  width: 100%;
+  z-index: 100;
+	padding-top: 80rpx;
+  backdrop-filter: blur(6px);
+	line-height: 70rpx;
+	text-align: center;
+	font-size: 36rpx;
+	font-weight: bold;
+	text-shadow: 0 0 1.5px rgba(255,255,255,0.1);
+	color: var(--black);
+}
+.leftIcon {
+	display: block;
+	position: absolute;
+	top: 103rpx;
+	left: 50rpx;
+	height: 36rpx;
+	width: 36rpx;
+	font-size: 36rpx;
+	line-height: 36rpx;
 }
 .chatContainer {
   height: 94vh;
@@ -39,8 +66,8 @@ getPic {
 	left: 0;
 	height: fit-content;
 	width: 100%;
-	background: #f5f5f5;
-	border-top: 2rpx solid #ececec;
+	background: var(--littleGray);
+	border-top: 2rpx solid var(--gray);
 }
 .inputContainer {
   display: flex;
@@ -57,11 +84,11 @@ getPic {
 	min-height: 40rpx;
 	max-height: 120rpx;
 	width: 63%;
-	border-radius: 20rpx;
+	border-radius: 16rpx;
 	margin-left: 5%;
 	padding: 10rpx 20rpx;
-	background: #fff;
-	border: 1rpx solid #ececec;
+	background: var(--white);
+	border: 1rpx solid var(--gray);
 	outline: none;
   vertical-align: top;
 	line-height: 40rpx;
@@ -79,11 +106,20 @@ getPic {
   width: fit-content;
   padding: 0rpx 20rpx;
   margin: 0;
-  line-height: 60rpx;
+  line-height: 58rpx;
   border-radius: 20rpx;
-  background: linear-gradient(90deg, var(--blue), var(--lightBlue));
+  background: linear-gradient(0deg, var(--lightBlue) -10%, var(--littleDeepBlue));
+  -webkit-background-clip: text;
+  border: 1rpx solid var(--littleDeepBlue);
   font-size: 30rpx;
   font-weight: bold;
+  color: transparent;
+}
+.sendBtn:active {
+  border: none;
+  line-height: 60rpx;
+  -webkit-background-clip: unset;
+  color: var(--white);
 }
 .rotate {
   transition: all 0.5s ease-in-out;
@@ -108,7 +144,10 @@ getPic {
   width: 60rpx;
   padding: 30rpx;
   border-radius: 20rpx;
-  box-shadow: 0 0 15rpx rgba(210,210,210,0.8);
+  box-shadow: 0 0 10rpx var(--gray);
+}
+.function:first-child {
+  display: none;
 }
 .showFunArea {
   height: 200rpx;
@@ -136,4 +175,37 @@ getPic {
 .keyboardBtn {
   height: 60rpx;
   width: 60rpx;
+}
+.commentContainer {
+  height: auto;
+  width: 90%;
+  margin: 60rpx auto 30rpx;
+}
+.commentTitle {
+  height: 50rpx;
+  width: fit-content;
+  line-height: 50rpx;
+  font-size: 34rpx;
+}
+.commentText {
+  height: 300rpx;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  padding: 20rpx;
+  border: 1px solid var(--shadowGray);
+  border-radius: 20rpx;
+  line-height: 40rpx;
+  font-size: 34rpx;
+}
+.submit {
+  float: right;
+  height: 80rpx;
+  width: 40%;
+  margin-top: 40rpx;
+  border: none;
+  background: var(--deepBlue);
+  font-weight: normal;
+  font-size: 34rpx;
+  color: var(--white);
 }

@@ -1,18 +1,36 @@
 // pages/mentalHealth/mentalHealthHistory/mentalHealthHistory.js
+import { getRequest } from "../../../utils/util";
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    historyList: [],
+    noDataImg: '../../../icon/noData.svg'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    getRequest('/question/GetAnalyReportHistory')
+    .then(({data: res}) => {
+      if (res.code === 200) {
+        let reList = (res.data || []).reverse();
+        let timer = setInterval(() => {
+          if(reList.length !== 0) {
+            this.setData({
+              historyList: [...this.data.historyList, reList.shift()]
+            })
+          }
+          else {
+            clearInterval(timer);
+          }
+        }, 140);
+      }
+    })
   },
 
   /**
@@ -62,5 +80,15 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  toMentalHealthDetail(e) {
+    let data = e.currentTarget.dataset.history;
+    getRequest(`/question/GetAnalyReportDetailed?id=${data.id}`)
+    .then(({data: res}) => {
+      wx.setStorageSync('psyResult', JSON.stringify(res));
+      wx.navigateTo({
+        url: `/pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion?resultName=psyResult`,
+      })
+    })
   }
 })

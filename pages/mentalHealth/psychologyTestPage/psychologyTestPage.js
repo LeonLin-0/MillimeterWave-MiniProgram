@@ -1,6 +1,7 @@
 // pages/mentalHealth/psychologyTestPage/psychologyTestPage.js
 import { getRequest, postRequest } from "../../../utils/util";
-import { setWatcher } from "../../../utils/watch"
+import { setWatcher } from "../../../utils/watch";
+
 Page({
   /**
    * 页面的初始数据
@@ -22,8 +23,9 @@ Page({
     choiceList: [], // 答案选项数组
     startTime: '', // 测试开始时间
     showSubmitBtn: false, // 显示提交按钮
-    showComponent: false
+    showComponent: false,
   },
+  timer: null, // 防抖定时器
 
   /**
    * 生命周期函数--监听页面加载
@@ -184,30 +186,31 @@ Page({
         currentBtn: -1
       })
     } else { // 点击按钮
+      clearTimeout(this.timer);
       this.setData({
         currentBtn: selBtn
       })
-    }
-    // 设置选项数组
-    let choiceTarget = this.data.choiceList;
-    choiceTarget[this.data.nowSubjectNum-1] = this.data.currentBtn;
-    this.setData({
-      choiceList: choiceTarget
-    })
-    // 设置答案数组
-    let answerTarget = this.data.answerList;
-    answerTarget[this.data.nowSubjectNum-1] = this.data.currentBtn === -1 ? -1 : score;
-    this.setData({
-      answerList: answerTarget
-    })
-    // 判断是否选择完所有题目
-    this.judgeFinishedAll();
-    // 如果不是取消答案，则切换下一道题
-    if(curBtn != selBtn) {
-      let timer = setTimeout(() => {
-        this.toNextSubject();
-        clearTimeout(timer);
-      },300)
+      this.timer = setTimeout(() => {
+        // 设置选项数组
+        let choiceTarget = this.data.choiceList;
+        choiceTarget[this.data.nowSubjectNum-1] = this.data.currentBtn;
+        this.setData({
+          choiceList: choiceTarget
+        })
+        // 设置答案数组
+        let answerTarget = this.data.answerList;
+        answerTarget[this.data.nowSubjectNum-1] = this.data.currentBtn === -1 ? -1 : score;
+        this.setData({
+          answerList: answerTarget
+        })
+        // 判断是否选择完所有题目
+        this.judgeFinishedAll();
+        // 如果不是取消答案，则切换下一道题
+        if(curBtn != selBtn) {
+            // this.toNextSubject();
+            // console.log('触发');
+        }
+      }, 0);
     }
   },
   // 按照答案数组，进行选项样式设置

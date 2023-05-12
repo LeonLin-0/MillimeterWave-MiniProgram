@@ -207,6 +207,13 @@ Page({
               icon: 'error',
               duration: 800
             })
+          // 清除定时器
+          clearInterval(this.data.timer);
+          // 恢复按钮和文字
+          this.setData({
+            mvcDisable: false,
+            msgVerifyCodeText: '获取验证码'
+          })
           }
         }
       })

@@ -15,7 +15,10 @@
     "pages/mentalHealth/psychologyTestChoicePage/psychologyTestChoicePage",
     "pages/mentalHealth/psychologyTestPage/psychologyTestPage",
     "pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion",
-    "pages/mentalHealth/mentalHealthHistory/mentalHealthHistory"
+    "pages/mentalHealth/mentalHealthHistory/mentalHealthHistory",
+    "pages/myOrderPage/myOrderPage",
+    "pages/mySchedulePage/mySchedulePage",
+    "pages/setOrderPage/setOrderPage"
   ],
   "tabBar": {
     "position": "bottom",

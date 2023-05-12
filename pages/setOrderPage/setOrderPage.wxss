@@ -1,0 +1,229 @@
+/* pages/setOrderPage/setOrderPage.wxss */
+.pageContainer {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+}
+.finalContainer {
+	box-sizing: border-box;
+	height: auto;
+	width: 90%;
+	padding: 20rpx;
+	margin: 180rpx auto 0rpx;
+	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx var(--gray);
+}
+.finalTitle {
+	height: 50rpx;
+	width: fit-content;
+	line-height: 50rpx;
+	font-size: 34rpx;
+	font-weight: bold;
+	color: var(--deepBlue);
+}
+.finalTip {
+	height: 40rpx;
+	width: fit-content;
+	line-height: 40rpx;
+	font-size: 28rpx;
+	color: var(--lightBlack);
+}
+.finalOrderList {
+	box-sizing: border-box;
+	height: auto;
+	max-height: 476rpx; /* 最多显示五列 */
+	width: 100%;
+	margin-top: 20rpx;
+	padding: 0rpx 20rpx;
+	background: var(--lightGray);
+	border-radius: 16rpx;
+	overflow-y: scroll;
+}
+.finalOrderContainer {
+	box-sizing: border-box;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	height: 120rpx;
+	width: 100%;
+	padding: 10rpx 20rpx;
+	border-bottom: 1rpx solid var(--shadowGray);
+}
+.finalOrderContainer:last-child {
+	border: none;
+}
+.icon {
+	height: 60rpx;
+	width: 60rpx;
+	margin-right: 30rpx;
+	font-size: 40rpx;
+	border-radius: 10rpx;
+	border: 1px solid var(--black);
+}
+.rightContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 84%;
+	font-weight: bold;
+	font-size: 30rpx;
+}
+.firstLine {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 50rpx;
+	width: 100%;
+}
+.date {
+	margin-right: 10rpx;
+	color: var(--deepGray);
+}
+.week {
+	margin-right: 30rpx;
+}
+.reverse {
+	box-sizing: border-box;
+	height: 50rpx;
+	width: 100%;
+}
+.emptyContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 250rpx;
+	width: 100%;
+	margin-top: 10rpx;
+	border-radius: 16rpx;
+	border: 1px solid var(--shadowGray);
+}
+.emptyIcon {
+	height: 150rpx;
+	width: 150rpx;
+}
+.emptyText {
+	height: 50rpx;
+	width: fit-content;
+	margin-top: 10rpx;
+	line-height: 50rpx;
+	font-weight: bold;
+	font-size: 32rpx;
+	color: var(--darkGray);
+}
+.bottomContainer {
+	height: auto;
+	width: 100%;
+	margin-bottom: 65rpx;
+}
+.formContainer {
+	box-sizing: border-box;
+	position: relative;
+	height: auto;
+	width: 90%;
+	margin: 30rpx auto 40rpx;
+	padding-bottom: 20rpx;
+	background: var(--white);
+	box-shadow: 0 0 20rpx var(--gray);
+	border-radius: 20rpx;
+	overflow: hidden;
+}
+.formTitle {
+	box-sizing: border-box;
+	height: 80rpx;
+	width: 100%;
+	padding: 20rpx 20rpx 10rpx;
+	background: var(--blue);
+	line-height: 50rpx;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: var(--white);
+}
+.formBody {
+	box-sizing: border-box;
+	position: relative;
+	height: auto;
+	width: 100%;
+	padding: 10rpx 40rpx 0rpx;
+}
+.formLine {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 100rpx;
+	width: 100%;
+	padding: 20rpx;
+	line-height: 100rpx;
+	border-bottom: 1px solid var(--shadowGray);
+}
+.lastLine {
+	border-bottom: none;
+}
+.title {
+	font-size: 34rpx;
+	font-weight: bold;
+}
+.content {
+	height: 70rpx;
+	width: 250rpx;
+	border: 1px solid var(--shadowGray);
+	border-radius: 10rpx;
+	line-height: 70rpx;
+	text-align: center;
+	font-size: 34rpx;
+	font-weight: bold;
+}
+.input {
+	height: 100%;
+}
+.btnGroup {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-top: 20rpx;
+	height: 80rpx;
+	width: 100%;
+}
+.resetBtn, .addBtn {
+	height: 80rpx;
+	width: 80%;
+	line-height: 78rpx;
+	font-size: 34rpx;
+	font-weight: bold;
+}
+.resetBtn {
+	border: 1rpx solid var(--black);
+	color: var(--black);
+}
+.addBtn {
+	border: 1rpx solid var(--blue);
+	background: var(--blue);
+	color: var(--white);
+}
+.addBtn:active {
+	background: var(--littleDeepBlue);
+}
+.submitBtnContainer {
+	height: 80rpx;
+	width: 90%;
+	margin: 0rpx auto;
+}
+.submitBtn {
+	height: 80rpx;
+	width: 50%;
+	background: linear-gradient(var(--lightBlue) -10%, var(--littleDeepBlue) 110%);
+	border-radius: 16rpx;
+	line-height: 80rpx;
+	font-weight: bold;
+	color: var(--white);
+}

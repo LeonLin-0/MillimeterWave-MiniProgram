@@ -6,21 +6,21 @@
 	flex-direction: column;
 	height: 300rpx;
 	width: 300rpx;
-	border-radius: 30rpx;
-	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+	border-radius: 20rpx;
+	box-shadow: 0 0 30rpx var(--shadowGray);
 	backdrop-filter: blur(10px);
 }
 .-emotion-unknown {
-	background: linear-gradient(180deg, #237cf8, #bcd1f0);
+	background: linear-gradient(180deg, var(--littleDeepBlue) -10%, var(--lightBlue) 90%);
 }
 .-emotion-happy {
-	background: linear-gradient(180deg, #f97878, #efefef);
+	background: linear-gradient(180deg, var(--littleRed), var(--lightGray));
 }
 .-emotion-calm {
-	background: linear-gradient(180deg, #63a87d, #efefef);
+	background: linear-gradient(180deg, var(--littleGreen), var(--lightGray));
 }
 .-emotion-stressful {
-	background: linear-gradient(180deg, #b32727, #efefef);
+	background: linear-gradient(180deg, var(--littleDeepRed), var(--lightGray));
 }
 .emotionTitle {
 	display: inline-block;
@@ -40,7 +40,7 @@
 	font-size: 60rpx;
 	line-height: 70rpx;
 	font-weight: 700;
-	color: #000;
+	color: var(--black);
 }
 .emotionIcon {
 	display: block;

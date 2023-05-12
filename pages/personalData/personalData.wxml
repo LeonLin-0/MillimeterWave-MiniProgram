@@ -1,18 +1,5 @@
 <!-- 顶部标题 -->
 <mainPageHeader headerTitle="{{headerTitle}}"></mainPageHeader>
-<!-- 头部 -->
-<view class="header">
-	<!-- 通知栏 -->
-	<van-notice-bar
-		class="noticeBar"
-		left-icon="volume-o"
-		mode="closeable"
-		background="linear-gradient(90deg, #0058cc, #2d82f7)"
-		color="#fff"
-		text="请确保手机和设备在同一局域网内"
-	/>
-</view>
-
 
 <!-- 中间信息模块 -->
 <view class="middleContainer">
@@ -46,6 +33,7 @@
     <image class="dataIcon" src="/icon/heart.svg"></image>
 	</view>
 	<view class="echarts">
+		<view class="emptyBox" wx:if="{{!showChart}}">未发起连接</view>
 		<ec-canvas  wx:if="{{showChart}}" id="echarts" ec="{{ec1}}"></ec-canvas>
 	</view>
 </view>
@@ -59,6 +47,7 @@
     <image class="dataIcon" src="/icon/breath.svg"></image>
 	</view>
 	<view class="echarts">
+		<view class="emptyBox" wx:if="{{!showChart}}">未发起连接</view>
 		<ec-canvas  wx:if="{{showChart}}" id="echarts" ec="{{ec2}}"></ec-canvas>
 	</view>
 </view>

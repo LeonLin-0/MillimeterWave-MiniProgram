@@ -12,20 +12,6 @@ page {
 	font-family: 'Microsoft YaHei';
 	font-weight: normal;
 }
-/* 提示栏 */
-.header {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: auto;
-	margin-top: 160rpx;
-}
-.noticeBar {
-	margin-top: 2rpx;
-	width: 100%;
-}
 
 /* 中间信息模块 */
 .middleContainer {
@@ -37,7 +23,7 @@ page {
 	box-sizing: border-box;
 	height: auto;
 	width: 650rpx;
-	margin: 50rpx auto;
+	margin-top: 190rpx;
 }
 
 /* 疾病*/
@@ -51,9 +37,9 @@ page {
 	box-sizing: border-box;
 	margin-right: 50rpx;
 	backdrop-filter: blur(10px);
-	background: linear-gradient(160deg, #fba32fe0, #f56f2ce3);
-	border-radius: 30rpx;
-	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+	background: linear-gradient(160deg, var(--lightOrange), var(--orange));
+	border-radius: 20rpx;
+	box-shadow: 0 0 30rpx var(--shadowGray);
 }
 .diseaseHistory {
 	display: inline-block;
@@ -83,7 +69,7 @@ page {
 	line-height: 32rpx;
 	background: rgba(250, 250, 250, 0.5);
 	backdrop-filter: blur(30rpx) ;
-	border-radius: 16rpx;
+	border-radius: 10rpx;
 }
 
 /* 点击连接按钮 */
@@ -92,13 +78,14 @@ page {
 	justify-content: center;
 	height: 100rpx;
 	width: 650rpx;
-	background: #fff;
+	background: var(--white);
 	border-radius: 20rpx;
 	margin-bottom: 50rpx;
+	margin-top: 50rpx;
 	line-height: 100rpx;
-	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+	box-shadow: 0 0 30rpx var(--shadowGray);
 	font-weight: bold;
-	color: #094aad;
+	color: var(--deepBlue);
 }
 
 /* 波形图显示模块 */
@@ -110,9 +97,9 @@ page {
 	min-height: 420rpx;
 	width: 650rpx;
 	background: var(--lightGray);
-	border-radius: 30rpx;
+	border-radius: 20rpx;
 	margin-bottom: 50rpx;
-	box-shadow: 0 0 30rpx rgb(190, 190, 190);
+	box-shadow: 0 0 30rpx var(--shadowGray);
 }
 .dataInfo {
 	display: block;
@@ -156,8 +143,8 @@ page {
 	position: relative;
 	height: 330rpx;
 	width: 100%;
-	background: #fff;
-	border-radius: 30rpx;
+	background: var(--white);
+	border-radius: 20rpx;
 }
 
 /* echarts */
@@ -167,10 +154,15 @@ page {
 	justify-content: center;
 	width: 650rpx;
 	height: 100%;
-	border-radius: 30rpx;
-	background: #fff;
+	border-radius: 20rpx;
+	background: var(--white);
 }
 #echarts {
 	width: 650rpx;
 	height: 330rpx;
+}
+.emptyBox {
+	font-size: 40rpx;
+	font-weight: bold;
+	color: var(--gray);
 }

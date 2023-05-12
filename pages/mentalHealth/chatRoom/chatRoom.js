@@ -10,8 +10,12 @@ Page({
    */
   data: {
     userInfo: null,
+    chatId: '',
     chatName: '',
     chatImg: "",
+    showPopUp: false,
+    commentText: '',
+    getConsultingService: false,
     useAnimation: false, // 使用滑动效果
     userInput: '', // 用户输入框内容
     isRotate: false, // 是否展开功能区
@@ -56,14 +60,15 @@ Page({
     // 获取聊天双方id
     this.setData({
       userInfo: app.globalData.userInfo,
-      ['sendModule.toId']: options.id,
-      ['sendModule.fromId']: app.globalData.userInfo.userId+"",
+      ['sendModule.toId']: options.userid || options.id, // 兼容两个来源
+      ['sendModule.fromId']: app.globalData.userInfo.userId + '',
+      chatId: options.id,
       chatName: options.name,
       chatImg: options.img
     })
     // 获取聊天记录
     let allMsg = app.globalData.userChatMemory || wx.getStorageSync('userChatMemory');
-    let targetMsg = allMsg[options.id];
+    let targetMsg = allMsg[options.userid || options.id];
     // 从咨询页面进入，可能暂无聊天记录
     if(!targetMsg) {
       // 创建该用户的聊天记录
@@ -100,7 +105,7 @@ Page({
     targetMsg.unReadMsg = [];
     allMsg.totalUnReadCount -= targetMsg.unReadCount;
     targetMsg.unReadCount = 0;
-    allMsg[options.id] = targetMsg;
+    allMsg[options.userid || options.id] = targetMsg;
     // 发送对应用户的离线ACK
     this.sendAck(this.data.unReadCount);
     // 存储修改后的聊天记录
@@ -174,6 +179,60 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  // 回退
+  goBack() {
+    let page = getCurrentPages();
+    let path = page[page.length -2].route;
+    // 来源非“咨询历史” && 非咨询师发送信息 && 用户获取咨询服务 => 弹窗评论
+    if (path !== 'pages/mentalHealth/chatHistory/chatHistory' && this.data.userInfo.role !== 2 && this.data.getConsultingService) {
+      this.setData({ // 强制评论
+        showPopUp: true
+      })
+    } else {
+      wx.navigateBack({
+        delta: -1,
+      })      
+    }
+  },
+  // 关闭弹出层
+  closePopUp() {
+    this.setData({
+      showPopUp: false
+    })
+  },
+  // 获取评论框内容
+  getCommentText(e) {
+    this.setData({
+      commentText: e.detail.value
+    })
+  },
+  // 提交评论
+  submitComment() {
+    postRequest(
+      '/consultant/CommentConsultant',
+      {
+        consultantId: +this.data.chatId,
+        comment: this.data.commentText
+      }
+    ).then(({data: res}) => {
+      if(res.code === 200) {
+        wx.showToast({
+          title: '评论成功',
+          icon: 'success',
+          duration: 800
+        })
+        wx.navigateBack({
+          delta: -1,
+        })
+      }
+    }).catch(({data: res}) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'error',
+        duration: 800
+      })
+    })
   },
   // 获取目标用户聊天信息
   getChatObjectMsg(id) {
@@ -431,6 +490,9 @@ Page({
       })
       // 滚动到最新消息的位置
       this.scrollToLastMsg();
+      this.setData({
+        getConsultingService: true
+      })
     }
     // 收到的信息不是该用户所发，存入总聊天消息记录中
     else {

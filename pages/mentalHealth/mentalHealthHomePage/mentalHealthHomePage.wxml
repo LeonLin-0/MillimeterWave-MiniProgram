@@ -13,7 +13,7 @@
 		<text class="functionTitle">个人信息</text>
 		<text class="unReadCount {{userChatMemory.totalUnReadCount === 0 ? 'unShowRedDot': ''}}">{{userChatMemory.totalUnReadCount > 99 ? '···' : userChatMemory.totalUnReadCount}}</text>
 	</view>
-	<view class="functionBlock" bindtap="onUndevelopedState">
+	<view class="functionBlock" bindtap="toPersonalGrowthPage">
 		<image class="functionPic" src="/icon/growth.svg"></image>
 		<text class="functionTitle">个人成长</text>
 	</view>

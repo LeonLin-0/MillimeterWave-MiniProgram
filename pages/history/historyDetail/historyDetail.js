@@ -25,7 +25,7 @@ let sleepOption = {
       itemStyle: {
         borderRadius: 10
       },
-      color: ['#0058dd','#fff'],
+      color: ['#0058cc','#efefef'],
       data: [],
       radius: ['55%', '90%']
     }

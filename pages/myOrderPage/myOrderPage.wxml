@@ -1,0 +1,36 @@
+<headerTitle title="{{title}}"></headerTitle>
+
+<view class="orderList">
+	<block wx:for="{{orderList}}" wx:key="index">
+		<view class="orderContainer">
+			<view class="orderHeader">
+				<view class="date">{{item.date}}({{item.week}}) <text class="time">{{item.time}}</text></view>
+				<view class="state {{'state'+item.state}}">{{stateList[item.state]}}</view>
+			</view>
+			<view class="psyContainer">
+				<image class="psyImg" src="{{item.img}}"/>
+				<view class="psyInfo">
+					<view class="name">{{item.name}}</view>
+					<view class="intro">{{item.position}}</view>
+					<view class="tagContainer">
+						<view class="tag" wx:for="{{item.tag}}" wx:for-item="child" wx:key="index">{{child}}</view>
+					</view>
+				</view>
+			</view>
+			<button
+				wx:if="{{item.state === 0}}"
+				class="cancelBtn"
+				data-appointmentid="{{item.Id}}"
+				data-index="{{index}}"
+				bindtap="cancelOrder">
+					取消预约
+			</button>
+		</view>
+	</block>
+</view>
+<block wx:if="{{orderList.length === 0}}">
+	<view class="emptyContainer">
+		<image class="emptyIcon" src="../../icon/noOrder.svg"></image>
+		<view class="emptyText">无预约记录</view>
+	</view>
+</block>

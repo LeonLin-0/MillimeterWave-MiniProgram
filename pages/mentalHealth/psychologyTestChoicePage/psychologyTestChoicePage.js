@@ -8,7 +8,7 @@ Page({
    */
   data: {
     psyTestList: [],
-    defaultImg: '/icon/projectIcon.jpg'
+    defaultImg: '/icon/projectIcon.png'
   },
 
   /**
@@ -77,7 +77,7 @@ Page({
           psyTestPic: img,
           psyTestTitle: item.name,
           psyTestTitleEn: item.name,
-          evaluationScaleId: item.ID,
+          evaluationScaleId: item.Id,
           psyTestNum: item.component,
           psyTag: item.Tag,
           psyContent: item.content,

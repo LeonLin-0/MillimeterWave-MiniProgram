@@ -30,8 +30,8 @@ page {
 	height: auto;
 	width: 100%;
 	margin-bottom: 18rpx;
-	background: #fff;
-	box-shadow: 0 0 16rpx #e6e6e6;
+	background: var(--white);
+	box-shadow: 0 0 16rpx var(--gray);
 }
 .title {
 	display: inline-block;
@@ -42,7 +42,7 @@ page {
 	line-height: 120rpx;
 	font-size: 38rpx;
 	font-weight: normal;
-	color: #3b3b3b;
+	color:var(--black);
 }
 /* 清除原生按钮样式 */
 .loginBtn {
@@ -74,7 +74,7 @@ page {
 	width: 40%;
 	margin: 30rpx 50rpx 30rpx 0rpx;
 	padding: 0 20rpx;
-	border: 1rpx solid #efefef;
+	border: 1rpx solid var(--gray);
 	border-radius: 16rpx;
 	text-align: center;
 	font-size: 38rpx;
@@ -89,7 +89,7 @@ page {
 	height: 70rpx;
 	width: 20%;
 	margin: 25rpx 50rpx 25rpx 0rpx;
-	border: 1px solid #efefef;
+	border: 1px solid var(--gray);
 	border-radius: 16rpx;
 	line-height: 70rpx;
 	text-align: center;
@@ -146,8 +146,8 @@ page {
 
 /* 确认按钮 */
 button {
-	color: #fff;
-	background: rgba(40,97,183,0.95);
+	color: var(--white);
+	background: var(--littleDeepBlue);
 }
 .submitBtn {
   height: auto;
@@ -168,7 +168,7 @@ button {
 	width: 100%;
 	background: rgba(161, 161, 161, 0.502);
 	backdrop-filter: blur(10rpx);
-	z-index: 10;
+	z-index: 100;
 	opacity: 0;
 	animation: showDialogBG 0.3s ease-in-out;
 	animation-fill-mode: forwards;
@@ -179,8 +179,8 @@ button {
 	height: auto;
 	width: 500rpx;
 	padding: 30rpx;
-	background: #efefef;
-	border-radius: 30rpx;
+	background: var(--lightGray);
+	border-radius: 20rpx;
 	box-shadow: 0 0 40rpx rgba(0, 0, 0, 0.4);
 	opacity: 0;
 	animation: showDialog 0.6s ease-in-out;
@@ -190,7 +190,7 @@ button {
 .text {
 	font-size: 34rpx;
 	font-weight: bold;
-	color: #3b3b3b;
+	color: var(--littleBlack);
 	text-align: justify;
 }
 .unshowAgain {
@@ -204,10 +204,12 @@ button {
 	width: 100%;
 }
 .btn {
+	height: 80rpx;
 	width: 90%;
+	line-height: 80rpx;
 }
 .btn:last-child {
-	background: #094aad;
+	background: var(--littleDeepBlue);
 }
 .radioBtn {
 	font-size: 32rpx;

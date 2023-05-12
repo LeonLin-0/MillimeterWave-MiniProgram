@@ -1,1 +1,120 @@
 /* pages/mentalHealth/mentalHealthHistory/mentalHealthHistory.wxss */
+.historyContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100vw;
+	height: auto;
+	margin-top: 180rpx;
+	padding: 0 50rpx;
+	box-sizing: border-box;
+}
+.historyContent {
+	display: grid;
+	grid-template-columns: 1fr 0.5fr;
+	height: 210rpx;
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 50rpx;
+	padding: 10rpx 20rpx;
+	overflow: hidden;
+	background: linear-gradient(0deg, var(--lightBlue) -10%, var(--littleDeepBlue));
+	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx var(--shadowGray);
+	color: var(--white);
+	animation: showContainer 0.6s ease-in-out;
+}
+.leftContainer {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	padding-top: 105rpx;
+}
+.name {
+	position: absolute;
+	top: 0rpx;
+	left: 0rpx;
+	height: 100rpx;
+	width: 145%;
+	line-height: 100rpx;
+	font-size: 80rpx;
+	background-image: linear-gradient(var(--white), transparent 90%);
+	color: transparent;
+	-webkit-background-clip: text;
+}
+.createTime {
+	height: 40rpx;
+	width: 100%;
+	line-height: 40rpx;
+	font-size: 30rpx;
+	font-weight: normal;
+}
+.createTime:before {
+	content: "创建时间：";
+	font-weight: normal;
+}
+.time {
+	height: 40rpx;
+	width: 100%;
+	margin-top: 5rpx;
+	line-height: 40rpx;
+	font-size: 30rpx;
+	font-weight: normal;
+}
+.time:before {
+	content: '耗时：';
+	font-weight: normal;
+}
+.rightContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+.scoreContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: center;
+	height: 100%;
+}
+.scoreTitle {
+	height: 40rpx;
+	width: 90rpx;
+	line-height: 40rpx;
+	font-size: 28rpx;
+}
+.score {
+	height: 50rpx;
+	width: 100rpx;
+	line-height: 50rpx;
+	font-size: 50rpx;
+	font-weight: bold;
+}
+.noDataImg {
+  height: 400rpx;
+  width: 400rpx;
+	margin: 300rpx auto 10rpx;
+}
+.noHistory {
+  height: 120rpx;
+	width: fit-content;
+	margin: auto;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 46rpx;
+  font-weight: bold;
+  color: rgba(0,0,0,0.15);
+}
+
+@keyframes showContainer {
+  0% {
+    opacity: 0;
+    transform: translateX(60%) scale(0.6);
+	}
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}

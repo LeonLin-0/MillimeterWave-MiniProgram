@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
-    "chatRoomHeader": "/components/chatRoomHeader/chatRoomHeader",
+    "van-popup": "@vant/weapp/popup/index",
     "sendMsg": "/components/sendMsg/sendMsg",
     "getMsg": "/components/getMsg/getMsg",
     "sendPic": "/components/sendPic/sendPic",

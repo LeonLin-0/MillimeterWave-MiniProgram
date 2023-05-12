@@ -1,0 +1,69 @@
+<!--pages/setOrderPage/setOrderPage.wxml-->
+<headerTitle title="{{title}}"></headerTitle>
+<view class="pageContainer">
+
+	<view class="finalContainer">
+		<view class="finalTitle">预约时间列表</view>
+		<view class="finalTip">#您设置的可预约时间在这里显示#</view>
+		<view class="finalOrderList" wx:if="{{finalOrderList.length !== 0}}">
+			<view class="finalOrderContainer" wx:for="{{finalOrderList}}" wx:key="index">
+				<van-icon name="cross" class="icon" bindtap="deleteOrder" data-index="{{index}}"/>
+				<view class="rightContainer">
+					<view class="firstLine">
+						<view class="date">{{item.date}} ({{item.week}})</view>
+						<view class="time">{{item.startTime}}-{{item.endTime}}</view>				
+					</view>
+					<view class="reverse">可预约人数：{{item.reserved}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="emptyContainer" wx:if="{{finalOrderList.length === 0}}">
+			<image class="emptyIcon" src="../../icon/noOrder.svg"/>
+			<view class="emptyText">暂无预约时间，请到下方添加吧</view>
+		</view>
+	</view>
+
+	<view class="bottomContainer">
+		<view class="formContainer">
+			<view class="formTitle">添加可预约时间</view>
+			<view class="formBody">
+				<form bindsubmit="addFinalOrderList" bindreset="resetFinalOrderList">
+					<view class="formLine">
+						<view class="title">日期：</view>
+						<view class="content">
+							<label><picker mode="date" name="date" value="{{date}}" bindchange="getDate">{{date}}</picker></label>
+						</view>
+					</view>
+					<view class="formLine">
+						<view class="title">开始时间：</view>
+						<view class="content">
+							<label><picker mode="time" name="startTime" value="{{startTime}}" bindchange="getST">{{startTime}}</picker></label>
+						</view>
+					</view>
+					<view class="formLine">
+						<view class="title">结束时间：</view>
+						<view class="content">
+							<label><picker mode="time" name="endTime" value="{{endTime}}" bindchange="getET">{{endTime}}</picker></label>
+						</view>
+					</view>
+					<view class="formLine lastLine">
+						<view class="title">可预约人数：</view>
+						<view class="content">
+							<label><input class="input" value="{{reserved}}" type="digit" name="reserved"></input></label>
+						</view>
+					</view>
+					<view class="btnGroup">
+						<button class="resetBtn" form-type="reset">重置</button>
+						<button class="addBtn" form-type="submit">添加</button>
+					</view>
+				</form>		
+			</view>
+		</view>
+
+		<view class="submitBtnContainer">
+			<button class="submitBtn" bindtap="submitOrderTime">提交</button>
+		</view>	
+	</view>
+
+</view>
+

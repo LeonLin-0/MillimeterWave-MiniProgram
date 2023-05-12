@@ -1,5 +1,5 @@
 var getTime = function(timeStamp) {
-  var nowDate = getDate(Date.now())
+  var nowDate = getDate(Date.now());
   var date = getDate(timeStamp*1000);
   var formatTime = "";
   var time = date.getHours()+':'+ (date.getMinutes()<10 ? '0'+date.getMinutes() : date.getMinutes());
@@ -14,4 +14,43 @@ var getTime = function(timeStamp) {
   }
   return formatTime;
 }
-module.exports = { getTime: getTime }
+
+var formatCreatedTime = function(timeStamp) {
+  var createDate = getDate(Date.parse(timeStamp));
+  var formatTime = createDate.getFullYear() + '-' + (createDate.getMonth()+1) + '-' + createDate.getDate();
+  var time = createDate.getHours()+':'+ (createDate.getMinutes()<10 ? '0'+createDate.getMinutes() : createDate.getMinutes());
+  formatTime = formatTime + ' ' + time;
+  return formatTime;
+};
+
+var formatTimeLength = function(time) {
+  var hour = parseInt(time/60/60);
+  hour = hour>0 ? hour : 0;
+  var minute = parseInt((time-hour*60*60)/60);
+  minute = minute>0 ? minute : 0;
+  var second = time-hour*60*60-minute*60;
+  second = second>0 ? second : 0;
+  var formatTime = hour ? hour+'时' : '';
+  formatTime += minute ? minute+'分' : '';
+  formatTime += second ? second+'秒' : '';
+  return formatTime;
+};
+
+var formatSicks = function(sicks = '') {
+  var list = sicks.split(',');
+  var returnList = [];
+  var len = list.length;
+  for(var i=0; i<len; i++) {
+    if (list[i] !== '') {
+      returnList.push(list[i]);
+    }
+  }
+  return returnList;
+};
+
+module.exports = {
+  getTime: getTime,
+  formatCreatedTime: formatCreatedTime,
+  formatTimeLength: formatTimeLength,
+  formatSicks: formatSicks
+}

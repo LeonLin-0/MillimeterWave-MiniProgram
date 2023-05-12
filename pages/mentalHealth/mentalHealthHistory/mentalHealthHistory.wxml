@@ -1,1 +1,25 @@
+<wxs src="../../../utils/filter.wxs" module="filter"></wxs>
+
 <headerTitle title="个人成长"></headerTitle>
+
+<view class="historyContainer">
+	<block wx:for="{{historyList}}" wx:key="index">
+		<view class="historyContent" bindtap="toMentalHealthDetail" data-history="{{item}}">
+			<view class="leftContainer">
+				<view class="name">{{item.name}}</view>
+				<view class="createTime">{{filter.formatCreatedTime(item.createdAt)}}</view>
+				<view class="time">{{filter.formatTimeLength(item.time)}}</view>
+			</view>
+			<view class="rightContainer">
+				<view class="scoreContainer">
+					<view class="scoreTitle">分数：</view>
+					<view class="score">{{item.score || '-'}}</view>
+				</view>
+			</view>
+		</view>	
+	</block>
+	<block wx:if="{{!historyList.length}}">
+		<image class="noDataImg" src="{{noDataImg}}"></image>
+    <text class="noHistory">暂无记录\n先去做测试吧</text>
+	</block>
+</view>

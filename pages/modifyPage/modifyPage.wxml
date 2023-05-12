@@ -72,7 +72,7 @@
 		<text class="title">疾病</text>
 		<checkbox-group class="diseaseContainer" bindchange="getCheckbox">
 			<label wx:for="{{diseasesArray}}" wx:key="value">
-				<checkbox class="diseaseBox" checked="{{item.checked}}" value="{{item.name}}" color="#2e65b9">{{item.name}}</checkbox>
+				<checkbox class="diseaseBox" checked="{{item.checked}}" value="{{item.name}}" color="var(--littleDeepBlue)">{{item.name}}</checkbox>
 			</label>
 		</checkbox-group>
     <view class="littleTitle">这里没有符合的选项？</view>
@@ -81,7 +81,7 @@
 	</view>
 	<!-- 反悔按钮 -->
 	<view class="modify">
-		<radio class="title radioBtn" checked="{{showAll}}" bindtap="regretToShowAll" color="#094aad">显示全部填写项</radio>
+		<radio class="title radioBtn" checked="{{showAll}}" bindtap="regretToShowAll" color="var(--littleDeepBlue)">显示全部填写项</radio>
 	</view>
   <button class="submitBtn" bindtap="submitAllinfo">确定</button>
 </view>
@@ -93,7 +93,7 @@
 			所填写信息只用于建立属于您的健康档案，本小程序承诺对您的信息只做保存，不做其他用途。
 		</view>
 		<view class="unshowAgain">
-			<radio checked="{{unshowAgain}}" bindtap="unshow" color="#094aad">不再显示</radio>
+			<radio checked="{{unshowAgain}}" bindtap="unshow" color="var(--deepBlue)">不再显示</radio>
 		</view>
 		<view class="btnContainer">
 			<button class="btn" type="default" bindtap="disagree">拒绝</button>

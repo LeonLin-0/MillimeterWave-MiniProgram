@@ -19,7 +19,7 @@ page {
 	margin-top: 180rpx;
 	margin-bottom: 50rpx;
 	border-radius: 30rpx;
-	background: linear-gradient(0deg, var(--lightBlue), var(--blue));
+	background: linear-gradient(0deg, var(--lightBlue), var(--littleDeepBlue));
 	box-shadow: 0 0 20rpx rgba(40,40,40,0.2);
 }
 .backgroundImg {

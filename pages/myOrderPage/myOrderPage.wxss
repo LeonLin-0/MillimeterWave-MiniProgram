@@ -1,0 +1,165 @@
+/* pages/myOrderPage/myOrderPage.wxss */
+.orderList {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	height: auto;
+	width: 100%;
+	padding: 20rpx 6% 0rpx;
+	margin-top: 180rpx;
+}
+.orderContainer {
+	box-sizing: border-box;
+	position: relative;
+	height: auto;
+	width: 100%;
+	padding: 20rpx;
+	margin-bottom: 40rpx;
+	border-radius: 20rpx;
+	box-shadow: 0 0 16rpx var(--shadowGray);
+	animation: showContainer 0.5s ease-in-out;
+}
+.orderHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	height: 50rpx;
+	width: 100%;
+}
+.date, .time {
+	height: 100%;
+	font-weight: bold;
+	color: var(--deepGray);
+}
+.time {
+	color: var(--lightBlack);
+}
+.state {
+	box-sizing: border-box;
+	height: 50rpx;
+	width: fit-content;
+	padding: 0rpx 10rpx;
+	line-height: 48rpx;
+	border-radius: 16rpx;
+	font-weight: bold;
+	font-size: 30;
+	background: var(--white);
+	border: 1px solid var(--shadowGray);
+}
+.state0 {
+	border: 1px solid var(--deepBlue);
+	color: var(--deepBlue);
+}
+.state1 {
+	border: 1px solid var(--green);
+	color: var(--green);
+}
+.state2 {
+	border: 1px solid var(--deepGray);
+	color: var(--deepGray);
+}
+.psyContainer {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	position: relative;
+	height: auto;
+	width: 100%;
+	padding-top: 20rpx;
+}
+.psyImg {
+	box-sizing: border-box;
+	height: 140rpx;
+	width: 140rpx;
+	margin-right: 20rpx;
+	box-shadow: 0 0 10rpx var(--shadowGray);
+	border-radius: 16rpx;
+}
+.psyInfo {
+	box-sizing: border-box;
+	width: 75%;
+}
+.name {
+	height: 50rpx;
+	width: fit-content;
+	line-height: 50rpx;
+	font-size: 34rpx;
+	font-weight: bold;
+}
+.intro {
+	height: 40rpx;
+	width: fit-content;
+	line-height: 40rpx;
+}
+.tagContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+	max-height: 100rpx;
+	flex-wrap: wrap;
+}
+.tag {
+	height: 40rpx;
+	width: fit-content;
+	padding: 0 10rpx;
+	margin-right: 10rpx;
+	margin-top: 10rpx;
+	border: 2rpx solid var(--deepBlue);
+	border-radius: 12rpx;
+	line-height: 38rpx;
+	font-size: 26rpx;
+	color: var(--deepBlue);
+}
+.cancelBtn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	float: right;
+	height: 70rpx;
+	width: 200rpx;
+	margin-top: 20rpx;
+	background: transparent;
+	border: 1px solid var(--deepBlue);
+	font-weight: bold;
+	color: var(--deepBlue);
+}
+/* 以下为空状态 */
+.emptyContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+}
+.emptyIcon {
+	height: 300rpx;
+	width: 300rpx;
+	margin-top: 50rpx;
+}
+.emptyText {
+	height: 100rpx;
+	width: auto;
+	margin-bottom: 50%;
+	font-size: 50rpx;
+	font-weight: bold;
+	color: var(--shadowGray);
+}
+@keyframes showContainer {
+  0% {
+    opacity: 0;
+    transform: translateX(80%);
+	}
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

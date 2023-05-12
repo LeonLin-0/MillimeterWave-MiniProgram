@@ -1,5 +1,8 @@
 <!--pages/mentalHealth/chatRoom/chatRoom.wxml-->
-<chatRoomHeader title="{{chatName}}"></chatRoomHeader>
+<view class="chatRoomHeader">
+	<van-icon name="arrow-left" class="leftIcon" bindtap="goBack"></van-icon>
+	{{chatName}}
+</view>
 <scroll-view
   class="chatContainer"
   enable-passive="{{true}}"
@@ -48,3 +51,17 @@
     <image class="function pic" src="/icon/pic.svg" bindtap="sendPic"/>
   </view>
 </view>
+<van-popup
+  show="{{showPopUp}}"
+  position="bottom"
+  bind:close="closePopUp"
+  close-on-click-overlay="{{false}}"
+  round="{{true}}"
+  closeable="{{true}}"
+>
+  <view class="commentContainer"> 
+    <view class="commentTitle">对于本次咨询，给咨询师一个评论吧~</view>
+    <textarea value="{{commentText}}" bindinput="getCommentText" class="commentText"/>
+    <button class="submit" bindtap="submitComment">确定</button>
+  </view>
+</van-popup>

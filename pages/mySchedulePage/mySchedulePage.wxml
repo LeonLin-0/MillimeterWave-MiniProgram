@@ -1,0 +1,113 @@
+<!--pages/mySchedulePage/mySchedulePage.wxml-->
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+
+<headerTitle title="{{title}}"></headerTitle>
+
+<view class="scheduleList" wx:if="{{scheduleList.length !== 0}}">
+	<view class="scheduleCountContainer">
+		<view class="childContainer">
+			<view class="title">总日程</view>
+			<view class="number">{{allCount}}</view>
+		</view>
+		<view class="childContainer">
+			<view class="title">未结束</view>
+			<view class="number">{{unfinishedCount}}</view>
+		</view>
+		<view class="childContainer">
+			<view class="title">已结束</view>
+			<view class="number">{{finishedCount}}</view>
+		</view>
+	</view>
+	<view class="scheduleContainer" wx:for="{{scheduleList}}" wx:key="index">
+		<view class="header">
+			<view class="date">{{item.appointment.date}}({{item.appointment.week}}) <text class="time">{{item.appointment.time}}</text></view>
+		</view>
+		<view class="reserveList">
+			<view class="reserveContainer">
+				<text class="reserveTitle">可预约数：</text>
+				<text class="reserveNum">{{item.appointment.reserved}}</text>
+			</view>
+			<view class="reserveContainer">
+				<text class="reserveTitle">已预约：</text>
+				<text class="reserveNum">{{item.appointment.isReserved}}</text>
+			</view>
+			<view class="state {{item.appointment.state === '已结束' ? 'endState' : ''}}">{{item.appointment.state}}</view>
+		</view>
+		<view class="userList" wx:if="{{item.users.length !== 0}}">
+			<view class="userContainer" wx:for="{{item.users}}" wx:for-item="child" wx:key="index">
+				<image class="userImg" src="{{child.headerImg}}"/>
+				<view class="userInfo">
+					<view class="userInfoLine">
+						<view class="userName">{{child.nickName}}</view>
+						<view class="userAge">{{child.age}}岁</view>
+						<view class="userGender">{{child.gender === 'male' ? '男' : '女'}}</view>
+						<view class="userPhone">{{child.mobile}}</view>
+					</view>
+					<view class="userInfoLine">
+						<view class="userSickContainer">
+							<view class="userSick" wx:for="{{filter.formatSicks(child.sicks)}}" wx:for-item="sick" wx:key="index">
+								{{sick}}
+							</view>
+							<view class="userSickEmpty" wx:if="{{filter.formatSicks(child.sicks).length === 0}}">
+								无疾病史
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="userEmptyContainer" wx:if="{{item.users.length === 0}}">
+			<image class="userEmptyImg" src="../../icon/noOrder.svg"/>
+			<view class="userEmptyText">无用户预约</view>
+		</view>
+		<view class="scheduleBtnGroup" wx:if="{{item.appointment.state === '未结束'}}">
+			<button class="deleteBtn" bindtap="deleteTime" data-item="{{item}}">关闭预约</button>
+			<button class="modifyBtn" bindtap="modifyTime" data-item="{{item}}">修改时间</button>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{scheduleList.length === 0}}" class="emptyContainer">
+	<image class="emptyIcon" src="../../icon/noOrder.svg"/>
+	<view class="emptyText">暂无日程</view>
+</view>
+
+<view class="modifyPopUpContainer" wx:if="{{isPopUp}}">
+	<view class="bottomContainer">
+		<view class="formContainer">
+			<view class="formTitle">修改可预约时间</view>
+			<view class="formBody">
+				<form bindsubmit="modifyFinalOrderList">
+					<view class="formLine">
+						<view class="formLineTitle">日期：</view>
+						<view class="content">
+							<label><picker mode="date" name="date" value="{{date}}" bindchange="getDate">{{date}}</picker></label>
+						</view>
+					</view>
+					<view class="formLine">
+						<view class="formLineTitle">开始时间：</view>
+						<view class="content">
+							<label><picker mode="time" name="startTime" value="{{startTime}}" bindchange="getST">{{startTime}}</picker></label>
+						</view>
+					</view>
+					<view class="formLine">
+						<view class="formLineTitle">结束时间：</view>
+						<view class="content">
+							<label><picker mode="time" name="endTime" value="{{endTime}}" bindchange="getET">{{endTime}}</picker></label>
+						</view>
+					</view>
+					<view class="formLine lastLine">
+						<view class="formLineTitle">可预约人数：</view>
+						<view class="content">
+							<label><input class="input" value="{{reserved}}" type="digit" name="reserved"></input></label>
+						</view>
+					</view>
+					<view class="btnGroup">
+						<button class="resetBtn" bindtap="cancelModifyTime">取消</button>
+						<button class="addBtn" form-type="submit">确定</button>
+					</view>
+				</form>		
+			</view>
+		</view>
+	</view>
+</view>

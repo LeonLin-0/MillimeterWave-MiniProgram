@@ -64,12 +64,19 @@ Page({
       userInfo: app.globalData.userInfo || wx.getStorageSync('userInfo')
     })
     let psyResult = JSON.parse(wx.getStorageSync(`${options.resultName}`));
+    let typeId = psyResult.data.evaluationScaleId;
+    let title;
+    switch (typeId) {
+      case 1:
+        title = 'SCL-90测评'; break;
+      case 3:
+        title = '中医体质量表测评'; break;
+    }
     // 设置标题
-    let title = psyResult.msg.match(new RegExp('获取'+'(.*?)'+'结果成功'))[1];
     this.setData({
       psyTitle: title,
     })
-    if(title === '中医体质量表测评') {
+    if(typeId === 3) {
       this.setData({
         isTCM: true
       })
@@ -168,7 +175,6 @@ Page({
    * 处理中医体质量表数据
    */
   isTCMData(data) {
-    console.log(data);
     data.avgScore = data.avgScore.toFixed(2);
     this.setData({
       psyResult: {

@@ -9,7 +9,7 @@
 	<van-progress class="psyTestProgressLine"
 		percentage="{{progressNum}}"
 		stroke-width="6"
-		color="#36995a"
+		color="var(--blue)"
 		bindtouchend="movePivot"
 	></van-progress>
 	<view class="psyTestProgress">

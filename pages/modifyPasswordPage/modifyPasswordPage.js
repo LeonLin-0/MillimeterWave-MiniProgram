@@ -122,7 +122,7 @@ Page({
     // 设置定时器
     this.data.timer = setInterval(fn, 1000);
     // 发送请求获取短信验证码
-    getRequest('/base/SendSms', { data: this.data.userInfo.mobile+'' }).then(({data: res}) => {
+    getRequest('/base/SendSms', { mobile: this.data.userInfo.mobile+'' }).then(({data: res}) => {
       console.log(res);
     }).catch(({data: res}) => {
       wx.showToast({

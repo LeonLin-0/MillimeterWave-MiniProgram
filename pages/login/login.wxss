@@ -20,12 +20,11 @@ page {
 	height: 70rpx;
 	width: auto;
 	padding: 0rpx 15rpx;
-	border-radius: 20rpx;
 	line-height: 70rpx;
 	text-align: left;
 	font-size: 50rpx;
 	font-weight: bold;
-	color: var(--lightBlack);
+	color: var(--black);
 }
 .title::before {
 	content: '';
@@ -45,17 +44,18 @@ page {
 	position: relative;
 	height: 150rpx;
 	width: 100%;
-	margin-top: 480rpx;
+	margin-top: 520rpx;
 	line-height: 150rpx;
 	font-size: 80rpx;
 	font-weight: bold;
-	color: var(--deepBlue);
-	text-shadow: 0 0 20rpx rgba(156, 156, 156, 0.2);
+	background: linear-gradient( 0deg, var(--lightBlue) -10%, var(--deepBlue) 90%);
+	-webkit-background-clip: text;
+	color: transparent;
 }
 .miniprogramTitle::before {
 	content: '';
 	position: absolute;
-	top: -100%;
+	top: -125%;
 	left: -10%;
 	height: 250rpx;
 	width: 250rpx;
@@ -68,7 +68,7 @@ page {
 .miniprogramTitle::after {
 	content: '';
 	position: absolute;
-	top: 60%;
+	top: 50%;
 	right: -18%;
 	height: 200rpx;
 	width: 200rpx;
@@ -80,20 +80,19 @@ page {
 
 /* 信息填写区域 */
 .infoContainer {
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	text-align: left;	
-	position: absolute;
-	top: 38%;
-	left: 5%;
+	position: relative;
 	height: auto;
 	width: 90%;
 	margin: 200rpx auto 0rpx;
-	padding: 40rpx 0rpx;
+	padding: 30rpx 0rpx;
 	background: var(--white);
-	border-radius: 30rpx;
-	box-shadow: 0 0 50rpx rgba(0, 0, 0, 0.15);
+	border-radius: 16rpx;
+	box-shadow: 0 0 50rpx var(--gray);
+	text-align: left;	
 }
 .infoContainer::before {
 	content: '';
@@ -125,7 +124,7 @@ page {
 	align-items: center;
 	height: auto;
 	width: 60%;
-	margin-bottom: 40rpx;
+	margin-bottom: 30rpx;
 	text-align: center;
 	font-size: 36rpx;
 	font-weight: bold;
@@ -133,7 +132,7 @@ page {
 }
 .littleBtn {
 	padding: 20rpx;
-	border-radius: 20rpx;
+	border-radius: 16rpx;
 	background: none;
 }
 .registerMethodContainer {
@@ -142,7 +141,7 @@ page {
 	align-items: center;
 	height: auto;
 	width: 50%;
-	margin-bottom: 40rpx;
+	margin-bottom: 30rpx;
 	text-align: center;
 	font-size: 36rpx;
 	font-weight: bold;
@@ -154,7 +153,7 @@ page {
 }
 .unSelected {
 	transition: all 0.15s ease-in-out;
-	color: #5a5a5a;
+	color: var(--darkGray);
 }
 
 /* 输入区域 */
@@ -165,8 +164,8 @@ page {
 	padding: 5rpx 10rpx 5rpx 130rpx;
 	margin-bottom: 30rpx;
 	background: var(--white);
-	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
-	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx var(--gray);
+	border-radius: 16rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
 	font-weight: normal;
@@ -195,8 +194,8 @@ page {
 	padding: 5rpx 10rpx 5rpx 130rpx;
 	margin-bottom: 30rpx;
 	background: var(--white);
-	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
-	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx var(--gray);
+	border-radius: 16rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
 	font-weight: normal;
@@ -227,7 +226,7 @@ page {
 	height: 80rpx;
 	width: 85%;
 	padding: 5rpx 5rpx 5rpx 0rpx;
-	margin-bottom: 20rpx;
+	margin-bottom: 10rpx;
 	animation: showContainer 0.4s ease-in-out;
 }
 .verifyCode{
@@ -236,8 +235,8 @@ page {
 	width: 31%;
 	padding: 5rpx 10rpx 5rpx 130rpx;
 	background: var(--white);
-	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
-	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx var(--gray);
+	border-radius: 16rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
 	font-weight: normal;
@@ -263,8 +262,8 @@ page {
 	height: 100%;
 	padding: 5rpx 5rpx;
 	background: no-repeat;
-	border-radius: 20rpx;
-	box-shadow: 0 0 20rpx rgba(0,0,0,0.15);
+	border-radius: 16rpx;
+	box-shadow: 0 0 20rpx var(--gray);
 }
 .msgVerifyCode {
 	position: relative;
@@ -272,8 +271,8 @@ page {
 	width: 35%;
 	padding: 5rpx 10rpx 5rpx 130rpx;
 	background: var(--white);
-	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
-	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx var(--gray);
+	border-radius: 16rpx;
 	line-height: 80rpx;
 	font-size: 30rpx;
 	font-weight: normal;
@@ -295,17 +294,22 @@ page {
 	color: var(--lightBlack);
 }
 .getMsgVerifyCodeBtn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	height: 100%;
 	width: 35%;
 	margin: 0;
 	padding: 5rpx 0rpx;
-	background: var(--littleLightBlue);
-	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
-	border-radius: 20rpx;
-	text-align: center;
-	font-size: 30rpx;
-	font-weight: normal;
-	color: var(--black);
+	background: linear-gradient(0deg, var(--lightBlue) -10%, var(--littleDeepBlue) 90%);
+	-webkit-background-clip: text;
+	box-shadow: 0 0 20rpx var(--gray);
+	border: 1rpx solid var(--littleDeepBlue);
+	border-radius: 16rpx;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: transparent;
 }
 
 /* 底部区域 */
@@ -319,7 +323,7 @@ page {
 	position: relative;
 	height: 50rpx;
 	width: fit-content;
-	margin: 10rpx auto 30rpx;
+	margin: 0rpx auto 20rpx;
 	line-height: 50rpx;
 	font-size: 30rpx;
 	color: var(--lightBlack);
@@ -330,13 +334,15 @@ page {
 	height: 50rpx;
 	width: 100rpx;
 	padding: 10rpx 30rpx;
-	background: var(--littleLightBlue);
-	border-radius: 20rpx;
-	box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
+	background: linear-gradient(0deg, var(--lightBlue) -10%, var(--littleDeepBlue) 90%);
+	-webkit-background-clip: text;
+	border-radius: 16rpx;
+	border: 1rpx solid var(--littleDeepBlue);
+	box-shadow: 0 0 20rpx var(--gray);
 	line-height: 50rpx;
 	font-weight: bold;
 	font-size: 36rpx;
-	color: #fff;
+	color: transparent;
 }
 @keyframes showContainer {
 	0% {

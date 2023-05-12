@@ -13,7 +13,7 @@ page {
   padding: 160rpx 0rpx 50rpx;
 	width: 100%;
 	height: auto;
-	background: linear-gradient(180deg, #408fff, #fff);
+	background: linear-gradient(180deg, var(--littleDeepBlue), var(--white));
 }
 /* 头像 */
 .avatar {
@@ -62,12 +62,13 @@ page {
   width: auto;
   margin: 0 10rpx 10rpx;
   padding: 8rpx 16rpx;
-  border-radius: 20rpx;
-  background: #fff;
-  line-height: 35rpx;
+  border-radius: 14rpx;
+  background: var(--white);
+  line-height: 34rpx;
   font-size: 30rpx;
   font-weight: normal;
-  color: #000;
+  color: var(--black);
+  box-shadow: inset 1rpx 1rpx 10rpx rgba(255,255,255,0.5), 1rpx 1rpx 10rpx rgba(0,0,0,0.2);
 }
 /* 疾病 */
 .disease {
@@ -87,9 +88,9 @@ page {
   width: auto;
   padding: 8rpx 14rpx;
   margin: 0 10rpx 10rpx;
-  background-color: rgba(228, 228, 228, 0.5);
+  background-color: var(--white);
   box-shadow: inset 1rpx 1rpx 10rpx rgba(255,255,255,0.5), 1rpx 1rpx 10rpx rgba(0,0,0,0.2);
-  border-radius: 20rpx;
+  border-radius: 14rpx;
   line-height: 40rpx;
   font-size: 32rpx;
   font-weight: bold;
@@ -104,16 +105,16 @@ page {
   padding-top: 50rpx;
   font-size: 38rpx;
   font-weight: normal;
-  color: #000;
+  color: var(--black);
 }
 .setting {
   height: 100rpx;
   width: auto;
   padding: 0 70rpx;
   margin-bottom: -1rpx;
-  background: #fff;
-  border-top: 1rpx solid #cfcfcf;
-  border-bottom: 1px solid #dfdfdf;
+  background: var(--white);
+  border-top: 1rpx solid var(--shadowGray);
+  border-bottom: 1px solid var(--shadowGray);
   line-height: 100rpx;
   border-collapse: collapse;
 }
@@ -128,9 +129,9 @@ page {
   align-items: center;
   justify-content: center;
   height: 100rpx;
-  width: 80%;
-  margin: 80rpx auto 0rpx;
-  background-color: #fff;
-  border-radius: 30rpx;
-  box-shadow: 10rpx 10rpx 20rpx #dfdfdf, inset 10rpx 10rpx 20rpx #f5f5f5;
+  width: 70%;
+  margin: 40rpx auto 80rpx;
+  background-color: var(--white);
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx var(--shadowGray), inset 10rpx 10rpx 20rpx var(--lightGray);
 }

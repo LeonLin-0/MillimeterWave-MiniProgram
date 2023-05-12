@@ -73,9 +73,7 @@ Page({
       title: "退出登录将清除本地所有信息，您确定退出吗？",
       success: res => {
         if (res.confirm==true) {
-          wx.removeStorageSync('userInfo');
-          wx.removeStorageSync('x-token');
-          wx.removeStorageSync('userChatMemory');
+          wx.clearStorageSync();
           wx.navigateTo({
             url: '/pages/login/login',
           })           
@@ -94,6 +92,24 @@ Page({
   toModifyPasswordPage() {
     wx.navigateTo({
       url: '/pages/modifyPasswordPage/modifyPasswordPage',
+    })
+  },
+  // 跳转我的预约页面
+  toMyOrderPage() {
+    wx.navigateTo({
+      url: '/pages/myOrderPage/myOrderPage',
+    })
+  },
+  // 跳转到设置预约页面
+  toSetOrderPage() {
+    wx.navigateTo({
+      url: '/pages/setOrderPage/setOrderPage',
+    })
+  },
+  // 跳转到我的日程页面
+  toGetSchedule() {
+    wx.navigateTo({
+      url: '/pages/mySchedulePage/mySchedulePage',
     })
   },
   // 跳转到关于我们页面

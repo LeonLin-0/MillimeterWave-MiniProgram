@@ -23,10 +23,16 @@ Component({
       let page = getCurrentPages();
       let length = page.length;
       let path = page[length-1].route;
-      if(path != 'pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion') {
+      let secondFromPath = page[length-2].route;
+      if(path !== 'pages/mentalHealth/mentalHealthConclusion/mentalHealthConclusion') {
         wx.navigateBack({
           delta: -1,
-        })      
+        })
+      }
+      else if (secondFromPath === 'pages/mentalHealth/mentalHealthHistory/mentalHealthHistory') {
+        wx.navigateBack({
+          delta: -1,
+        })
       }
       else {
         wx.switchTab({

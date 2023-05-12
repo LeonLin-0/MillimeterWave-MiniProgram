@@ -1,21 +1,33 @@
 /**app.wxss**/
 page {
-  	/*主题色*/
+    /*主题色*/
+  --lightOrange: #fba32fe0;
+  --orange: #f56f2ce3;
   --lightPink: #fee3e3;
+  --littleRed: #f97878;
   --red: #f45d5d;
-  --lightBlack: #35495e;
+  --lightRed: #ee2746;
+  --littleDeepRed: #b32727;
+  --deepRed: #7c1823;
+  --lightBlack: #1b232b;
   --black: #000;
   --white: #fff;
+  --littleGray: #f5f5f5;
   --lightGray: #efefef;
   --gray: #e5e5e5;
+  --shadowGray: #bebebe;
   --darkGray: #afafaf;
+  --deepGray: #747474;
   --darkBlue: #0050b8;
   --deepBlue: #0058cc;
   --littleDeepBlue: #1471eb;
-  --blue: #2b80f8;
+  --blue: #097bed;
   --littleLightBlue: #5ea0fb;
   --lightBlue:#93c0ff;
   --grayBlue: #a0b7d8;
+  --littleGreen: #63a87d;
+  --lightGreen: #20a162;
+  --green: #228b22;
 }
 .container {
   height: 100%;
